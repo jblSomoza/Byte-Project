@@ -51,6 +51,12 @@ import { CategoriasUsuariosComponent } from './components/categorias-usuarios/ca
 import { AsignacionCategoriasComponent } from './components/asignacion-categorias/asignacion-categorias.component';
 import { EstatusLegalesComponent } from './components/estatus-legales/estatus-legales.component';
 import { ParametrosProductosComponent } from './components/parametros-productos/parametros-productos.component';
+import { EnlaceCComponent, EnlaceContabilidadComponent } from './components/enlace-contabilidad/enlace-contabilidad.component';
+import { MantenimientoContabilizacionComponent } from './components/mantenimiento-contabilizacion/mantenimiento-contabilizacion.component';
+import { ParametrizacionNumeroPrestamosComponent } from './components/parametrizacion-numero-prestamos/parametrizacion-numero-prestamos.component';
+import { PasosCierreComponent } from './components/pasos-cierre/pasos-cierre.component';
+import { ArchivosLimpiezaComponent } from './components/archivos-limpieza/archivos-limpieza.component';
+import { ContenidosContablesComponent } from './components/contenidos-contables/contenidos-contables.component';
 
 
 const appRoutes: Routes =[
@@ -93,11 +99,6 @@ const appRoutes: Routes =[
     {path: 'productos', component: ProductosComponent},
     {path: 'limpieza', component: LimpiezaArchivosComponent},
     {path: 'subProductos', component: SubProductosComponent},
-
-
-
-
-
     {path: 'consultas', component: ConsultasComponent},
     {path: 'clasificacion', component: ClasificacionComponent},
     {path: 'parametros-adicionales', component: ParametrosAdicionalesaComponent},
@@ -110,6 +111,12 @@ const appRoutes: Routes =[
     {path: 'asignacion-categorias', component: AsignacionCategoriasComponent},
     {path: 'estatus-legales', component: EstatusLegalesComponent},
     {path: 'parametros-productos', component: ParametrosProductosComponent},
+    {path: 'enlace-contabilidad', component: EnlaceContabilidadComponent},
+    {path: 'mantenimiento-contabilizacion', component: MantenimientoContabilizacionComponent},
+    {path: 'parametrizacion-numero-prestamos', component: ParametrizacionNumeroPrestamosComponent},
+    {path: 'pasos-cierre', component: PasosCierreComponent},
+    {path: 'archivos-limpieza', component: ArchivosLimpiezaComponent},
+    {path: 'contenidos-contables', component: ContenidosContablesComponent},
 ];
 
 export const appRoutingProviders: any[]=[];

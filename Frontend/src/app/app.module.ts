@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { routing, appRoutingProviders } from "./app.routing";
 
-import { AppComponent } from './app.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-
-import { HomeComponent } from './components/home/home.component'; //se importa solo cuando se crea un componente
-import { routing, appRoutingProviders } from "./app.routing";
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+
+import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component'; //se importa solo cuando se crea un componente
 import { AseguradorasComponent } from './components/aseguradoras/aseguradoras.component';
 import { AlmacenadorasComponent } from './components/almacenadoras/almacenadoras.component';
 import { AgrupacionDeCodigoComponent } from './components/agrupacion-de-codigo/agrupacion-de-codigo.component';
@@ -57,6 +57,12 @@ import { CategoriasUsuariosComponent } from './components/categorias-usuarios/ca
 import { AsignacionCategoriasComponent } from './components/asignacion-categorias/asignacion-categorias.component';
 import { EstatusLegalesComponent } from './components/estatus-legales/estatus-legales.component';
 import { ParametrosProductosComponent } from './components/parametros-productos/parametros-productos.component';
+import { EnlaceContabilidadComponent } from './components/enlace-contabilidad/enlace-contabilidad.component';
+import { MantenimientoContabilizacionComponent } from './components/mantenimiento-contabilizacion/mantenimiento-contabilizacion.component';
+import { ParametrizacionNumeroPrestamosComponent } from './components/parametrizacion-numero-prestamos/parametrizacion-numero-prestamos.component';
+import { PasosCierreComponent } from './components/pasos-cierre/pasos-cierre.component';
+import { ArchivosLimpiezaComponent } from './components/archivos-limpieza/archivos-limpieza.component';
+import { ContenidosContablesComponent } from './components/contenidos-contables/contenidos-contables.component';
 
 
 
@@ -115,7 +121,12 @@ import { ParametrosProductosComponent } from './components/parametros-productos/
     AsignacionCategoriasComponent,
     EstatusLegalesComponent,
     ParametrosProductosComponent,
-
+    EnlaceContabilidadComponent,
+    MantenimientoContabilizacionComponent,
+    ParametrizacionNumeroPrestamosComponent,
+    PasosCierreComponent,
+    ArchivosLimpiezaComponent,
+    ContenidosContablesComponent
   ],
   imports: [
     BrowserModule,
