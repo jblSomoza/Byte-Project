@@ -51,7 +51,7 @@ import { CategoriasUsuariosComponent } from './components/categorias-usuarios/ca
 import { AsignacionCategoriasComponent } from './components/asignacion-categorias/asignacion-categorias.component';
 import { EstatusLegalesComponent } from './components/estatus-legales/estatus-legales.component';
 import { ParametrosProductosComponent } from './components/parametros-productos/parametros-productos.component';
-import { EnlaceCComponent, EnlaceContabilidadComponent } from './components/enlace-contabilidad/enlace-contabilidad.component';
+import { EnlaceContabilidadComponent } from './components/enlace-contabilidad/enlace-contabilidad.component';
 import { MantenimientoContabilizacionComponent } from './components/mantenimiento-contabilizacion/mantenimiento-contabilizacion.component';
 import { ParametrizacionNumeroPrestamosComponent } from './components/parametrizacion-numero-prestamos/parametrizacion-numero-prestamos.component';
 import { PasosCierreComponent } from './components/pasos-cierre/pasos-cierre.component';
