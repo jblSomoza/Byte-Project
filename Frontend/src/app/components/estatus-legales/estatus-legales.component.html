@@ -1,0 +1,195 @@
+<app-sidenav></app-sidenav>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+  integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+
+
+<!-- EVENTOS DE MODALS-->
+<!-- Modal AGREGAR-->
+<div class="modal fade" id="ModalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body col-md-7 ">
+          <div class="form-group">
+            <label for="codigo">Descripcion del estatus legal:</label>
+            <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
+              placeholder="Ingresar descripcion">
+          </div>
+
+
+          <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
+            (click)="ModalConfirmacion2">Aceptar</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      <!-- <div class="modal-footer"> </div> -->
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal eliminar -->
+<div class="modal fade" id="ModalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmacion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Esta seguro de eliminar este dato?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger">Si</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal editar -->
+<div class="modal fade" id="ModalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body col-md-5 ">
+        <div class="form-group ">
+          <label for="exampleInputPassword1">Codigo:</label>
+          <input type="text" autocomplete="off" class="form-control" name="codigo" id="codigo"
+            placeholder="1">
+        </div>
+
+        <div class="form-group ">
+            <label for="exampleInputPassword1">Descripcion del estatus:</label>
+            <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
+              placeholder="Editar Descripcion del estatus">
+          </div>
+
+        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion1"
+          (click)="ModalConfirmacion1">Aceptar</button>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal confirmacion editar -->
+<div class="modal fade" id="ModalConfirmacion1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmacion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Esta seguro de editar este dato?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger">Si</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--------------------->
+
+
+
+<!-- TABLE -->
+
+<div id="content">
+    <H1>Estatus Legales</H1>
+    <!-- buscar -->
+<form class="form-inline my-2 my-lg-0" id="buscador">
+    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+    <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Buscar</button>
+  </form>
+  <table class="table">
+    <thead class="thead-dark">
+      <!-- Columnas -->
+      <tr>
+        <th scope="col">Sel</th>
+        <th scope="col">Codigo</th>
+        <th scope="col">Descripcion Estatus</th>
+        <th scope="col"> </th>
+        <th scope="col"> </th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- Datos Estaticos -->
+      <tr>
+        <th scope="row">1</th>
+        <td>1</td>
+        <td>NORMAL</td>
+
+
+        <!-- Botones -->
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
+            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
+        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
+            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
+      </tr>
+      <tr>
+          <th scope="row">2</th>
+        <td>2</td>
+        <td>DEMANDA - COBRO JURIDICO</td>
+
+        <!-- Botones -->
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
+            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
+        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
+            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
+      </tr>
+
+    </tbody>
+  </table>
+  <!-- Boton Agregar -->
+<div class="BtnAgregar">
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalAgregar"
+    (click)="ModalAgregar">Agregar</button>
+</div>
+
+<!--Paginacion -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+</div>

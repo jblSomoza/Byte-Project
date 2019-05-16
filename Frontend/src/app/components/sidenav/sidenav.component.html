@@ -1,0 +1,265 @@
+<div class="s-layout">
+   <div>
+    <!-- Sidebar -->
+    <div class="top">
+        <div class="top-I">
+            <li>
+                <a>
+                    <img class="centrado" src="assets/byte_logo.png" width="100px" height="90">
+                </a>
+            </li>
+
+        </div>
+        <div class="top-D">
+            <form class="form-inline">
+                <div class="form-group mb-2">
+                    <label for="staticEmail2" class="sr-only">Email</label>
+                    <input type="email" class="form-control" id="inputPassword" placeholder="Email">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="inputPassword2" class="sr-only">Password</label>
+                    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Login</button>
+            </form>
+
+        </div>
+        <div class="top-E">
+            <h1><a [routerLink]="['/home']">Home</a></h1>
+        </div>
+    </div>
+
+    <div class="s-layout__sidebar">
+        <a class="s-sidebar__trigger" href="#0">
+            <i class="fa fa-bars"></i>
+        </a>
+        <nav class="s-sidebar__nav">
+            <ul>
+                <input type="buscar" id="inputBuscar" placeholder="&#128269;Buscar...">
+                <br><br>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/almacenadoras']">
+                        <i class="fa fa-user"></i><em>Almacenadoras</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/aseguradoras']">
+                        <i class="fas fa-ambulance"></i> <em>Aseguradoras</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/agrupacion-codigos']">
+                        <i class="fa fa-camera"></i><em>Agrupación de Créditos</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/lugar-invercion']">
+                        <i class="fa fa-camera"></i><em>Lugares de Inversión</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/ubicacion-garantia']">
+                        <i class="fa fa-camera"></i><em>Ubicación de la Garantía</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/origen-fondos']">
+                        <i class="fa fa-camera"></i><em>Origen de fondos</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/formas-pago']">
+                        <i class="fa fa-camera"></i><em>Formas de pago</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/destinos']">
+                        <i class="fa fa-camera"></i><em>Destinos</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/categorias-SIB']">
+                        <i class="fa fa-camera"></i><em>Categorias SIB</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/estatusGarantias-reales']">
+                        <i class="fa fa-camera"></i><em>Estatus garantias reales</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/estatus-avaluos']">
+                        <i class="fa fa-camera"></i><em>Estatus de Valuos</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/ingenieros-valuadores']">
+                        <i class="fa fa-camera"></i><em>Ingenieros Valuadores</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/notarios']">
+                        <i class="fa fa-camera"></i><em>Notarios</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/motivos-ajustes']">
+                        <i class="fa fa-camera"></i><em>Motivos de ajustes</em>
+                    </a>
+                </li>
+                <!-- --------------- -->
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/dias-inhabiles']">
+                        <i class="fa fa-camera"></i><em>Dias inhábiles</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/cobros-adicionales']">
+                        <i class="fa fa-camera"></i><em>Cobros adicionales</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/instituciones-cobros-adicionales']">
+                        <i class="fa fa-camera"></i><em>Instituciones de cobros adicionales</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/motivos-reversa']">
+                        <i class="fa fa-camera"></i><em>Motivos de reversa</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/formas-desembolso']">
+                        <i class="fa fa-camera"></i><em>Formas de desembolso</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/motivos-referencias-clientes']">
+                        <i class="fa fa-camera"></i><em>Motivos de referencias clientes</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/medios-contacto']">
+                        <i class="fa fa-camera"></i><em>Medios de contacto</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/canales-venta']">
+                        <i class="fa fa-camera"></i><em>Canales de venta</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/bancos']">
+                        <i class="fa fa-camera"></i><em>Bancos</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/relaciones-transacciones']">
+                        <i class="fa fa-camera"></i><em>Relaciones transacciones</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/transacciones-deposito']">
+                        <i class="fa fa-camera"></i><em>Transacciones de deposito</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/acercamientos']">
+                        <i class="fa fa-camera"></i><em>Acercamientos</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/asesores-de-prestamos']">
+                        <i class="fa fa-camera"></i><em>Asesores de préstamo</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/datos-generales']">
+                        <i class="fa fa-camera"></i><em>Datos Generales</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/tipos-deducciones']">
+                        <i class="fa fa-camera"></i><em>Tipo De deducciones</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/tipo-prestamos']">
+                        <i class="fa fa-camera"></i><em>Tipo De Prestamos</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/tipo-transaccion']">
+                        <i class="fa fa-camera"></i><em>Tipo De Transaccion</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/garantias-contables']">
+                        <i class="fa fa-camera"></i><em>Garantias Contables</em>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/frecuencias-amortizacion']">
+                        <i class="fa fa-camera"></i><em>Frecuencias de Amortizacion</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/productos']">
+                        <i class="fa fa-camera"></i><em>Productos</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" [routerLink]="['/limpieza']">
+                        <i class="fa fa-camera"></i><em>limpieza</em>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</div>
+   <!-- Sidebar -->
+   <div class="top">
+      <div class="top-I">
+         <li>
+            <a>
+               <img class="centrado" src="assets/byte_logo.png" width="100px" height="90">
+            </a>
+         </li>
+
+      </div>
+      <div class="top-D">
+         <form class="form-inline">
+            <div class="form-group mb-2">
+               <label for="staticEmail2" class="sr-only">Email</label>
+               <input type="email" class="form-control" id="inputPassword" placeholder="Email">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+               <label for="inputPassword2" class="sr-only">Password</label>
+               <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Login</button>
+         </form>
+
+      </div>
+      <div class="top-E">
+         <h1><a [routerLink]="['/home']">Home</a></h1>
+      </div>
+   </div>

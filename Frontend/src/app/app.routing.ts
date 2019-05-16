@@ -1,18 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ModuleWithProviders} from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { AppComponent } from './app.component';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-
-import { HomeComponent } from './components/home/home.component'; //se importa solo cuando se crea un componente
-import { routing, appRoutingProviders } from "./app.routing";
-import { CarouselModule } from 'ngx-bootstrap/carousel';
+//COMPONENTS
+import { HomeComponent } from "./components/home/home.component";
 import { AseguradorasComponent } from './components/aseguradoras/aseguradoras.component';
 import { AlmacenadorasComponent } from './components/almacenadoras/almacenadoras.component';
 import { AgrupacionDeCodigoComponent } from './components/agrupacion-de-codigo/agrupacion-de-codigo.component';
 import { LugaresInversionComponent } from './components/lugares-inversion/lugares-inversion.component';
-import { UbicacionGarantiaComponent } from './components/ubicacion-garantia/ubicacion-garantia.component';
+import { UbicacionGarantiaComponent } from './components/ubicacion-garantia/ubicacion-garantia.component'; //solo se importa luedo de declarar el path
 import { OrigenFondosComponent } from './components/origen-fondos/origen-fondos.component';
 import { ComponentsfFormasPagoComponent } from './components/componentsf-formas-pago/componentsf-formas-pago.component';
 import { DestinosComponent } from './components/destinos/destinos.component';
@@ -30,14 +25,13 @@ import { FormasDesembolsoComponent } from './components/formas-desembolso/formas
 import { MotivosReferenciasClientesComponent } from './components/motivos-referencias-clientes/motivos-referencias-clientes.component';
 import { MediosContactoComponent } from './components/medios-contacto/medios-contacto.component';
 import { CanalesVentaComponent } from './components/canales-venta/canales-venta.component';
-import { BancosComponent } from './components/bancos/bancos.component';
 import { RelacionesTransaccionesComponent } from './components/relaciones-transacciones/relaciones-transacciones.component';
 import { TransaccionesDepositosComponent } from './components/transacciones-depositos/transacciones-depositos.component';
 import { AcercamientosComponent } from './components/acercamientos/acercamientos.component';
 import { AsesoresDePrestamosComponent } from './components/asesores-de-prestamos/asesores-de-prestamos.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DatosGeneralesComponent } from './components/datos-generales/datos-generales.component';
 import { TipoDeduccionComponent } from './components/tipo-deduccion/tipo-deduccion.component';
+import { BancosComponent } from './components/bancos/bancos.component'
 import { TipoPrestamoComponent } from './components/tipo-prestamo/tipo-prestamo.component';
 import { TiposTransaccionComponent } from './components/tipos-transaccion/tipos-transaccion.component';
 import { GarantiasContablesComponent } from './components/garantias-contables/garantias-contables.component';
@@ -59,72 +53,64 @@ import { EstatusLegalesComponent } from './components/estatus-legales/estatus-le
 import { ParametrosProductosComponent } from './components/parametros-productos/parametros-productos.component';
 
 
+const appRoutes: Routes =[
+    {path: '', component: HomeComponent},
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: 'home', component: HomeComponent /* Es el nombre del la clase del module*/}, 
+    {path: 'aseguradoras', component: AseguradorasComponent},
+    {path: 'almacenadoras', component: AlmacenadorasComponent},
+    {path: 'agrupacion-codigos', component: AgrupacionDeCodigoComponent},
+    {path: 'lugar-invercion', component: LugaresInversionComponent},
+    {path: 'ubicacion-garantia', component: UbicacionGarantiaComponent},
+    {path: 'origen-fondos', component: OrigenFondosComponent},
+    {path: 'formas-pago', component: ComponentsfFormasPagoComponent},
+    {path: 'destinos', component: DestinosComponent},
+    {path: 'categorias-SIB', component: CategoriasSIBComponent},
+    {path: 'estatus-garantiasReales', component: EstatusGarantiasRealesComponent},
+    {path: 'estatus-avaluos', component: EstatusAvaluosComponent},
+    {path: 'ingenieros-valuadores', component: IngenierosValuadoresComponent},
+    {path: 'notarios', component: NotariosComponent},
+    {path: 'motivos-ajustes', component: MotivosAjustesComponent},
+    {path: 'dias-inhabiles', component: DiasInhabilesComponent},
+    {path: 'cobros-adicionales', component: CobrosAdicionalesComponent},
+    {path: 'instituciones-cobros-adicionales', component: InstitucionesCobrosAdicionalesComponent},
+    {path: 'motivos-reversa', component: MotivosReversaComponent},
+    {path: 'formas-desembolso', component: FormasDesembolsoComponent},
+    {path: 'motivos-referencias-clientes', component: MotivosReferenciasClientesComponent},
+    {path: 'medios-contacto', component: MediosContactoComponent},
+    {path: 'canales-venta', component: CanalesVentaComponent},
+    {path: 'bancos', component: BancosComponent},
+    {path: 'relaciones-transacciones', component: RelacionesTransaccionesComponent},
+    {path: 'transacciones-deposito', component: TransaccionesDepositosComponent},
+    {path: 'acercamientos', component: AcercamientosComponent},
+    {path: 'asesores-de-prestamos', component: AsesoresDePrestamosComponent},
+    {path: 'datos-generales', component: DatosGeneralesComponent},
+    {path: 'tipos-deducciones', component: TipoDeduccionComponent},
+    {path: 'tipo-prestamos', component: TipoPrestamoComponent},
+    {path: 'tipo-transaccion', component: TiposTransaccionComponent},
+    {path: 'garantias-contables', component: GarantiasContablesComponent},
+    {path: 'frecuencias-amortizacion', component: FrecuenciasAmortizacionComponent},
+    {path: 'productos', component: ProductosComponent},
+    {path: 'limpieza', component: LimpiezaArchivosComponent},
+    {path: 'subProductos', component: SubProductosComponent},
 
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent, //se importa solo cuando se crea un componente
-    AseguradorasComponent,
-    AlmacenadorasComponent,
-    AgrupacionDeCodigoComponent,
-    LugaresInversionComponent,
-    UbicacionGarantiaComponent,
-    OrigenFondosComponent,
-    ComponentsfFormasPagoComponent,
-    DestinosComponent,
-    CategoriasSIBComponent,
-    EstatusGarantiasRealesComponent,
-    EstatusAvaluosComponent,
-    IngenierosValuadoresComponent,
-    NotariosComponent,
-    MotivosAjustesComponent,
-    DiasInhabilesComponent,
-    CobrosAdicionalesComponent,
-    InstitucionesCobrosAdicionalesComponent,
-    MotivosReversaComponent,
-    FormasDesembolsoComponent,
-    MotivosReferenciasClientesComponent,
-    MediosContactoComponent,
-    CanalesVentaComponent,
-    BancosComponent,
-    RelacionesTransaccionesComponent,
-    TransaccionesDepositosComponent,
-    AcercamientosComponent,
-    AsesoresDePrestamosComponent,
-    SidenavComponent,
-    DatosGeneralesComponent,
-    TipoDeduccionComponent,
-    TipoPrestamoComponent,
-    TiposTransaccionComponent,
-    GarantiasContablesComponent,
-    FrecuenciasAmortizacionComponent,
-    ProductosComponent,
-    LimpiezaArchivosComponent,
-    SubProductosComponent,
-    ConsultasComponent,
-    ClasificacionComponent,
-    ParametrosAdicionalesaComponent,
-    EnventosSolicitudesComponent,
-    DocPrestarProductosComponent,
-    MontosPlazoComponent,
-    PorcentajesFinanciamientoComponent,
-    RangoPlazosInteresComponent,
-    CategoriasUsuariosComponent,
-    AsignacionCategoriasComponent,
-    EstatusLegalesComponent,
-    ParametrosProductosComponent,
 
-  ],
-  imports: [
-    BrowserModule,
-    ModalModule.forRoot(),
-    BsDatepickerModule.forRoot(),
-    routing,
-    CarouselModule.forRoot()
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+
+    {path: 'consultas', component: ConsultasComponent},
+    {path: 'clasificacion', component: ClasificacionComponent},
+    {path: 'parametros-adicionales', component: ParametrosAdicionalesaComponent},
+    {path: 'eventos-solicitudes', component: EnventosSolicitudesComponent},
+    {path: 'doc-prestar-productos', component: DocPrestarProductosComponent},
+    {path: 'montos-plazo', component: MontosPlazoComponent},
+    {path: 'porcentajes-financiamiento', component: PorcentajesFinanciamientoComponent},
+    {path: 'rango-plazos-interes', component: RangoPlazosInteresComponent},
+    {path: 'categorias-usuarios', component: CategoriasUsuariosComponent},
+    {path: 'asignacion-categorias', component: AsignacionCategoriasComponent},
+    {path: 'estatus-legales', component: EstatusLegalesComponent},
+    {path: 'parametros-productos', component: ParametrosProductosComponent},
+];
+
+export const appRoutingProviders: any[]=[];
+export const routing:ModuleWithProviders = RouterModule.forRoot(appRoutes)
