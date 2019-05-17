@@ -63,6 +63,7 @@ import { ParametrizacionNumeroPrestamosComponent } from './components/parametriz
 import { PasosCierreComponent } from './components/pasos-cierre/pasos-cierre.component';
 import { ArchivosLimpiezaComponent } from './components/archivos-limpieza/archivos-limpieza.component';
 import { ContenidosContablesComponent } from './components/contenidos-contables/contenidos-contables.component';
+import { NivelesContabilizacionComponent } from './components/niveles-contabilizacion/niveles-contabilizacion.component';
 
 
 
@@ -126,7 +127,8 @@ import { ContenidosContablesComponent } from './components/contenidos-contables/
     ParametrizacionNumeroPrestamosComponent,
     PasosCierreComponent,
     ArchivosLimpiezaComponent,
-    ContenidosContablesComponent
+    ContenidosContablesComponent,
+    NivelesContabilizacionComponent
   ],
   imports: [
     BrowserModule,
