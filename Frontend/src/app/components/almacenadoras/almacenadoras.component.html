@@ -138,10 +138,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor='let alm of almacenadoras'>
         <th scope="row">1</th>
-        <td>1</td>
-        <td>La general</td>
+        <td>{{alm.codigo}}</td>
+        <td>{{alm.descripcion}}</td>
 
 
         <!-- Botones -->
@@ -150,26 +150,7 @@
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
             (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>2</td>
-        <td>la mundial</td>
-        <!-- Botones -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>3</td>
-        <td>general</td>
-        <!-- Botones -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
-      </tr>
+     
     </tbody>
   </table>
 </div>
