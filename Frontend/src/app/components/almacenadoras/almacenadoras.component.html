@@ -16,31 +16,33 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-body col-md-7 ">
-          <div class="form-group">
-            <label for="codigo">Codigo</label>
-            <input type="text" autocomplete="off" class="form-control" name="codigo" id="codigo"
-              placeholder="Ingresar el codigo">
-          </div>
-          <div class="form-group">
-            <label for="descripcion">Descripcion:</label>
-            <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-              placeholder="Ingresar descripcion">
-          </div>
-          <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-            (click)="ModalConfirmacion2">Aceptar</button>
+      <form #formAddAlmacenadora="ngForm" (ngSubmit)="addAlmacenadora()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+        <div class="modal-body">
+          <div class="modal-body col-md-7 ">
+            <div class="form-group">
+              <label for="codigo">Codigo</label>
+              <input type="text" #codigo="ngModel" [(ngModel)]="almacenadoras.codigo" autocomplete="off"
+                class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripcion:</label>
+              <input type="text" #descripcion="ngModel" [(ngModel)]="almacenadoras.descripcion" autocomplete="off"
+                class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
+            </div>
+            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
+              (click)="ModalConfirmacion2">Aceptar</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+          </div>
         </div>
-      </div>
+      </form>
       <!-- <div class="modal-footer"> </div> -->
     </div>
   </div>
@@ -53,74 +55,52 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmacion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Esta seguro de eliminar este dato?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger">Si</button>
-      </div>
+      <form #formDeleteAlmacenadora="ngForm" (ngSubmit)="deleteAlmacenadora(id)">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmacion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Esta seguro de eliminar este dato?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="submit" class="btn btn-danger"  (ngSubmit)="deleteAlmacenadora()" >Si</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
-
 
 <!-- Modal editar -->
 <div class="modal fade" id="ModalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body col-md-5 ">
-        <div class="form-group ">
-          <label for="exampleInputPassword1">Descripcion:</label>
-          <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-            placeholder="Ingresar descripcion">
+      <form #formEditAlmacenadora="ngForm" (ngSubmit)="editAlmacenadora(id)">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion1"
-          (click)="ModalConfirmacion1">Aceptar</button>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
-      </div>
+        <div class="modal-body col-md-5 ">
+          <div class="form-group ">
+            <label for="Descripcion">Descripcion:</label>
+            <input type="text" #descripcion="ngModel" [(ngModel)]="almacenadoras.descripcion" autocomplete="off"
+              class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
 
-<!-- Modal confirmacion editar -->
-<div class="modal fade" id="ModalConfirmacion1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmacion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Esta seguro de editar este dato?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger">Si</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--------------------->
 
 
 
@@ -138,38 +118,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor='let alm of visualizarAlmacenadora'>
         <th scope="row">1</th>
-        <td>1</td>
-        <td>La general</td>
+        <td>{{alm.codigo}}</td>
+        <td>{{alm.descripcion}}</td>
 
 
         <!-- Botones -->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
+            (click)="readAlmacenadora(alm.codigo)"><i class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
+            (click)="readAlmacenadora(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>2</td>
-        <td>la mundial</td>
-        <!-- Botones -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>3</td>
-        <td>general</td>
-        <!-- Botones -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
-      </tr>
+
     </tbody>
   </table>
 </div>

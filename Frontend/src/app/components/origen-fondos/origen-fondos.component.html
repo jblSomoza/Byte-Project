@@ -1,4 +1,4 @@
-<app-sidenav></app-sidenav>
+  <app-sidenav></app-sidenav>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
@@ -34,6 +34,11 @@
                 <input [(ngModel)]="OrigenFondo.usuario"  #usuario="ngModel" type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
                   placeholder="Ingresar descripcion">
               </div>
+              <div class="form-group">
+                <label for="codigo">Abreviatura</label>
+                <input [(ngModel)]="OrigenFondo.abreviatura" #abreviatura="ngModel"  type="text" autocomplete="off" class="form-control" name="abreviatura" id="codigo" 
+                placeholder="Ingresar el codigo">
+            </div>
               <div class="form-group">
                 <label for="descripcion">Descripcion Corta</label>
                 <input [(ngModel)]="OrigenFondo.descripcion"  #descripcion="ngModel" type="text" autocomplete="off" class="form-control" name="Equivalencias" id="descripcion"

@@ -19,6 +19,6 @@ export class OrigenFondosService {
       let params = JSON.stringify(OrigenFondos) 
       let headers = new HttpHeaders().set('Content-Type', 'application/json'); //
 
-      return this._http.post(this.url+'origenDeFondosService/create',params,{headers:headers})
+      return this._http.post(this.url+'origenDeFondosService/create', params, {headers: headers})
     }
 }

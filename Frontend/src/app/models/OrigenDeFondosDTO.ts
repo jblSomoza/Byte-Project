@@ -1,6 +1,6 @@
 export class OrigenDeFondosDTO {
     constructor(
-        public abreviatura:	String,
+        public abreviatura:	string,
         public anioApertura: number,
         public code:number,
         public codigo:	number,
