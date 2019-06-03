@@ -83,6 +83,8 @@ import { searchFormaPago } from "./pipes/searchFormaPago.pipe";
 import { searchDestino } from "./pipes/searchDestinos.pipe";
 import { searchCategoriaSIB } from "./pipes/searchCategoriaSIB.pipe";
 import { searchStatusGarantiaReal } from "./pipes/searchStatusGarantiaReal.pipe";
+import { searchDiasInhabiles } from "./pipes/seacrhDiasInhabiles.pipe";
+
 
 
 
@@ -160,6 +162,7 @@ import { searchStatusGarantiaReal } from "./pipes/searchStatusGarantiaReal.pipe"
     searchDestino,
     searchCategoriaSIB,
     searchStatusGarantiaReal,
+    searchDiasInhabiles,
   ],
   imports: [
     BrowserModule,

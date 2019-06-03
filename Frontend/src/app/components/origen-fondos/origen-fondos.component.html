@@ -72,7 +72,7 @@
         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger" (ngSubmit)="deleteOrigenFondo()" >Si</button>
+        <button type="submit" class="btn btn-danger" (ngSubmit)="deleteOrigenFondo()" >Si</button>
       </div>
     </form>
     </div>
@@ -93,10 +93,16 @@
         </button>
       </div>
 
-      <div class="form-group ">
+      <div class="modal-body col-md-5">
           <label for="abreviatura">abreviatura:</label>
           <input type="text" #abreviatura="ngModel" [(ngModel)]="origenFondoModel.abreviatura"  autocomplete="off" class="form-control" name="abreviatura" id="abreviatura"
           placeholder="Ingresar abreviatura">
+        </div>
+
+        <div class="modal-body col-md-5">
+          <label for="abreviatura">usuario:</label>
+          <input type="text" #usuario="ngModel" [(ngModel)]="origenFondoModel.usuario"  autocomplete="off" class="form-control" name="usuario" id="usuario"
+          placeholder="Ingresar usuario">
         </div>
 
       <div class="modal-body col-md-5 ">

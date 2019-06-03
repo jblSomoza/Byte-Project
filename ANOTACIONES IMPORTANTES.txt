@@ -1,0 +1,43 @@
+
+
+****************NO MODIFICAR ESTE ARCHIVO SIN AVISAR AL GRUPO O AL COORDINADOR********************
+
+Vista Recien Hechas
+-Motivos Reserva(En Proceso Equite)--->Dependen de Institucion Combross y cobros Adicionales
+
+
+---Faltan---
+-Diaas Inhabiles***> Jhony 
+-Institucion Cobros Adicioneales***(Equite)
+-Cobros Adicionales  (Pendiente Jhony/Jonnathan)***
+
+
+
+---TERMINADAS------
+-Almacenadora
+-Aseguradora
+-Lugares De Inversion 
+-Origen Fondos
+-Destinos *Revisar a detalle
+-CategoraisSIB *Revisar Eliminar
+-Status Garantias Reales
+-Formas De Pago
+-Estatus Avaluos
+-Notarios
+-Motivos De Ajuste
+-Supervisor(Ingenieros Valuadores)
+-instancias 
+-Poder
+-FormasDesembolsos
+-MedioContactos Raul 
+
+Link Vista Firebase
+https://byte-project-8e80d.firebaseapp.com/almacenadoras
+
+
+
+Link swagger
+http://13.58.152.114:5000/v1/swagger-ui.html/
+
+
+****************NO MODIFICAR ESTE ARCHIVO SIN AVISAR AL GRUPO O AL COORDINADOR********************

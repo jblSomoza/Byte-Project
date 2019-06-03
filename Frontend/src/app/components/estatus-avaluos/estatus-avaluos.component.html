@@ -98,7 +98,7 @@
 </div>
 
 <!-- TABLE -->
-<H1>Estatus Avaluos</H1>
+<H1>Status Avaluos</H1>
 <form class="form-inline my-2 my-lg-0" id="buscador">
   <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaEstAvaluo" name="something" placeholder="Buscar" aria-label="Search">
 </form>
@@ -107,9 +107,9 @@
     <thead class="thead-dark">
       <!-- Columnas -->
       <tr>
-        <th scope="col">Select</th>
         <th scope="col">Codigo</th>
         <th scope="col">Descripcion</th>
+        <th scope="col"> </th>
         <th scope="col"> </th>
         <th scope="col"> </th>
       </tr>
@@ -117,7 +117,6 @@
     <tbody>
 
       <tr *ngFor='let est of visualizarEstAvaluo | searchEstAvaluo:busquedaEstAvaluo | paginate: { itemsPerPage: 4, currentPage: p }'>
-        <th scope="row">1</th>
         <td>{{est.codigo}}</td>
         <td>{{est.descripcion}}</td>
 
