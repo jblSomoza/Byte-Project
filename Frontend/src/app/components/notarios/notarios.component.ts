@@ -18,7 +18,7 @@ export class NotariosComponent implements OnInit {
   public url: String;
   public status: String;
   public busquedaNotario: String
-
+  p: number = 1;
   public notariosModel: AbogadosNotariosDTO;
   public notario: AbogadosNotariosDTO;
   public visualizarNotario: AbogadosNotariosDTO;

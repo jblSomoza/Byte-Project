@@ -16,7 +16,7 @@ export class IngenierosValuadoresComponent implements OnInit {
   public url: String;
   public status: String;
   public busquedaSupervisor: String
-  
+  p: number = 1;
   public supervisoresModel: SupervisorDTO;
   public supervisor: SupervisorDTO;
   public visualizarSupervisor: SupervisorDTO;

@@ -15,7 +15,7 @@ import { AgrupacionDeCodigoComponent } from './components/agrupacion-de-codigo/a
 import { LugaresInversionComponent } from './components/lugares-inversion/lugares-inversion.component';
 import { UbicacionGarantiaComponent } from './components/ubicacion-garantia/ubicacion-garantia.component';
 import { OrigenFondosComponent } from './components/origen-fondos/origen-fondos.component';
-import { ComponentsfFormasPagoComponent } from './components/componentsf-formas-pago/componentsf-formas-pago.component';
+import { FormaPagoComponent } from './components/forma-pago/forma-pago.component';
 import { DestinosComponent } from './components/destinos/destinos.component';
 import { CategoriasSIBComponent } from './components/categorias-sib/categorias-sib.component';
 import { EstatusGarantiasRealesComponent } from './components/estatus-garantias-reales/estatus-garantias-reales.component';
@@ -78,6 +78,13 @@ import { searchAlmacenadora } from "./pipes/searchAlmacenadora.pipe";
 import { searchAgrupacionCreditos } from "./pipes/searchAgrupacionCreditos.pipe";
 import { searchAseguradora } from "./pipes/searchAseguradora.pipe";
 import { searchLugaresInversion } from "./pipes/searchLugaresInversion.pipe";
+import { SearchOrigenFondoPipe } from "./pipes/searchOrigenFondos.pipe";
+import { searchFormaPago } from "./pipes/searchFormaPago.pipe";
+import { searchDestino } from "./pipes/searchDestinos.pipe";
+import { searchCategoriaSIB } from "./pipes/searchCategoriaSIB.pipe";
+import { searchStatusGarantiaReal } from "./pipes/searchStatusGarantiaReal.pipe";
+
+
 
 
 @NgModule({
@@ -90,7 +97,7 @@ import { searchLugaresInversion } from "./pipes/searchLugaresInversion.pipe";
     LugaresInversionComponent,
     UbicacionGarantiaComponent,
     OrigenFondosComponent,
-    ComponentsfFormasPagoComponent,
+    FormaPagoComponent,
     DestinosComponent,
     CategoriasSIBComponent,
     EstatusGarantiasRealesComponent,
@@ -147,7 +154,12 @@ import { searchLugaresInversion } from "./pipes/searchLugaresInversion.pipe";
     searchAlmacenadora,
     searchAgrupacionCreditos,
     searchAseguradora,
-    searchLugaresInversion,    
+    searchLugaresInversion, 
+    SearchOrigenFondoPipe,
+    searchFormaPago,
+    searchDestino,
+    searchCategoriaSIB,
+    searchStatusGarantiaReal,
   ],
   imports: [
     BrowserModule,

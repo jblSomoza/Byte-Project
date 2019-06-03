@@ -13,7 +13,7 @@ export class EstatusAvaluosComponent implements OnInit {
   @ViewChild('formAddEstAvaluo') formValuesAddEstAvaluo;
   @ViewChild('formEditEstAvaluo') formValuesEditEstAvaluo;
   @ViewChild('formDeleteEstAvaluo') formValuesDeleteEstAvaluo;
-
+  p: number = 1;
   public url: String;
   public status: String;
 

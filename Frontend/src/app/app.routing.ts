@@ -9,7 +9,7 @@ import { AgrupacionDeCodigoComponent } from './components/agrupacion-de-codigo/a
 import { LugaresInversionComponent } from './components/lugares-inversion/lugares-inversion.component';
 import { UbicacionGarantiaComponent } from './components/ubicacion-garantia/ubicacion-garantia.component'; //solo se importa luedo de declarar el path
 import { OrigenFondosComponent } from './components/origen-fondos/origen-fondos.component';
-import { ComponentsfFormasPagoComponent } from './components/componentsf-formas-pago/componentsf-formas-pago.component';
+import { FormaPagoComponent } from './components/forma-pago/forma-pago.component';
 import { DestinosComponent } from './components/destinos/destinos.component';
 import { CategoriasSIBComponent } from './components/categorias-sib/categorias-sib.component';
 import { EstatusGarantiasRealesComponent } from './components/estatus-garantias-reales/estatus-garantias-reales.component';
@@ -70,7 +70,7 @@ const appRoutes: Routes =[
     {path: 'lugar-invercion', component: LugaresInversionComponent},
     {path: 'ubicacion-garantia', component: UbicacionGarantiaComponent},
     {path: 'origen-fondos', component: OrigenFondosComponent},
-    {path: 'formas-pago', component: ComponentsfFormasPagoComponent},
+    {path: 'formas-pago', component: FormaPagoComponent},
     {path: 'destinos', component: DestinosComponent},
     {path: 'categorias-SIB', component: CategoriasSIBComponent},
     {path: 'estatus-garantiasReales', component: EstatusGarantiasRealesComponent},

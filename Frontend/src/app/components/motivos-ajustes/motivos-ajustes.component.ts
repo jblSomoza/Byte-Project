@@ -17,7 +17,7 @@ export class MotivosAjustesComponent implements OnInit {
   public url: String;
   public status: String;
   public busqueda: String;
-
+  p: number = 1;
   public motAjusteModel: MotivoAjusteDTO;
   public motAjuste: MotivoAjusteDTO;
   public visualizarMotAjuste: MotivoAjusteDTO;
