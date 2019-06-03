@@ -83,9 +83,9 @@ import { searchFormaPago } from "./pipes/searchFormaPago.pipe";
 import { searchDestino } from "./pipes/searchDestinos.pipe";
 import { searchCategoriaSIB } from "./pipes/searchCategoriaSIB.pipe";
 import { searchStatusGarantiaReal } from "./pipes/searchStatusGarantiaReal.pipe";
-
-
-
+import { searchFormaDesembolso } from "./pipes/searchFormaDesembolso.pipe";
+import { SearchMotReserva } from "./pipes/searchMotivosReserva.pipe";
+import { searchMedio } from "./pipes/searchMedio.pipe";
 
 @NgModule({
   declarations: [
@@ -160,6 +160,9 @@ import { searchStatusGarantiaReal } from "./pipes/searchStatusGarantiaReal.pipe"
     searchDestino,
     searchCategoriaSIB,
     searchStatusGarantiaReal,
+    searchFormaDesembolso,
+    SearchMotReserva,
+    searchMedio
   ],
   imports: [
     BrowserModule,
