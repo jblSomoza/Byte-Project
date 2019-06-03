@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlmacenadorasDTO } from 'src/app/models/AlmacenadorasDTO.model';
 import { AlmacenadorasService } from 'src/app/services/almacenadoras.service';
-
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-almacenadoras',
@@ -18,7 +18,9 @@ export class AlmacenadorasComponent implements OnInit {
   public url: String;
   public status: String;
   public basic: boolean = false; //Esta variable es para abrir el modal en CLARITY no es necesaria dependiendo del framework de diseño
-
+  public busquedaAlmacenadora: String; 
+  p: number = 1;
+  
   //Variables Almacenadora
   public almacenadoras: AlmacenadorasDTO;           //Manda los datos al modelo
   public almacenadora: AlmacenadorasDTO;
@@ -32,7 +34,8 @@ export class AlmacenadorasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.listarAlmacenadoras()
+    this.listarAlmacenadoras();
+    
   }
 
   addAlmacenadora() {

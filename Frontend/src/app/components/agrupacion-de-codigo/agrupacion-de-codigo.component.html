@@ -5,10 +5,7 @@
 
 
 <!-- buscar -->
-<form class="form-inline my-2 my-lg-0" id="buscador">
-  <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-  <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Buscar</button>
-</form>
+
 
 
 <!-- EVENTOS DE MODALS-->
@@ -17,6 +14,7 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+        <form #formAddAgrupacionDeCreditos="ngForm" (ngSubmit)="addAgrupacionDeCreditos()">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -26,27 +24,29 @@
       <div class="modal-body">
         <div class="modal-body col-md-7 ">
           <div class="form-group">
-            <label for="codigo">Codigo</label>
-            <input type="text" autocomplete="off" class="form-control" name="codigo" id="codigo"
-              placeholder="Ingresar el codigo">
-          </div>
-          <div class="form-group">
-            <label for="descripcion">Descripcion:</label>
-            <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-              placeholder="Ingresar descripcion">
-          </div>
-          <div class="form-group">
-            <label for="descripcion">EquivalenciasCNBS</label>
-            <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-              placeholder="Ingresar descripcion">
-          </div>
-          <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
+              <label for="codigo">Codigo</label>
+              <input type="text" #codigo="ngModel" [(ngModel)]="agrupaciones.codigo" autocomplete="off"
+                class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripcion:</label>
+                <input type="text" #descripcion="ngModel" [(ngModel)]="agrupaciones.descripcion" autocomplete="off"
+                  class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
+              </div>
+              <div class="form-group ">
+                  <label for="equivalencia">EquivalenciasCNBS:</label>
+                  <input type="text" #equivalencia="ngModel" [(ngModel)]="agrupaciones.equivalencia" autocomplete="off"
+                   class="form-control" name="equivalencia" id="equivalencia" placeholder="Ingresar equivalencia">
+                </div>
+                
+            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
             (click)="ModalConfirmacion2">Aceptar</button>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
+    </form>
       <!-- <div class="modal-footer"> </div> -->
     </div>
   </div>
@@ -59,6 +59,7 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+        <form #formDeleteAgrupacionDeCreditos="ngForm" (ngSubmit)="deleteAgrupacionDeCreditos(id)">
       <div class="modal-header">
         <h5 class="modal-title">Confirmacion</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -70,8 +71,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger">Si</button>
+        <button type="submit" class="btn btn-danger"  (ngSubmit)="deleteAgrupacionDeCreditos()" >Si</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -82,6 +84,7 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+        <form #formEditAgrupacionDeCreditos="ngForm" (ngSubmit)="editAgrupacionDeCreditos(id)">
       <div class="modal-header">
         <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -90,55 +93,39 @@
       </div>
       <div class="modal-body col-md-5 ">
         <div class="form-group ">
-          <label for="exampleInputPassword1">Descripcion:</label>
-          <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-            placeholder="Ingresar descripcion">
+            <label for="Descripcion">Descripcion:</label>
+            <input type="text" #descripcion="ngModel" [(ngModel)]="agrupaciones.descripcion" autocomplete="off"
+              class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
         </div>
 
         <div class="form-group ">
-          <label for="exampleInputPassword1">equivalenciasCNBS:</label>
-          <input type="text" autocomplete="off" class="form-control" name="EquivalenciasCNBS" id="equivalenciasCNBS"
-            placeholder="Ingresar EquivalenciasCNBS">
+          <label for="Equivalencias">EquivalenciasCNBS:</label>
+          <input type="text" #equivalencia="ngModel" [(ngModel)]="agrupaciones.equivalencia" autocomplete="off"
+           class="form-control" name="equivalencia" id="equivalencia" placeholder="Ingresar equivalencia">
         </div>
-        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion1"
-          (click)="ModalConfirmacion1">Aceptar</button>
+            <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
 
 <!-- Modal confirmacion editar -->
-<div class="modal fade" id="ModalConfirmacion1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmacion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Esta seguro de editar este dato?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger">Si</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 <!--------------------->
 
 
 
 <!-- TABLE -->
 <H1>Agrupacion De Creditos</H1>
-
+<form class="form-inline my-2 my-lg-0" id="buscador">
+    <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaAgrupacionCreditos" name="something" placeholder="Buscar" aria-label="Search">
+</form>
 <div id="content">
   <table class="table">
     <thead class="thead-dark">
@@ -147,51 +134,34 @@
         <th scope="col">Select</th>
         <th scope="col">Codigo</th>
         <th scope="col">Descripcion</th>
-        <th scope="col">Equivalencias CNBS</th>
+        <th scope="col">Equivalencia</th>
         <th scope="col"> </th>
         <th scope="col"> </th>
       </tr>
     </thead>
     <tbody>
-
+        <tr *ngFor='let alm of visualizarAgrupacion | paginate: { itemsPerPage: 4, currentPage: p } | searchAgrupacionCreditos:busquedaAgrupacionCreditos'>
       <!-- Datos Estaticos -->
-      <tr>
-        <th scope="row">1</th>
-        <td>1</td>
-        <td>Prestamos individuales</td>
-        <td>....</td>
+          <th scope="row">{{alm.codigo}}</th>
+          <td>{{alm.codigo}}</td>
+          <td>{{alm.descripcion}}</td>
+          <td>{{alm.equivalencia}}</td>
         <!-- Botones -->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
+          (click)="readAgrupacionDeCreditos(alm.codigo)">
+          <i class="fas fa-edit"></i></button></td>
+      <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
+        (click)="readAgrupacionDeCreditos(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>2</td>
-        <td> Prestamos Banco Comenrcial</td>
-        <td>....</td>
-        <!-- Botones -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>3</td>
-        <td>Prestamos De Solicitud</td>
-        <td>....</td>
-        <!-- Botones -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
-      </tr>
-
     </tbody>
   </table>
 </div>
+<div class="pagination-container">
+    <nav>
+        <ul class="pagination justify-content-center"></ul>
+    </nav>
+</div>
+<pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
 
 
 <!-- Boton Agregar -->

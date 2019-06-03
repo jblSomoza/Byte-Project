@@ -3,11 +3,6 @@
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 <!-- buscar -->
-<form class="form-inline my-2 my-lg-0" id="buscador">
-  <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-  <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Buscar</button>
-</form>
-
 
 <!-- EVENTOS DE MODALS-->
 <!-- Modal AGREGAR-->
@@ -162,6 +157,9 @@
 
 <!-- TABLE -->
 <h1>ARCHIVOS DE LIMPIEZA</h1>
+<form class="form-inline my-2 my-lg-0" id="buscador">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaAlmacenadora" name="something" placeholder="Buscar" aria-label="Search">
+</form>
 <div id="content">
   <table class="table">
     <thead class="thead-dark">

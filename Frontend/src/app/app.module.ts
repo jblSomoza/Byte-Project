@@ -5,6 +5,7 @@ import { routing, appRoutingProviders } from "./app.routing";
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { NgxPaginationModule } from "ngx-pagination";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component'; //se importa solo cuando se crea un componente
@@ -73,6 +74,10 @@ import { SearchNotariosPipe } from "./pipes/searchNotarios.pipe";
 import { SearchMotAjustePipe } from "./pipes/searchMotAjuste.pipe";
 import { SearchSupervisorPipe } from "./pipes/searchSupervisor.pipe";
 import { SearchEstAvaluoPipe } from "./pipes/searchEstAvaluo.pipe";
+import { searchAlmacenadora } from "./pipes/searchAlmacenadora.pipe";
+import { searchAgrupacionCreditos } from "./pipes/searchAgrupacionCreditos.pipe";
+import { searchAseguradora } from "./pipes/searchAseguradora.pipe";
+import { searchLugaresInversion } from "./pipes/searchLugaresInversion.pipe";
 
 
 @NgModule({
@@ -138,7 +143,11 @@ import { SearchEstAvaluoPipe } from "./pipes/searchEstAvaluo.pipe";
     SearchNotariosPipe,
     SearchMotAjustePipe,
     SearchSupervisorPipe,
-    SearchEstAvaluoPipe
+    SearchEstAvaluoPipe,
+    searchAlmacenadora,
+    searchAgrupacionCreditos,
+    searchAseguradora,
+    searchLugaresInversion,    
   ],
   imports: [
     BrowserModule,
@@ -147,7 +156,8 @@ import { SearchEstAvaluoPipe } from "./pipes/searchEstAvaluo.pipe";
     routing,
     CarouselModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

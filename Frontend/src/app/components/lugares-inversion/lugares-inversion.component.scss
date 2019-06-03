@@ -1,26 +1,27 @@
 h1 {
     text-decoration: underline;
-    display: inline;
-    position: fixed;
-    top: 20%;
-    left: 42%;
+    margin-top: 5%;
+    margin-left: 45%;
 }
 
 #content {
     margin: auto;
     width: 55%;
     margin-right: 15%;
-    margin-top: 15%;
+    margin-top: 1%;
     background: rgb(239, 243, 245);
 }
+.contenedorMedio{
+    position: static;
+}
+.form-inline {
+    margin: auto;
+    margin-top: 5%;
+    margin-left: 63%;
+   position: relative;
 
-#buscador {
-    margin-left: 45%;
-    display: inline-block;
-    position: relative;
-    transform: translate(170%, 700%);
 }
 
 .BtnAgregar {
-    margin-left: 73%;
+    margin-left: 78.5%;
 }

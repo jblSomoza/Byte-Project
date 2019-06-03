@@ -3,9 +3,7 @@
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 <!-- buscar -->
-<form class="form-inline my-2 my-lg-0" id="buscador">
-    <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaNotario" name="something" placeholder="Buscar" aria-label="Search">
-</form>
+
 
 <!-- EVENTOS DE MODALS-->
 <!-- Modal AGREGAR-->
@@ -221,6 +219,9 @@
 
 <!-- TABLE -->
 <h1>Notarios</h1>
+<form class="form-inline my-2 my-lg-0" id="buscador">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaNotario" name="something" placeholder="Buscar" aria-label="Search">
+</form>
 <div id="content">
   <table class="table">
     <thead class="thead-dark">

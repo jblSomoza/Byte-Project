@@ -2,9 +2,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <!-- buscar -->
-<form class="form-inline my-2 my-lg-0" id="buscador">
-    <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaEstAvaluo" name="something" placeholder="Buscar" aria-label="Search">
-</form>
 
 
 <!-- EVENTOS DE MODALS-->
@@ -102,6 +99,9 @@
 
 <!-- TABLE -->
 <H1>Estatus Avaluos</H1>
+<form class="form-inline my-2 my-lg-0" id="buscador">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaEstAvaluo" name="something" placeholder="Buscar" aria-label="Search">
+</form>
 <div id="content">
   <table class="table">
     <thead class="thead-dark">

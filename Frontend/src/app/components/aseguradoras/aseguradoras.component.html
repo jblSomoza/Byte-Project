@@ -1,13 +1,9 @@
-<app-sidenav></app-sidenav>
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
-<!-- buscar -->
-<form class="form-inline my-2 my-lg-0" id="buscador">
-  <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-  <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Buscar</button>
-</form>
+
 
 
 <!-- EVENTOS DE MODALS-->
@@ -16,8 +12,9 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+        <form #formAddAseguradora="ngForm" (ngSubmit)="addAseguradora()">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -26,13 +23,13 @@
         <div class="modal-body col-md-7 ">
           <div class="form-group">
             <label for="codigo">Codigo</label>
-            <input type="text" autocomplete="off" class="form-control" name="codigo" id="codigo"
-              placeholder="Ingresar el codigo">
+            <input type="text" #codigo="ngModel" [(ngModel)]="aseguradoras.codigo" autocomplete="off"
+            class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
           </div>
           <div class="form-group">
             <label for="descripcion">Descripcion:</label>
-            <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-              placeholder="Ingresar descripcion">
+            <input type="text" #descripcion="ngModel" [(ngModel)]="aseguradoras.descripcion" autocomplete="off"
+                class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
           </div>
           <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
             (click)="ModalConfirmacion2">Aceptar</button>
@@ -41,7 +38,7 @@
           <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
-      <!-- <div class="modal-footer"> </div> -->
+  </form>
     </div>
   </div>
 </div>
@@ -53,19 +50,21 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmacion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Esta seguro de eliminar este dato?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger">Si</button>
-      </div>
+      <form #formDeleteAseguradora="ngForm" (ngSubmit)="deleteAseguradora(id)">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmacion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Esta seguro de eliminar este dato?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="submit" class="btn btn-danger"  (ngSubmit)="deleteAseguradora()" >Si</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -76,28 +75,28 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body col-md-5 ">
-        <div class="form-group ">
-          <label for="exampleInputPassword1">Descripcion:</label>
-          <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-            placeholder="Ingresar descripcion">
+      <form #formEditAseguradora="ngForm" (ngSubmit)="editAseguradora(id)">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion1"
-          (click)="ModalConfirmacion1">Aceptar</button>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
-      </div>
+        <div class="modal-body col-md-5 ">
+          <div class="form-group ">
+            <label for="Descripcion">Descripcion:</label>
+            <input type="text" #descripcion="ngModel" [(ngModel)]="aseguradoras.descripcion" autocomplete="off"
+              class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+
 
 <!-- Modal confirmacion editar -->
 <div class="modal fade" id="ModalConfirmacion1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -122,11 +121,16 @@
 </div>
 <!--------------------->
 
-
-
+    <app-sidenav></app-sidenav>
 <!-- TABLE -->
 <H1>Aseguradoras</H1>
-<div id="content">
+<!-- buscar -->
+
+<form class="form-inline my-2 my-lg-0" id="buscador">
+    <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaAseguradora" name="something" placeholder="Buscar" aria-label="Search">
+</form>
+<div  class="contenedorTabla" id="content-responsive">
+  
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -138,37 +142,26 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>1</td>
-        <td>Ficonsa Seguros</td>
+      <tr *ngFor='let alm of visualizarAseguradora | paginate: { itemsPerPage: 4, currentPage: p } | searchAseguradora:busquedaAseguradora'>
+            <th scope="row">{{alm.codigo}}</th>
+            <td>{{alm.codigo}}</td>
+            <td>{{alm.descripcion}}</td>
         <!-- Botones -->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>2</td>
-        <td>Prueba aseguradoras (REBECA)</td>
-        <!-- Botones -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
-      <tr>
-        <th scope="row">3</th>
-        <td>3</td>
-        <td>Aseguradora Mundial</td>
-        <!-- Botones -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
+          (click)="readAseguradora(alm.codigo)"><i class="fas fa-edit"></i></button></td>
+      <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
+          (click)="readAseguradora(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+    </tr>
+      
     </tbody>
   </table>
 </div>
+<div class="pagination-container">
+    <nav>
+        <ul class="pagination justify-content-center"></ul>
+    </nav>
+</div>
+<pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
 
 
 <!-- Boton Agregar -->
@@ -177,17 +170,4 @@
     (click)="ModalAgregar">Agregar</button>
 </div>
 
-<!--Paginacion -->
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
+
