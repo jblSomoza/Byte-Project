@@ -1,19 +1,21 @@
 <app-sidenav></app-sidenav>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
 <!-- buscar -->
 
 
-<!-- EVENTOS DE MODALS-->
 
+<!-- EVENTOS DE MODALS-->
 <!-- Modal AGREGAR-->
 <div class="modal fade" id="ModalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form #formAddEstAvaluo="ngForm" (ngSubmit)="addEstAvaluo()">
+      <form #formAddInstancia="ngForm" (ngSubmit)="addInstancia()">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -22,12 +24,12 @@
           <div class="modal-body col-md-7 ">
             <div class="form-group">
               <label for="codigo">Codigo</label>
-              <input type="text" #codigo="ngModel" [(ngModel)]="estAvaluoModel.codigo" autocomplete="off"
+              <input type="text" #codigo="ngModel" [(ngModel)]="instanciasModel.codigo" autocomplete="off"
                 class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
             </div>
             <div class="form-group">
               <label for="descripcion">Descripcion:</label>
-              <input type="text" #descripcion="ngModel" [(ngModel)]="estAvaluoModel.descripcion" autocomplete="off"
+              <input type="text" #descripcion="ngModel" [(ngModel)]="instanciasModel.descripcion" autocomplete="off"
                 class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
             </div>
             <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
@@ -37,8 +39,8 @@
             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
           </div>
         </div>
-        <!-- <div class="modal-footer"> </div> -->
       </form>
+      <!-- <div class="modal-footer"> </div> -->
     </div>
   </div>
 </div>
@@ -50,7 +52,7 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form #formDeleteEstAvaluo="ngForm" (ngSubmit)="deleteEstAvaluo()">
+      <form #formDeleteInstancia="ngForm" (ngSubmit)="deleteInstancia(id)">
         <div class="modal-header">
           <h5 class="modal-title">Confirmacion</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -62,20 +64,19 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <button type="submit" class="btn btn-danger" (ngSubmit)="deleteEstAvaluo()">Si</button>
+          <button type="submit" class="btn btn-danger"  (ngSubmit)="deleteInstancia()" >Si</button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-
 <!-- Modal editar -->
 <div class="modal fade" id="ModalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form #formEditEstAvaluo="ngForm" (ngSubmit)="editEstAvaluo(id)">
+      <form #formEditInstancia="ngForm" (ngSubmit)="editInstancia(id)">
         <div class="modal-header">
           <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -85,9 +86,9 @@
         <div class="modal-body col-md-5 ">
           <div class="form-group">
             <label for="descripcion">Descripcion:</label>
-            <input type="text" #descripcion="ngModel" [(ngModel)]="estAvaluoModel.descripcion" autocomplete="off"
+            <input type="text" #descripcion="ngModel" [(ngModel)]="instancia.descripcion" autocomplete="off"
               class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
-          </div>          
+          </div>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
@@ -97,50 +98,52 @@
   </div>
 </div>
 
+
+
+
 <!-- TABLE -->
-<H1>Status Avaluos</H1>
+<H1>Instancia</H1>
 <form class="form-inline my-2 my-lg-0" id="buscador">
-  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaEstAvaluo" name="something" placeholder="Buscar" aria-label="Search">
+    <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaInstancia" name="something" placeholder="Buscar" aria-label="Search">
 </form>
+
 <div id="content">
   <table class="table">
     <thead class="thead-dark">
-      <!-- Columnas -->
       <tr>
         <th scope="col">Codigo</th>
         <th scope="col">Descripcion</th>
         <th scope="col"> </th>
         <th scope="col"> </th>
-        <th scope="col"> </th>
       </tr>
     </thead>
     <tbody>
+      <tr *ngFor='let ins of visualizarInstancia | paginate: { itemsPerPage: 4, currentPage: p } | searchInstancia: busquedaInstancia'>
+        <td>{{ins.codigoInstancia}}</td>
+        <td>{{ins.descripcion}}</td>
 
-      <tr *ngFor='let est of visualizarEstAvaluo | searchEstAvaluo:busquedaEstAvaluo | paginate: { itemsPerPage: 4, currentPage: p }'>
-        <td>{{est.codigo}}</td>
-        <td>{{est.descripcion}}</td>
 
         <!-- Botones -->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="readEstAvaluo(est.codigo)"><i class="fas fa-edit"></i></button></td>
+         (click)="readInstancia(ins.codigoInstancia)"><i class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="readEstAvaluo(est.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+            (click)="readInstancia(ins.codigoInstancia)"> <i class="far fa-trash-alt"></i></button></td>
       </tr>
 
     </tbody>
   </table>
 </div>
 <div class="pagination-container">
-  <nav>
-      <ul class="pagination justify-content-center"></ul>
-  </nav>
+    <nav>
+        <ul class="pagination justify-content-center"></ul>
+    </nav>
 </div>
 <pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
+
 
 <!-- Boton Agregar -->
 <div class="BtnAgregar">
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalAgregar"
     (click)="ModalAgregar">Agregar</button>
 </div>
-
 

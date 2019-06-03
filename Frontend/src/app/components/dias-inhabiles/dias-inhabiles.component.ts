@@ -18,6 +18,10 @@ export class DiasInhabilesComponent implements OnInit {
   public url: String;
   public status: String;
   public busqueda: String; 
+  public busquedaDestino : string;
+  p: number = 1;
+
+
 
   public diasInhabilesModel: DiasNoHabilesNoCobroMoraDTO;
   public diaInhabil: DiasNoHabilesNoCobroMoraDTO;
