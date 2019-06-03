@@ -4,10 +4,8 @@
 
 <!-- buscar -->
 <form class="form-inline my-2 my-lg-0" id="buscador">
-  <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-  <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Buscar</button>
+    <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaNotario" name="something" placeholder="Buscar" aria-label="Search">
 </form>
-
 
 <!-- EVENTOS DE MODALS-->
 <!-- Modal AGREGAR-->
@@ -15,57 +13,64 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-body col-md-7 ">
-          <div class="form-group">
-            <label for="codigo">Codigo</label>
-            <input type="text" autocomplete="off" class="form-control" name="codigo" id="codigo"
-              placeholder="Ingresar el codigo">
-          </div>
-          <div class="form-group">
-            <label for="descripcion">Nombre</label>
-            <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-              placeholder="Ingresar descripcion">
-          </div>
-          <div class="form-group">
-            <label for="descripcion">Colegiado No.</label>
-            <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-              placeholder="Ingresar Colegiado">
-          </div>
-          <div class="form-group">
-            <label for="descripcion">Direccion</label>
-            <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-              placeholder="Ingresar Direccion">
-          </div>
-          <div class="form-group">
-            <label for="descripcion">Identificacion</label>
-            <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-              placeholder="Ingresar Identificacion">
-          </div>
-          <div class="form-group">
-            <label for="descripcion"> Telefono</label>
-            <input type="text" autocomplete="off" class="form-control" name="Equivalencias" id="descripcion"
-              placeholder="Ingresar Telefono">
-          </div>
-          <div class="form-group">
-            <label for="descripcion"> fax</label>
-            <input type="text" autocomplete="off" class="form-control" name="Equivalencias" id="descripcion"
-              placeholder="Ingresar fax">
-          </div>
-          <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-            (click)="ModalConfirmacion2">Aceptar</button>
+      <form #formAddNotario="ngForm" (ngSubmit)="addNotarios()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+        <div class="modal-body">
+          <div class="modal-body col-md-7 ">
+            <div class="form-group">
+              <label for="codigo">Codigo</label>
+              <input type="text" #codigo="ngModel" [(ngModel)]="notariosModel.codigo" autocomplete="off"
+                class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
+            </div>
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" #nombre="ngModel" [(ngModel)]="notariosModel.nombre" autocomplete="off"
+                class="form-control" name="nombre" id="nombre" placeholder="Ingresar Nombre">
+            </div>
+            <div class="form-group">
+              <label for="colegiado">Colegiado No.</label>
+              <input type="text" #colegiado="ngModel" [(ngModel)]="notariosModel.colegiado" autocomplete="off"
+                class="form-control" name="colegiado" id="colegiado" placeholder="Ingresar Colegiado">
+            </div>
+            <div class="form-group">
+              <label for="direccion">Primera Direccion</label>
+              <input type="text" #direccion="ngModel" [(ngModel)]="notariosModel.direccion" autocomplete="off"
+                class="form-control" name="direccion" id="direccion" placeholder="Ingresar Primera Direccion">
+            </div>
+            <div class="form-group">
+              <label for="direccionDos">Segunda Direccion</label>
+              <input type="text" #direccionDos="ngModel" [(ngModel)]="notariosModel.direccionDos" autocomplete="off"
+                class="form-control" name="direccionDos" id="direccionDos" placeholder="Ingresar Segunda Direccion">
+            </div>
+            <div class="form-group">
+              <label for="identificacion">Identificacion</label>
+              <input type="text" #identificacion="ngModel" [(ngModel)]="notariosModel.identificacion" autocomplete="off"
+                class="form-control" name="identificacion" id="identificacion" placeholder="Ingresar Identificacion">
+            </div>
+            <div class="form-group">
+              <label for="telefono"> Telefono</label>
+              <input type="text" #telefono="ngModel" [(ngModel)]="notariosModel.telefono" autocomplete="off"
+                class="form-control" name="telefono" id="telefono" placeholder="Ingresar Telefono">
+            </div>
+            <div class="form-group">
+              <label for="fax"> fax</label>
+              <input type="text" #fax="ngModel" [(ngModel)]="notariosModel.fax" autocomplete="off" class="form-control"
+                name="fax" id="fax" placeholder="Ingresar fax">
+            </div>
+            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
+              (click)="ModalConfirmacion2">Aceptar</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+          </div>
         </div>
-      </div>
-      <!-- <div class="modal-footer"> </div> -->
+        <!-- <div class="modal-footer"> </div> -->
+      </form>
     </div>
   </div>
 </div>
@@ -77,19 +82,21 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmacion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Esta seguro de eliminar este dato?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger">Si</button>
-      </div>
+      <form #formDeleteNotario="ngForm" (ngSubmit)="deleteNotario(id)">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmacion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Esta seguro de eliminar este dato?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="submit" class="btn btn-danger" (ngSubmit)="deleteNotario()">Si</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -100,59 +107,116 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body col-md-5 ">
-        <div class="form-group ">
-          <label for="exampleInputPassword1">Descripcion:</label>
-          <input type="text" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-            placeholder="Ingresar descripcion">
+      <form #formEditNotario="ngForm" (ngSubmit)="editNotario(id)">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-
-        <div class="form-group ">
-          <label for="exampleInputPassword1">Registro:</label>
-          <input type="text" autocomplete="off" class="form-control" name="registro" id="Registro"
-            placeholder="Ingresar Registro">
+        <div class="modal-body col-md-5 ">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" #nombre="ngModel" [(ngModel)]="notariosModel.nombre" autocomplete="off"
+              class="form-control" name="nombre" id="nombre" placeholder="Ingresar Nombre">
+          </div>
+          <div class="form-group">
+            <label for="colegiado">Colegiado No.</label>
+            <input type="text" #colegiado="ngModel" [(ngModel)]="notariosModel.colegiado" autocomplete="off"
+              class="form-control" name="colegiado" id="colegiado" placeholder="Ingresar Colegiado">
+          </div>
+          <div class="form-group">
+            <label for="direccion">Primera Direccion</label>
+            <input type="text" #direccion="ngModel" [(ngModel)]="notariosModel.direccion" autocomplete="off"
+              class="form-control" name="direccion" id="direccion" placeholder="Ingresar Primera Direccion">
+          </div>
+          <div class="form-group">
+            <label for="direccionDos">Segunda Direccion</label>
+            <input type="text" #direccionDos="ngModel" [(ngModel)]="notariosModel.direccionDos" autocomplete="off"
+              class="form-control" name="direccionDos" id="direccionDos" placeholder="Ingresar Segunda Direccion">
+          </div>
+          <div class="form-group">
+            <label for="identificacion">Identificacion</label>
+            <input type="text" #identificacion="ngModel" [(ngModel)]="notariosModel.identificacion" autocomplete="off"
+              class="form-control" name="identificacion" id="identificacion" placeholder="Ingresar Identificacion">
+          </div>
+          <div class="form-group">
+            <label for="telefono"> Telefono</label>
+            <input type="text" #telefono="ngModel" [(ngModel)]="notariosModel.telefono" autocomplete="off"
+              class="form-control" name="telefono" id="telefono" placeholder="Ingresar Telefono">
+          </div>
+          <div class="form-group">
+            <label for="fax"> fax</label>
+            <input type="text" #fax="ngModel" [(ngModel)]="notariosModel.fax" autocomplete="off" class="form-control"
+              name="fax" id="fax" placeholder="Ingresar fax">
+          </div>
         </div>
-        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion1"
-          (click)="ModalConfirmacion1">Aceptar</button>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
-      </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
 
-<!-- Modal confirmacion editar -->
-<div class="modal fade" id="ModalConfirmacion1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+
+<!-- Modal Visualizar -->
+<div class="modal fade" id="ModalVisualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmacion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Esta seguro de editar este dato?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger">Si</button>
-      </div>
+      <form #formEditNotario="ngForm">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Visualizar</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body col-md-5 ">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" #nombre="ngModel" [(ngModel)]="notario.nombre" autocomplete="off"
+              class="form-control" name="nombre" id="nombre" readonly >
+          </div>
+          <div class="form-group">
+            <label for="colegiado">Colegiado No.</label>
+            <input type="text" #colegiado="ngModel" [(ngModel)]="notario.colegiado" autocomplete="off"
+              class="form-control" name="colegiado" id="colegiado" readonly>
+          </div>
+          <div class="form-group">
+            <label for="direccion">Primera Direccion</label>
+            <input type="text" #direccion="ngModel" [(ngModel)]="notario.direccion" autocomplete="off"
+              class="form-control" name="direccion" id="direccion" readonly>
+          </div>
+          <div class="form-group">
+            <label for="direccionDos">Segunda Direccion</label>
+            <input type="text" #direccionDos="ngModel"  [(ngModel)]="notario.direccionDos" autocomplete="off"
+              class="form-control" name="direccionDos" id="direccionDos" readonly>
+          </div>
+          <div class="form-group">
+            <label for="identificacion">Identificacion</label>
+            <input type="text" #identificacion="ngModel" [(ngModel)]="notario.identificacion" autocomplete="off"
+              class="form-control" name="identificacion" id="identificacion" readonly>
+          </div>
+          <div class="form-group">
+            <label for="telefono"> Telefono</label>
+            <input type="text" #telefono="ngModel" [(ngModel)]="notario.telefono" autocomplete="off"
+              class="form-control" name="telefono" id="telefono" readonly>
+          </div>
+          <div class="form-group">
+            <label for="fax"> fax</label>
+            <input type="text" #fax="ngModel" [(ngModel)]="notario.fax" autocomplete="off" class="form-control"
+              name="fax" id="fax" readonly>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
-<!--------------------->
-
+<!--  -->
 
 
 <!-- TABLE -->
@@ -160,51 +224,26 @@
 <div id="content">
   <table class="table">
     <thead class="thead-dark">
-      <!-- Columnas -->
       <tr>
-        <th scope="col">Select</th>
         <th scope="col">Codigo</th>
-        <th scope="col">Descripcion</th>
+        <th scope="col">Colegiado</th>
         <th scope="col"> </th>
+        <th scope="col"> </th>        
         <th scope="col"> </th>
       </tr>
     </thead>
     <tbody>
-
-      <!-- Datos Estaticos -->
-      <tr>
-        <th scope="row">1</th>
-        <td>1</td>
-        <td>Prueba Garma</td>
-
+      <tr *ngFor='let notarios of visualizarNotario | searchNotario: busquedaNotario'>
+        <td>{{notarios.codigo}}</td>
+        <td>{{notarios.colegiado}}</td>
 
         <!-- Botones -->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
+            (click)="readNotario(notarios.codigo)"><i class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
-
-      <tr>
-        <th scope="row">2</th>
-        <td>2</td>
-        <td>Juan Perez</td>
-        <!-- Botones -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>3</td>
-        <td>Maria Estella</td>
-        <!-- Botones -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="ModalEditar"><i class="fas fa-edit"></i></button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="ModalConfirmacion"> <i class="far fa-trash-alt"></i></button></td>
-      </tr>
-
+            (click)="readNotario(notarios.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
+            (click)="readNotario(notarios.codigo)"><i class="fas fa-eye"></i></button></td>
     </tbody>
   </table>
 </div>

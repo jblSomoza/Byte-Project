@@ -68,8 +68,11 @@ import { HttpClient } from 'selenium-webdriver/http'; //Preguntar
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-
-
+/* Pipes*/
+import { SearchNotariosPipe } from "./pipes/searchNotarios.pipe";
+import { SearchMotAjustePipe } from "./pipes/searchMotAjuste.pipe";
+import { SearchSupervisorPipe } from "./pipes/searchSupervisor.pipe";
+import { SearchEstAvaluoPipe } from "./pipes/searchEstAvaluo.pipe";
 
 
 @NgModule({
@@ -131,7 +134,11 @@ import { FormsModule } from '@angular/forms';
     PasosCierreComponent,
     ArchivosLimpiezaComponent,
     ContenidosContablesComponent,
-    NivelesContabilizacionComponent
+    NivelesContabilizacionComponent,
+    SearchNotariosPipe,
+    SearchMotAjustePipe,
+    SearchSupervisorPipe,
+    SearchEstAvaluoPipe
   ],
   imports: [
     BrowserModule,
