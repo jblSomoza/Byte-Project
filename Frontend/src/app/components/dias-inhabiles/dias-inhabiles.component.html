@@ -20,22 +20,22 @@
 
           <!-- para seleccionar el feriado -->
           <div class="form-group">
-              <label for="tipoFeriado">Tipo Feriado:</label>
-              <input type="text" #tipoFeriado="ngModel" [(ngModel)]="diasInhabilesModel.tipoFeriado" autocomplete="off" class="form-control" name="tipoFeriado" id="tipoFeriado"
-                placeholder="(F/V)">
+            <label for="tipoFeriado">Tipo Feriado:</label>
+            <input type="text" #tipoFeriado="ngModel" [(ngModel)]="diasInhabilesModel.tipoFeriado" autocomplete="off"
+              class="form-control" name="tipoFeriado" id="tipoFeriado" placeholder="(F/V)">
           </div>
 
           <!-- Para ingresar la fecha -->
           <div class="form-group">
-            <label for="fechaFeriado">Fecha Feriado:</label>
-            <input type="text" #fechaFeriado="ngModel" [(ngModel)]="diasInhabilesModel.fechaFeriado" autocomplete="off" class="form-control" name="fechaFeriado" id="fechaFeriado"
-              placeholder="Ingresar Fecha Feriado">
+            <label for="fechaFeriado" class="col-form-label">Fecha Feriado</label>
+            <input name="fechaFeriado" #fechaFeriado="ngModel" [(ngModel)]="diasInhabilesModel.fechaFeriado" type="date"
+              class="form-control" id="fechaFeriado">
           </div>
 
           <div class="form-group">
             <label for="descripcion">Descripcion:</label>
-            <input type="text" #descripcion="ngModel" [(ngModel)]="diasInhabilesModel.descripcion" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-              placeholder="Ingresar descripcion">
+            <input type="text" #descripcion="ngModel" [(ngModel)]="diasInhabilesModel.descripcion" autocomplete="off"
+              class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
           </div>
 
           <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
@@ -57,22 +57,23 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form #formDeleteDiaInhabil="ngForm" (ngSubmit)="deleteDiaInhabil(id)">
-        
+      <form #formDeleteDiaInhabil="ngForm" (ngSubmit)="listDiasInhabiles()">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmacion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <p>Esta seguro de eliminar este dato?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger" (click)="deleteDiaInhabil()">Si</button>
+          <button type="submit" class="btn btn-danger" data-dismiss="modal">No</button>
+        </div>
       </form>
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmacion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Esta seguro de eliminar este dato?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger" (ngSubmit)="deleteDiaInhabil()" data-dismiss="modal">Si</button>
-      </div>
     </div>
   </div>
 </div>
@@ -83,7 +84,7 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form #formEditDiaInhabil="ngForm" (ngSubmit)="editDiaInhabil(id)">
+      <form #formEditDiaInhabil="ngForm" (ngSubmit)="listDiasInhabiles()">
 
         <div class="modal-header">
           <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
@@ -92,45 +93,48 @@
           </button>
         </div>
         <div class="modal-body">
-          
+
           <!-- para seleccionar el feriado -->
           <div class="form-group">
             <label for="tipoFeriado">Tipo Feriado:</label>
-            <input type="text" #tipoFeriado="ngModel" [(ngModel)]="diasInhabilesModel.tipoFeriado" autocomplete="off" class="form-control" name="tipoFeriado" id="tipoFeriado"
-            placeholder="(F/V)">
+            <input type="text" #tipoFeriado="ngModel" [(ngModel)]="diasInhabilesModel.tipoFeriado" autocomplete="off"
+              class="form-control" name="tipoFeriado" id="tipoFeriado" placeholder="(F/V)">
           </div>
-          
+
           <!-- Para ingresar la fecha -->
           <div class="form-group">
-            <label for="fechaFeriado">Fecha Feriado:</label>
-            <input type="text" #fechaFeriado="ngModel" [(ngModel)]="diasInhabilesModel.fechaFeriado" autocomplete="off" class="form-control" name="fechaFeriado" id="fechaFeriado"
-            placeholder="Ingresar Fecha Feriado">
+            <label for="fechaFeriado" class="col-form-label">Fecha Feriado</label>
+            <input name="fechaFeriado" #fechaFeriado="ngModel" [(ngModel)]="diasInhabilesModel.fechaFeriado" type="date"
+              class="form-control" id="fechaFeriado">
           </div>
-          
+
           <div class="form-group">
             <label for="descripcion">Descripcion:</label>
-            <input type="text" #descripcion="ngModel" [(ngModel)]="diasInhabilesModel.descripcion" autocomplete="off" class="form-control" name="descripcion" id="descripcion"
-            placeholder="Ingresar descripcion">
-          </div>          
+            <input type="text" #descripcion="ngModel" [(ngModel)]="diasInhabilesModel.descripcion" autocomplete="off"
+              class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
+          </div>
+
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-outline-danger" data-toggle="modal" data-dismiss="modal">Si</button>
+          <button type="submit" class="btn btn-outline-danger" data-toggle="modal" (click)="editDiaInhabil()"
+            data-dismiss="modal" id="editado">Guardar</button>
         </div>
       </form>
-      </div>
     </div>
   </div>
-  
+</div>
+
 
 <!-- TABLE -->
 <H1>Dias Inhabiles</H1>
 <form class="form-inline my-2 my-lg-0" id="buscador">
-  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaAlmacenadora" name="something" placeholder="Buscar" aria-label="Search">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaDiaInhabil" name="something"
+    placeholder="Buscar" aria-label="Search">
 </form>
 <div id="content">
   <table class="table">
     <thead class="thead-dark">
-      <tr>        
+      <tr>
         <th scope="col">Descripcion</th>
         <th scope="col">Fecha Feriado</th>
         <th scope="col">Tipo Feriado</th>
@@ -139,23 +143,26 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let dia of visualizarDiaInhabil | paginate: { itemsPerPage: 4, currentPage: p }| searchDiasInhabiles:busquedaDestino'>
+      <tr
+        *ngFor='let dia of visualizarDiaInhabil | paginate: { itemsPerPage: 4, currentPage: p }| searchDiasInhabiles: busquedaDiaInhabil'>
         <td>{{dia.descripcion}}</td>
         <td>{{dia.fechaFeriado}}</td>
         <td>{{dia.tipoFeriado}}</td>
 
         <!-- Botones -->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="readDiaInhabil(dia.fechaFeriado);readDiaInhabil(dia.tipoFeriado)"><i class="fas fa-edit"></i></button></td>
+            (click)="setDescripcion(dia.descripcion);setFechaFeriado(dia.fechaFeriado);setTipoFeriado(dia.tipoFeriado)"><i
+              class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="readDiaInhabil(dia.fechaFeriado);readDiaInhabil(dia.tipoFeriado)"> <i class="far fa-trash-alt"></i></button></td>
-      </tr>     
+            (click)="setFechaFeriado(dia.fechaFeriado);setTipoFeriado(dia.tipoFeriado)"> <i
+              class="far fa-trash-alt"></i></button></td>
+      </tr>
     </tbody>
   </table>
 </div>
 <div class="pagination-container">
   <nav>
-      <ul class="pagination justify-content-center"></ul>
+    <ul class="pagination justify-content-center"></ul>
   </nav>
 </div>
 <pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
@@ -166,5 +173,3 @@
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalAgregar"
     (click)="ModalAgregar">Agregar</button>
 </div>
-
-

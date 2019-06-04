@@ -88,11 +88,11 @@ import { searchStatusGarantiaReal } from "./pipes/searchStatusGarantiaReal.pipe"
 import { searchFormaDesembolso } from "./pipes/searchFormaDesembolso.pipe";
 import { SearchMotReserva } from "./pipes/searchMotivosReserva.pipe";
 import { searchMedio } from "./pipes/searchMedio.pipe";
-import { searchDiasInhabiles } from "./pipes/seacrhDiasInhabiles.pipe";
-
+import { searchDiasInhabiles } from "./pipes/searchDiasInhabiles.pipe";
 import { searchPoderPipe } from "./pipes/searchPoder.pipe";
 import { InstanciaComponent } from './components/instancia/instancia.component';
 import { searchInstancia } from './pipes/searchInstancia.pipe';
+import { searchInstitucionesCobros } from './pipes/searchInstitucionesCobros.pipe';
 
 
 
@@ -177,6 +177,7 @@ import { searchInstancia } from './pipes/searchInstancia.pipe';
     searchDiasInhabiles,
     searchPoderPipe,
     searchInstancia,
+    searchInstitucionesCobros,
     InstanciaComponent,        
   ],
   imports: [

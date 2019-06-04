@@ -18,7 +18,7 @@ export class DiasInhabilesComponent implements OnInit {
   public url: String;
   public status: String;
   public busqueda: String; 
-  public busquedaDestino : string;
+  public busquedaDiaInhabil : string;
   p: number = 1;
 
 
@@ -36,9 +36,11 @@ export class DiasInhabilesComponent implements OnInit {
     this.listDiasInhabiles();
   }
 
-  addDiaInhabil(){
+  addDiaInhabil(){    
     this._diaInhabilService.addDiasInhabiles(this.diasInhabilesModel).subscribe(
       response =>{
+        console.log(response);
+        console.log(this.diasInhabilesModel);
         if(response){
           console.log(response);
           this.listDiasInhabiles();
@@ -56,11 +58,10 @@ export class DiasInhabilesComponent implements OnInit {
     )
   }
 
-  editDiaInhabil(){
-    this.diasInhabilesModel.fechaFeriado = this.diaInhabil.fechaFeriado;
-    this.diasInhabilesModel.tipoFeriado = this.diaInhabil.tipoFeriado;
+  editDiaInhabil(){    
     this._diaInhabilService.editDiasInhabiles(this.diasInhabilesModel).subscribe(
       response =>{
+        console.log(this.diasInhabilesModel.fechaFeriado);
         if(response){
           console.log(response);
           this.listDiasInhabiles();
@@ -78,10 +79,8 @@ export class DiasInhabilesComponent implements OnInit {
     )
   }
 
-  deleteDiaInhabil(){
-    var fechaFeriado = this.diaInhabil.fechaFeriado;
-    var tipoFeriado = this.diaInhabil.tipoFeriado;
-    this._diaInhabilService.deleteDiasInhabiles(fechaFeriado, tipoFeriado).subscribe(
+  deleteDiaInhabil(){   
+    this._diaInhabilService.deleteDiasInhabiles(this.diasInhabilesModel.fechaFeriado, this.diasInhabilesModel.tipoFeriado).subscribe(
       response =>{
         if(response){
           console.log(response);
@@ -130,6 +129,18 @@ export class DiasInhabilesComponent implements OnInit {
         }
       }
     )
+  }
+
+  setDescripcion(descripcion: string){
+    this.diasInhabilesModel.descripcion = descripcion;
+  }
+
+  setFechaFeriado(fechaFeriado: string){
+    this.diasInhabilesModel.fechaFeriado = fechaFeriado;
+  }
+
+  setTipoFeriado(tipoFeriado: string){
+    this.diasInhabilesModel.tipoFeriado = tipoFeriado;
   }
 
 

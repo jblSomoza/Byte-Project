@@ -26,7 +26,7 @@ export class DiasInhabilesService {
     return this._http.put(this.url + 'diasNoHabilesNoCobroMora/update', params, {headers:headers});
   }
 
-  deleteDiasInhabiles(fechaFeriado: string, tipoFeriado: string): Observable<any>{
+  deleteDiasInhabiles(fechaFeriado, tipoFeriado): Observable<any>{
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this._http.delete(this.url + `diasNoHabilesNoCobroMora/delete?empresa=1&fechaFeriado=${fechaFeriado}&tipoFeriado=${tipoFeriado}`, {headers:headers});
