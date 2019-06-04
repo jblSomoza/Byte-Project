@@ -98,7 +98,40 @@
   </div>
 </div>
 
-
+<!-- Modal Visualizar -->
+<div class="modal fade" id="ModalVisualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form #formAddAlmacenadora="ngForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body col-md-7 ">
+            <div class="form-group">
+              <label for="codigo">Codigo</label>
+              <input type="text" #codigo="ngModel" [(ngModel)]="almacenadora.codigo" autocomplete="off"
+                class="form-control" name="codigo" id="codigo" readonly>
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripcion:</label>
+              <input type="text" #descripcion="ngModel" [(ngModel)]="almacenadora.descripcion" autocomplete="off"
+                class="form-control" name="descripcion" id="descripcion" readonly>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </form>
+      <!-- <div class="modal-footer"> </div> -->
+    </div>
+  </div>
+</div>
 
 
 <!-- TABLE -->
@@ -111,16 +144,15 @@
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Select</th>
         <th scope="col">Codigo</th>
         <th scope="col">Descripcion</th>
+        <th scope="col"> </th>
         <th scope="col"> </th>
         <th scope="col"> </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor='let alm of visualizarAlmacenadora | paginate: { itemsPerPage: 4, currentPage: p } | searchAlmacenadora:busquedaAlmacenadora'>
-        <th scope="row">{{alm.codigo}}</th>
         <td>{{alm.codigo}}</td>
         <td>{{alm.descripcion}}</td>
 
@@ -130,6 +162,8 @@
          (click)="readAlmacenadora(alm.codigo)"><i class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
             (click)="readAlmacenadora(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
+            (click)="readAlmacenadora(alm.codigo)"> <i class="fas fa-eye"></i></button></td>            
       </tr>
 
     </tbody>

@@ -126,7 +126,49 @@
 </div>
 
 <!--------------------->
-
+<!-- Modal Visualizar -->
+<div class="modal fade" id="ModalVisualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form  #formAddOrigenFondo="ngForm"> <!-- Se usa el @ViewChild y la funcion del TypeScript -->
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Visualizar</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="modal-body col-md-7 ">
+                <div class="form-group">
+                  <label for="codigo">Codigo Institucion</label>
+                  <input  type="text" #codigo="ngModel" [(ngModel)]="origenFondosX.codigo" autocomplete="off" class="form-control" name="codigo" id="codigo" readonly>
+              </div>
+              <div class="form-group">
+                <label for="descripcion">Nombre Institucion:</label>
+                <input type="text" #usuario="ngModel" [(ngModel)]="origenFondosX.usuario" autocomplete="off" class="form-control" name="descripcion" id="descripcion" readonly>
+              </div>
+              <div class="form-group">
+                <label for="codigo">Abreviatura</label>
+                <input   type="text" #abreviatura="ngModel" [(ngModel)]="origenFondosX.abreviatura" autocomplete="off" class="form-control" name="abreviatura" id="abreviatura" readonly>
+            </div>
+              <div class="form-group">
+                <label for="descripcion">Descripcion Corta</label>
+                <input type="text" #descipcion="ngModel" [(ngModel)]="origenFondosX.descripcion" autocomplete="off" class="form-control" name="Equivalencias" id="descripcion" readonly>
+              </div>
+              
+            </div>
+            <!--class="modal-footer">-->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
+                (click)="ModalConfirmacion2">Aceptar</button>
+            </div>
+          </div>
+      </form>
+       
+    </div>
+  </div>
+</div>
 
 
 <!-- TABLE -->
@@ -161,6 +203,8 @@
           (click)="readOrigenFondo(orfo.codigo)"><i class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
           (click)="readOrigenFondo(orfo.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
+          (click)="readOrigenFondo(orfo.codigo)"> <i class="far fa-eye"></i></button></td>
       </tr>
     </tbody>
   </table>  

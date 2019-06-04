@@ -50,216 +50,216 @@
         <nav class="s-sidebar__nav">
             <ul>
                
-                <div class="inputWithIcon">
-                    <input type="text" placeholder="Buscar">
+                <div class="inputWithIcon" id="buscar">
+                    <input type="text" id="buscador" placeholder="Buscar">
                     <i class="fa fa-search fa-lg fa-fw" aria-hidden="true"></i>
                   </div>
                     
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/almacenadoras']">
-                        <i class="fa fa-user"></i><em>Almacenadoras</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/almacenadoras']">
+                        <i class="fas fa-warehouse"></i><em>Almacenadoras</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/aseguradoras']">
-                        <i class="fas fa-ambulance"></i> <em>Aseguradoras</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/aseguradoras']">
+                        <i class="fas fa-shield-alt"></i><em>Aseguradoras</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/agrupacion-codigos']">
-                        <i class="fa fa-camera"></i><em>Agrupación de Créditos</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/agrupacion-codigos']">
+                        <i class="fas fa-credit-card"></i><em>Agrupación de Créditos</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/lugar-invercion']">
-                        <i class="fa fa-camera"></i><em>Lugares de Inversión</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/lugar-invercion']">
+                        <i class="fas fa-map-pin"></i><em>Lugares de Inversión</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/ubicacion-garantia']">
-                        <i class="fa fa-camera"></i><em>Ubicación de la Garantía</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/ubicacion-garantia']">
+                        <i class="fas fa-map-marked-alt"></i><em>Ubicación de la Garantía</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/origen-fondos']">
-                        <i class="fa fa-camera"></i><em>Origen de fondos</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/origen-fondos']">
+                        <i class="fas fa-coins"></i><em>Origen de fondos</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/formas-pago']">
-                        <i class="fa fa-camera"></i><em>Formas de pago</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/formas-pago']">
+                        <i class="fas fa-money-check-alt"></i><em>Formas de pago</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/destinos']">
-                        <i class="fa fa-camera"></i><em>Destinos</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/destinos']">
+                        <i class="fas fa-university"></i><em>Destinos</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/categorias-SIB']">
-                        <i class="fa fa-camera"></i><em>Categorias SIB</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/categorias-SIB']">
+                        <i class="fas fa-user-check"></i><em>Categorias SIB</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/estatus-garantiasReales']">
-                        <i class="fa fa-camera"></i><em>Estatus garantias reales</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/estatus-garantiasReales']">
+                        <i class="fas fa-tasks"></i><em>Estatus garantias reales</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/estatus-avaluos']">
-                        <i class="fa fa-camera"></i><em>Estatus de Valuos</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/estatus-avaluos']">
+                        <i class="fas fa-tasks"></i><em>Estatus de Valuos</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/ingenieros-valuadores']">
-                        <i class="fa fa-camera"></i><em>Ingenieros Valuadores</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/ingenieros-valuadores']">
+                        <i class="fas fa-hard-hat"></i><em>Ingenieros Valuadores</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/notarios']">
-                        <i class="fa fa-camera"></i><em>Notarios</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/notarios']">
+                        <i class="fas fa-folder-open"></i><em>Notarios</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/motivos-ajustes']">
-                        <i class="fa fa-camera"></i><em>Motivos de ajustes</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/motivos-ajustes']">
+                        <i class="fas fa-sliders-h"></i><em>Motivos de ajustes</em>
                     </a>
                 </li>
                 <!-- --------------- -->
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/dias-inhabiles']">
-                        <i class="fa fa-camera"></i><em>Dias inhábiles</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/dias-inhabiles']">
+                        <i class="far fa-calendar-times"></i><em>Dias inhábiles</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/cobros-adicionales']">
-                        <i class="fa fa-camera"></i><em>Cobros adicionales</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/cobros-adicionales']">
+                        <i class="fas fa-folder-plus"></i><em>Cobros adicionales</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/instituciones-cobros-adicionales']">
-                        <i class="fa fa-camera"></i><em>Instituciones de cobros adicionales</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/instituciones-cobros-adicionales']">
+                        <i class="far fa-building"></i><em>Instituciones de cobros adicionales</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/motivos-reversa']">
-                        <i class="fa fa-camera"></i><em>Motivos de reversa</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/motivos-reversa']">
+                        <i class="fas fa-history"></i><em>Motivos de reversa</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/formas-desembolso']">
-                        <i class="fa fa-camera"></i><em>Formas de desembolso</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/formas-desembolso']">
+                        <i class="fas fa-file-invoice-dollar"></i><em>Formas de desembolso</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/motivos-referencias-clientes']">
-                        <i class="fa fa-camera"></i><em>Motivos de referencias clientes</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/motivos-referencias-clientes']">
+                        <i class="fas fa-hand-holding-usd"></i><em>Motivos de referencias clientes</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/medios-contacto']">
-                        <i class="fa fa-camera"></i><em>Medios de contacto</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/medios-contacto']">
+                        <i class="fas fa-address-book"></i><em>Medios de contacto</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/canales-venta']">
-                        <i class="fa fa-camera"></i><em>Canales de venta</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/canales-venta']">
+                        <i class="fas fa-cart-arrow-down"></i><em>Canales de venta</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/bancos']">
-                        <i class="fa fa-camera"></i><em>Bancos</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/bancos']">
+                        <i class="fas fa-university"></i><em>Bancos</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/relaciones-transacciones']">
-                        <i class="fa fa-camera"></i><em>Relaciones transacciones</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/relaciones-transacciones']">
+                        <i class="fas fa-money-check"></i><em>Relaciones transacciones</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/transacciones-deposito']">
-                        <i class="fa fa-camera"></i><em>Transacciones de deposito</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/transacciones-deposito']">
+                        <i class="fas fa-money-check"></i><em>Transacciones de deposito</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/acercamientos']">
-                        <i class="fa fa-camera"></i><em>Acercamientos</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/acercamientos']">
+                        <i class="fas fa-hand-holding-usd"></i><em>Acercamientos</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/asesores-de-prestamos']">
-                        <i class="fa fa-camera"></i><em>Asesores de préstamo</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/asesores-de-prestamos']">
+                        <i class="fas fa-search-dollar"></i><em>Asesores de préstamo</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/datos-generales']">
-                        <i class="fa fa-camera"></i><em>Datos Generales</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/datos-generales']">
+                        <i class="fas fa-list-ul"></i><em>Datos Generales</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/tipos-deducciones']">
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/tipos-deducciones']">
                         <i class="fa fa-camera"></i><em>Tipo De deducciones</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/tipo-prestamos']">
-                        <i class="fa fa-camera"></i><em>Tipo De Prestamos</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/tipo-prestamos']">
+                        <i class="fas fa-euro-sign"></i><em>Tipo De Prestamos</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/tipo-transaccion']">
-                        <i class="fa fa-camera"></i><em>Tipo De Transaccion</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/tipo-transaccion']">
+                        <i class="fas fa-euro-sign"></i><em>Tipo De Transaccion</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/garantias-contables']">
-                        <i class="fa fa-camera"></i><em>Garantias Contables</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/garantias-contables']">
+                        <i class="fas fa-coins"></i><em>Garantias Contables</em>
                     </a>
                 </li>
 
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/frecuencias-amortizacion']">
-                        <i class="fa fa-camera"></i><em>Frecuencias de Amortizacion</em>
+                <li id="item">  
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/frecuencias-amortizacion']">
+                        <i class="fas fa-calendar-day"></i><em>Frecuencias de Amortizacion</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/productos']">
-                        <i class="fa fa-camera"></i><em>Productos</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/productos']">
+                        <i class="fas fa-shopping-cart"></i><em>Productos</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/limpieza']">
-                        <i class="fa fa-camera"></i><em>limpieza</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/limpieza']">
+                        <i class="fas fa-recycle"></i><em>limpieza</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/niveles-contabilizacion']">
-                        <i class="fa fa-camera"></i><em>Niveles de Contabilizacion</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/niveles-contabilizacion']">
+                        <i class="fas fa-list-ol"></i><em>Niveles de Contabilizacion</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/poder']">
-                        <i class="fa fa-camera"></i><em>Poder</em>
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/poder']">
+                        <i class="fas fa-power-off"></i><em>Poder</em>
                     </a>
                 </li>  
-                <li>
-                    <a class="s-sidebar__nav-link" [routerLink]="['/instancia']">
+                <li id="item">
+                    <a class="s-sidebar__nav-link mantenimiento" [routerLink]="['/instancia']">
                         <i class="fa fa-camera"></i><em>Instancia</em>
                     </a>
                 </li>                                

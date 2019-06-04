@@ -92,6 +92,39 @@
   </div>
 </div>
 
+<!-- Visualizar -->
+<div class="modal fade" id="ModalVisualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form #formAddDestino="ngForm" (ngSubmit)="addDestino()">  <!-- Se usa el @ViewChild y la funcion del TypeScript -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body col-md-7 ">
+            <div class="form-group">
+              <label for="codigo">Codigo</label>
+              <input type="text" #codigo="ngModel" [(ngModel)]="destinoX.codigo" autocomplete="off"
+                class="form-control" name="codigo" id="codigo" readonly>
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripcion:</label>
+              <input type="text" #descripcion="ngModel" [(ngModel)]="destinoX.descripcion" autocomplete="off"
+                class="form-control" name="descripcion" id="descripcion" readonly>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 
 
@@ -105,9 +138,9 @@
     <thead class="thead-dark">
       <!-- Encabezado -->
       <tr>
-        <th scope="col">Select</th>
         <th scope="col">Codigo</th>
         <th scope="col">Descripcion</th>
+        <th scope="col"> </th>
         <th scope="col"> </th>
         <th scope="col"> </th>
       </tr>
@@ -115,7 +148,6 @@
     <tbody>
             <!-- Datos Dinamicos -->
       <tr *ngFor='let des of visualizarDestino | searchDestino:busquedaDestino | paginate: { itemsPerPage: 4, currentPage: p }' >
-        <th scope="row">1</th>
         <td>{{des.codigo}}</td>
         <td>{{des.descripcion}}</td>
 
@@ -125,6 +157,8 @@
             (click)="readDestino(des.codigo)"><i class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
             (click)="readDestino(des.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
+            (click)="readDestino(des.codigo)"> <i class="far fa-eye"></i></button></td>            
       </tr>
     </tbody>
   </table>

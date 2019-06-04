@@ -11,9 +11,10 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form #formAddFormaPago="ngForm" (ngSubmit)="addFormaPago()">  <!-- Se usa el @ViewChild y la funcion del TypeScript -->
+      <form #formAddFormaPago="ngForm" (ngSubmit)="addFormaPago()">
+        <!-- Se usa el @ViewChild y la funcion del TypeScript -->
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Forma de Pago</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -61,7 +62,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <button type="submit" class="btn btn-danger"  (ngSubmit)="deleteFormaPago()">Si</button>
+          <button type="submit" class="btn btn-danger" (ngSubmit)="deleteFormaPago()">Si</button>
         </div>
       </form>
     </div>
@@ -96,29 +97,65 @@
 </div>
 
 
+<!-- Model Visualizar -->
+<div class="modal fade" id="ModalVisualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form #formAddFormaPago="ngForm">
+        <!-- Se usa el @ViewChild y la funcion del TypeScript -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Visualizar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body col-md-7 ">
+            <div class="form-group">
+              <label for="codigo">Codigo</label>
+              <input type="text " #codigo="ngModel" [(ngModel)]="formaPagoX.codigo" autocomplete="off"
+                class="form-control" name="codigo" id="codigo" readonly>
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripcion:</label>
+              <input type="text" #descripcion="ngModel" [(ngModel)]="formaPagoX.descripcion" autocomplete="off"
+                class="form-control" name="descripcion" id="descripcion" readonly>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 
 
 <!-- TABLE -->
 <H1>Formas De Pago</H1>
 <form class="form-inline my-2 my-lg-0" id="buscador">
-  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaFormaPago" name="something" placeholder="Buscar" aria-label="Search">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaFormaPago" name="something"
+    placeholder="Buscar" aria-label="Search">
 </form>
 <div id="content">
   <table class="table">
     <thead class="thead-dark">
       <!-- Encabezado -->
       <tr>
-        <th scope="col">Select</th>
         <th scope="col">Codigo</th>
         <th scope="col">Descripcion</th>
+        <th scope="col"> </th>
         <th scope="col"> </th>
         <th scope="col"> </th>
       </tr>
     </thead>
     <tbody>
-            <!-- Datos Dinamicos -->
-      <tr *ngFor='let fopa of visualizarFormaPago | searchFormaPago:busquedaFormaPago | paginate: { itemsPerPage: 4, currentPage: p }'>
-        <th scope="row">1</th>
+      <!-- Datos Dinamicos -->
+      <tr
+        *ngFor='let fopa of visualizarFormaPago | searchFormaPago:busquedaFormaPago | paginate: { itemsPerPage: 4, currentPage: p }'>
         <td>{{fopa.codigo}}</td>
         <td>{{fopa.descripcion}}</td>
 
@@ -128,13 +165,15 @@
             (click)="readFormaPago(fopa.codigo)"><i class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
             (click)="readFormaPago(fopa.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
+            (click)="readFormaPago(fopa.codigo)"> <i class="far fa-eye"></i></button></td>
       </tr>
     </tbody>
   </table>
 </div>
 <div class="pagination-container">
   <nav>
-      <ul class="pagination justify-content-center"></ul>
+    <ul class="pagination justify-content-center"></ul>
   </nav>
 </div>
 <pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
@@ -144,5 +183,3 @@
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalAgregar"
     (click)="ModalAgregar">Agregar</button>
 </div>
-
- 

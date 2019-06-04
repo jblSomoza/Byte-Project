@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
@@ -12,33 +11,33 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <form #formAddAseguradora="ngForm" (ngSubmit)="addAseguradora()">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-body col-md-7 ">
-          <div class="form-group">
-            <label for="codigo">Codigo</label>
-            <input type="text" #codigo="ngModel" [(ngModel)]="aseguradoras.codigo" autocomplete="off"
-            class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
-          </div>
-          <div class="form-group">
-            <label for="descripcion">Descripcion:</label>
-            <input type="text" #descripcion="ngModel" [(ngModel)]="aseguradoras.descripcion" autocomplete="off"
+      <form #formAddAseguradora="ngForm" (ngSubmit)="addAseguradora()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body col-md-7 ">
+            <div class="form-group">
+              <label for="codigo">Codigo</label>
+              <input type="text" #codigo="ngModel" [(ngModel)]="aseguradoras.codigo" autocomplete="off"
+                class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripcion:</label>
+              <input type="text" #descripcion="ngModel" [(ngModel)]="aseguradoras.descripcion" autocomplete="off"
                 class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
+            </div>
+            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
+              (click)="ModalConfirmacion2">Aceptar</button>
           </div>
-          <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-            (click)="ModalConfirmacion2">Aceptar</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-  </form>
+      </form>
     </div>
   </div>
 </div>
@@ -62,7 +61,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <button type="submit" class="btn btn-danger"  (ngSubmit)="deleteAseguradora()" >Si</button>
+          <button type="submit" class="btn btn-danger" (ngSubmit)="deleteAseguradora()">Si</button>
         </div>
       </form>
     </div>
@@ -97,69 +96,82 @@
   </div>
 </div>
 
-
-<!-- Modal confirmacion editar -->
-<div class="modal fade" id="ModalConfirmacion1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- Modal Visualizar -->
+<div class="modal fade" id="ModalVisualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmacion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Esta seguro de editar este dato?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger">Si</button>
-      </div>
+      <form #formAddAseguradora="ngForm" (ngSubmit)="addAseguradora()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body col-md-7 ">
+            <div class="form-group">
+              <label for="codigo">Codigo</label>
+              <input type="text" #codigo="ngModel" [(ngModel)]="aseguradora.codigo" autocomplete="off"
+                class="form-control" name="codigo" id="codigo" readonly>
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripcion:</label>
+              <input type="text" #descripcion="ngModel" [(ngModel)]="aseguradora.descripcion" autocomplete="off"
+                class="form-control" name="descripcion" id="descripcion" readonly>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
-<!--------------------->
 
-    <app-sidenav></app-sidenav>
+<app-sidenav></app-sidenav>
 <!-- TABLE -->
 <H1>Aseguradoras</H1>
 <!-- buscar -->
 
 <form class="form-inline my-2 my-lg-0" id="buscador">
-    <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaAseguradora" name="something" placeholder="Buscar" aria-label="Search">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaAseguradora" name="something"
+    placeholder="Buscar" aria-label="Search">
 </form>
-<div  class="contenedorTabla" id="content-responsive">
-  
+<div class="contenedorTabla" id="content-responsive">
+
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Select</th>
         <th scope="col">Codigo</th>
         <th scope="col">Descripcion</th>
+        <th scope="col"> </th>
         <th scope="col"> </th>
         <th scope="col"> </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let alm of visualizarAseguradora | paginate: { itemsPerPage: 4, currentPage: p } | searchAseguradora:busquedaAseguradora'>
-            <th scope="row">{{alm.codigo}}</th>
-            <td>{{alm.codigo}}</td>
-            <td>{{alm.descripcion}}</td>
+      <tr
+        *ngFor='let alm of visualizarAseguradora | paginate: { itemsPerPage: 4, currentPage: p } | searchAseguradora:busquedaAseguradora'>
+        <td>{{alm.codigo}}</td>
+        <td>{{alm.descripcion}}</td>
         <!-- Botones -->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-          (click)="readAseguradora(alm.codigo)"><i class="fas fa-edit"></i></button></td>
-      <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-          (click)="readAseguradora(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
-    </tr>
-      
+            (click)="readAseguradora(alm.codigo)"><i class="fas fa-edit"></i></button></td>
+        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
+            (click)="readAseguradora(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
+          (click)="readAseguradora(alm.codigo)"> <i class="far fa-eye"></i></button></td>        
+      </tr>
+
     </tbody>
   </table>
 </div>
 <div class="pagination-container">
-    <nav>
-        <ul class="pagination justify-content-center"></ul>
-    </nav>
+  <nav>
+    <ul class="pagination justify-content-center"></ul>
+  </nav>
 </div>
 <pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
 
@@ -169,5 +181,3 @@
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalAgregar"
     (click)="ModalAgregar">Agregar</button>
 </div>
-
-

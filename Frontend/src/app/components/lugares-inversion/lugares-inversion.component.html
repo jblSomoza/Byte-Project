@@ -10,39 +10,38 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <form #formAddLugaresInversion="ngForm" (ngSubmit)="addLugaresInversion()">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-body col-md-7 ">
+      <form #formAddLugaresInversion="ngForm" (ngSubmit)="addLugaresInversion()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body col-md-7 ">
             <div class="form-group">
-                <label for="codigo">Codigo</label>
-                <input type="text" #codigo="ngModel" [(ngModel)]="lugares.codigo" autocomplete="off"
-                class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
-              </div>
-              <div class="form-group">
-                <label for="descripcion">Descripcion:</label>
-                <input type="text" #descripcion="ngModel" [(ngModel)]="lugares.descripcion" autocomplete="off"
-                    class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
-              </div>
-          <div class="form-group">
-            <label for="equivalencia">Equivalencias</label>
-            <input type="text" #equivalencia="ngModel" [(ngModel)]="lugares.equivalencia"
-            autocomplete="off" class="form-control" name="equivalencia" id="equivalencia"
-              placeholder="Ingresar Equivalencia">
+              <label for="codigo">Codigo</label>
+              <input type="text" #codigo="ngModel" [(ngModel)]="lugares.codigo" autocomplete="off" class="form-control"
+                name="codigo" id="codigo" placeholder="Ingresar el codigo">
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripcion:</label>
+              <input type="text" #descripcion="ngModel" [(ngModel)]="lugares.descripcion" autocomplete="off"
+                class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
+            </div>
+            <div class="form-group">
+              <label for="equivalencia">Equivalencias</label>
+              <input type="text" #equivalencia="ngModel" [(ngModel)]="lugares.equivalencia" autocomplete="off"
+                class="form-control" name="equivalencia" id="equivalencia" placeholder="Ingresar Equivalencia">
+            </div>
+            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
+              (click)="ModalConfirmacion2">Aceptar</button>
           </div>
-          <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-            (click)="ModalConfirmacion2">Aceptar</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </form>
+      </form>
       <!-- <div class="modal-footer"> </div> -->
     </div>
   </div>
@@ -55,21 +54,21 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <form #formDeleteLugaresInversion="ngForm" (ngSubmit)="deleteLugaresInversion(id)">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmacion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Esta seguro de eliminar este dato?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="submit" class="btn btn-danger"  (ngSubmit)="deleteLugaresInversion()" >Si</button>
-      </div>
-    </form>
+      <form #formDeleteLugaresInversion="ngForm" (ngSubmit)="deleteLugaresInversion(id)">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmacion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Esta seguro de eliminar este dato?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="submit" class="btn btn-danger" (ngSubmit)="deleteLugaresInversion()">Si</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -80,26 +79,26 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <form #formEditLugaresInversion="ngForm" (ngSubmit)="editLugaresInversion(id)">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body col-md-5 ">
-          <div class="form-group ">
-              <label for="Descripcion">Descripcion:</label>
-              <input type="text" #descripcion="ngModel" [(ngModel)]="lugares.descripcion" autocomplete="off"
-                class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
-          </div>
-        <div class="form-group ">
-          <label for="Equivalencias">Equivalencias:</label>
-          <input type="text" #equivalente="ngModel" [(ngModel)]="lugares.equivalencia"
-          autocomplete="off" class="form-control" name="equivalencia" id="equivalente" placeholder="Ingresar Equivalencia">
+      <form #formEditLugaresInversion="ngForm" (ngSubmit)="editLugaresInversion(id)">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div>
-      <div class="modal-footer">
+        <div class="modal-body col-md-5 ">
+          <div class="form-group ">
+            <label for="Descripcion">Descripcion:</label>
+            <input type="text" #descripcion="ngModel" [(ngModel)]="lugares.descripcion" autocomplete="off"
+              class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
+          </div>
+          <div class="form-group ">
+            <label for="Equivalencias">Equivalencias:</label>
+            <input type="text" #equivalente="ngModel" [(ngModel)]="lugares.equivalencia" autocomplete="off"
+              class="form-control" name="equivalencia" id="equivalente" placeholder="Ingresar Equivalencia">
+          </div>
+        </div>
+        <div class="modal-footer">
           <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
         </div>
       </form>
@@ -108,6 +107,45 @@
 </div>
 
 
+<!-- Modal Visualizar  -->
+<div class="modal fade" id="ModalVisualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form #formAddLugaresInversion="ngForm" (ngSubmit)="addLugaresInversion()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Visualizar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body col-md-7 ">
+            <div class="form-group">
+              <label for="codigo">Codigo</label>
+              <input type="text" #codigo="ngModel" [(ngModel)]="lugar.codigo" autocomplete="off" class="form-control"
+                name="codigo" id="codigo" readonly>
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripcion:</label>
+              <input type="text" #descripcion="ngModel" [(ngModel)]="lugar.descripcion" autocomplete="off"
+                class="form-control" name="descripcion" id="descripcion"  readonly>
+            </div>
+            <div class="form-group">
+              <label for="equivalencia">Equivalencias</label>
+              <input type="text" #equivalencia="ngModel" [(ngModel)]="lugar.equivalencia" autocomplete="off"
+                class="form-control" name="equivalencia" id="equivalencia"  readonly>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </form>
+      <!-- <div class="modal-footer"> </div> -->
+    </div>
+  </div>
+</div>
 
 
 
@@ -116,17 +154,18 @@
 
 <!-- buscar -->
 <form class="form-inline my-2 my-lg-0" id="buscador">
-    <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaLugaresInversion" name="something" placeholder="Buscar" aria-label="Search">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaLugaresInversion" name="something"
+    placeholder="Buscar" aria-label="Search">
 </form>
 <div id="content">
   <table class="table">
     <thead class="thead-dark">
       <!-- Columnas -->
       <tr>
-        <th scope="col">Select</th>
         <th scope="col">Codigo</th>
         <th scope="col">Descripcion</th>
         <th scope="col">Equivalencia</th>
+        <th scope="col"> </th>
         <th scope="col"> </th>
         <th scope="col"> </th>
       </tr>
@@ -134,26 +173,29 @@
     <tbody>
 
       <!-- Datos Estaticos -->
-      <tr *ngFor='let alm of visualizarLugaresInversion | paginate: { itemsPerPage: 4, currentPage: p } | searchLugaresInversion:busquedaLugaresInversion'>
-          <th scope="row">{{alm.codigo}}</th>
-          <td>{{alm.codigo}}</td>
-          <td>{{alm.descripcion}}</td>
-          <td>{{alm.equivalencia}}</td>
+      <tr
+        *ngFor='let alm of visualizarLugaresInversion | paginate: { itemsPerPage: 4, currentPage: p } | searchLugaresInversion:busquedaLugaresInversion'>
+        <td>{{alm.codigo}}</td>
+        <td>{{alm.descripcion}}</td>
+        <td>{{alm.equivalencia}}</td>
+
         <!-- Botones -->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-          (click)="readLugaresInversion(alm.codigo)">
-          <i class="fas fa-edit"></i></button></td>
-      <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-        (click)="readLugaresInversion(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
-    </tr>
-      
+            (click)="readLugaresInversion(alm.codigo)">
+            <i class="fas fa-edit"></i></button></td>
+        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
+            (click)="readLugaresInversion(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
+            (click)="readLugaresInversion(alm.codigo)"> <i class="far fa-eye"></i></button></td>                        
+      </tr>
+
     </tbody>
   </table>
 </div>
 <div class="pagination-container">
-    <nav>
-        <ul class="pagination justify-content-center"></ul>
-    </nav>
+  <nav>
+    <ul class="pagination justify-content-center"></ul>
+  </nav>
 </div>
 <pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
 
@@ -162,6 +204,3 @@
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalAgregar"
     (click)="ModalAgregar">Agregar</button>
 </div>
-
-
-
