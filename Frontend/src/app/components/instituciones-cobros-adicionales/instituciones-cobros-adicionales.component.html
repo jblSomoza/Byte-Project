@@ -111,20 +111,18 @@
       </div>
       <div class="modal-body">
         <div class="modal-body col-md-7 ">
-           <!-- <form #formVisualizarInstitucionesCobrosAdicionales="ngForm" >
+           <form #formVisualizarInstitucionesCobrosAdicionales="ngForm" >
                 <div class="form-group">
                     <label for="codigo" class="col-form-label">Código:</label>
-                    <input name="codigo" #titulo="ngModel" [(ngModel)]="institucionesCobrosAdicionalesModel.codigo" type="text"
+                    <input name="codigo" #titulo="ngModel" [(ngModel)]="institucionesCobrosAdicional.codigo" type="text"
                         class="form-control" id="codigo" readonly>
                 </div>
                 <div class="form-group">
                     <label for="descripcion" class="col-form-label">Descripción:</label>
-                    <textarea name="descripcion" #descripcion="ngModel" [(ngModel)]="institucionesCobrosAdicionalesModel.descripcion"
+                    <textarea name="descripcion" #descripcion="ngModel" [(ngModel)]="institucionesCobrosAdicional.descripcion" type="text"
                         class="form-control" id="descripcion" readonly></textarea>
                 </div>
-            </form>-->
-          <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-            (click)="ModalConfirmacion2">Aceptar</button>
+            </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
@@ -145,7 +143,6 @@
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Select</th>
         <th scope="col">Codigo</th>
         <th scope="col">Descripcion</th>
         <th scope="col"> </th>
@@ -155,7 +152,6 @@
     </thead>
     <tbody>
         <tr *ngFor='let alm of visualizarInstitucionesCobrosAdicional | paginate: { itemsPerPage: 4, currentPage: p } | searchInstitucionesCobros:busquedaInstitucionesCobrosAdicional'>
-            <th scope="row">{{alm.codigo}}</th>
             <td>{{alm.codigo}}</td>
             <td>{{alm.descripcion}}</td> 
     
@@ -164,6 +160,8 @@
              (click)="readInstitucionCobroAdicional(alm.codigo)"><i class="fas fa-edit"></i></button></td>
             <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
                 (click)="readInstitucionCobroAdicional(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+            <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVer"
+                (click)="readInstitucionCobroAdicional(alm.codigo)"> <i class="far fa-eye"></i></button></td>
           </tr>
     </tbody>
   </table>
