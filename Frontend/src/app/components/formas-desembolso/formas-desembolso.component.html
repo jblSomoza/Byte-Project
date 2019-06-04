@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-<!-- buscar -->
+
 <!-- EVENTOS DE MODALS-->
 <!-- Modal AGREGAR-->
 <div class="modal fade" id="ModalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -96,28 +96,44 @@
   </div>
 </div>
 
-<!-- Modal confirmacion editar -
-<div class="modal fade" id="ModalConfirmacion1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+
+<!-- Modal Visualizar-->
+<div class="modal fade" id="ModalVisualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+        <form #formAddFormasDesembolso="ngForm">
       <div class="modal-header">
-        <h5 class="modal-title">Confirmacion</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Esta seguro de editar este dato?</p>
+        <div class="modal-body col-md-7 ">
+            <div class="form-group">
+                <label for="codigo">Codigo</label>
+                <input type="text" #codigo="ngModel" [(ngModel)]="formaDesembolso.codigo" autocomplete="off"
+                  class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="descripcion">Descripcion:</label>
+                  <input type="text" #descripcion="ngModel" [(ngModel)]="formaDesembolso.descripcion" autocomplete="off"
+                    class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion" readonly>
+                </div>
+          <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
+            (click)="ModalConfirmacion2">Aceptar</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger">Si</button>
-      </div>
+      <!-- <div class="modal-footer"> </div> -->
+        </form>
     </div>
   </div>
 </div>
----------->
+
 
 
 
@@ -136,6 +152,8 @@
         <th scope="col">Descripcion</th>
         <th scope="col"> </th>
         <th scope="col"> </th>
+        <th scope="col"> </th>
+
       </tr>
     </thead>
     <tbody>
@@ -149,6 +167,8 @@
          (click)="readFormasDesembolso(alm.codigo)"><i class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
             (click)="readFormasDesembolso(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
+          (click)="readFormasDesembolso(alm.codigo)"> <i class="far fa-eye"></i></button></td>
       </tr>
       
     </tbody>

@@ -11,5 +11,5 @@ export class InstitucionesCobrosAdicionalesComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
 }

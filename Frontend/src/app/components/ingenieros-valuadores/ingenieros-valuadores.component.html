@@ -109,6 +109,51 @@
   </div>
 </div>
 
+
+
+<!-- Modal AGREGAR-->
+<div class="modal fade" id="ModalVisualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form #formAddSupervisor="ngForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body"> 
+          <div class="modal-body col-md-7 ">
+            <div class="form-group">
+              <label for="codigo">Codigo</label>
+              <input type="text" #codigo="ngModel" [(ngModel)]="supervisor.codigo" autocomplete="off"
+                class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo" readonly>
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Nombre</label>
+              <input type="text" #descripcion="ngModel" [(ngModel)]="supervisor.descripcion" autocomplete="off"
+                class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion" readonly>
+            </div>
+            <div class="form-group">
+              <label for="descripcion"> Registro</label>
+              <input type="text" #numeroRegistro="ngModel" [(ngModel)]="supervisor.numeroRegistro"
+                autocomplete="off" class="form-control" name="numeroRegistro" id="descripcion"
+                placeholder="Ingresar El Numero de Registro" readonly>
+            </div>
+            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
+              (click)="ModalConfirmacion2">Aceptar</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+        <!-- <div class="modal-footer"> </div> -->
+      </form>
+    </div>
+  </div>
+</div>
+
 <!-- TABLE -->
 <h1>Ingenieros Valuadores</h1>
 <form class="form-inline my-2 my-lg-0" id="buscador">
@@ -124,7 +169,8 @@
         <th scope="col">Institucion</th>
         <th scope="col">Descripcion</th>
         <th scope="col"> </th>
-        <th scope="col"> </th>
+        <th scope="col"> </th> 
+        <th scope="col"> </th> 
       </tr>
     </thead>
     <tbody>
@@ -140,6 +186,12 @@
             (click)="readSupervisor(sup.codigo)"><i class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
             (click)="readSupervisor(sup.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
+              (click)="readSupervisor(sup.codigo)"> <i class="far fa-eye"></i></button></td>
+             
+           
+              
+            
       </tr>
     </tbody>
   </table>
