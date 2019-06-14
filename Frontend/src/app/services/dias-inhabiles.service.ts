@@ -38,7 +38,7 @@ export class DiasInhabilesService {
     return this._http.get(this.url + 'diasNoHabilesNoCobroMora/list?empresa=1', {headers:headers});
   }
 
-  readDiasInhabiles(fechaFeriado: string, tipoFeriado: string): Observable<any>{
+  readDiasInhabiles(fechaFeriado, tipoFeriado): Observable<any>{
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this._http.get(this.url + `diasNoHabilesNoCobroMora/read?empresa=1&fechaFeriado=${fechaFeriado}&tipoFeriado=${tipoFeriado}`, {headers:headers});
