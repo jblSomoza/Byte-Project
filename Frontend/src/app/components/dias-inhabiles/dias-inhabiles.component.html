@@ -61,7 +61,7 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form #formDeleteDiaInhabil="ngForm" (ngSubmit)="listDiasInhabiles()">
+      <form #formDeleteDiaInhabil="ngForm">
         <div class="modal-header">
           <h5 class="modal-title">Confirmacion</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -133,19 +133,15 @@
 
           <!-- para seleccionar el feriado -->
           <div class="form-group">
-              <label for="fechaFeriado" class="col-form-label">Tipo Feriado (F = Fijo / V = Variable)</label>
-              <br>
-                <select class="custom-select" id="inputSelect" #fechaFeriado="ngModel" [(ngModel)]="diaInhabil.tipoFeriado" [ngModelOptions]="{standalone: true}">
-                  <option value="F">F</option>
-                  <option value="V">V</option>
-                </select>
-              <br>
+              <label for="tipoFeriado" class="col-form-label">Tipo Feriado (F = Fijo / V = Variable)</label>
+              <input name="tipoFeriado" #tipoFeriado="ngModel" [(ngModel)]="diaInhabil.tipoFeriado" type="text"
+              class="form-control" id="tipoFeriado" readonly>
           </div>
 
           <!-- Para ingresar la fecha -->
           <div class="form-group">
             <label for="fechaFeriado" class="col-form-label">Fecha Feriado</label>
-            <input name="fechaFeriado" #fechaFeriado="ngModel" [(ngModel)]="diaInhabil.fechaFeriado" type="date"
+            <input name="fechaFeriado" #fechaFeriado="ngModel" [(ngModel)]="diaInhabil.fechaFeriado" type="text"
               class="form-control" id="fechaFeriado" readonly>
           </div>
 
@@ -195,10 +191,10 @@
 
         <!-- Botones -->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-            (click)="readDiaInhabil(dia.fechaFeriado, dia.tipoFeriado)"><i
+            (click)="setDatos(dia.fechaFeriado, dia.tipoFeriado)"><i
               class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-            (click)="readDiaInhabil(dia.fechaFeriado, dia.tipoFeriado)"> <i
+          (click)="setDatos(dia.fechaFeriado, dia.tipoFeriado)"> <i
               class="far fa-trash-alt"></i></button></td>
         <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVer"
           (click)="readDiaInhabil(dia.fechaFeriado, dia.tipoFeriado)"> <i class="far fa-eye"></i></button></td>
