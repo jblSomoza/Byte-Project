@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SupervisorDTO } from "src/app/models/SupervisorDTO.model";
 import { SupervisorService } from "src/app/services/supervisor.service";
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-ingenieros-valuadores',
@@ -28,6 +29,44 @@ export class IngenierosValuadoresComponent implements OnInit {
 
   ngOnInit() {
     this.listSupervisor();
+    /* ALERTA AGREGAR */
+    $(document).ready(function () {
+      $('#guardado').click(function () {
+          $('#alertaAdd').show('fade');
+          setTimeout(function () {
+              $('#alertaAdd').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaAdd').hide('fade');
+      });
+    });
+
+    /* ALERTA EDITAR */
+    $(document).ready(function () {
+      $('#editado').click(function () {
+          $('#alertaEdit').show('fade');
+          setTimeout(function () {
+              $('#alertaEdit').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaEdit').hide('fade');
+      });
+    });
+  
+        /* ALERTA ELIMINAR */
+    $(document).ready(function () {
+      $('#eliminado').click(function () {
+          $('#alertaDelete').show('fade');
+          setTimeout(function () {
+              $('#alertaDelete').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaDelete').hide('fade');
+      });
+    });
   }
 
   addSupervisor(){

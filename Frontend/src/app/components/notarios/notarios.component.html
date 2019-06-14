@@ -2,7 +2,20 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-<!-- buscar -->
+<!-- ALERTAS -->
+
+
+<!-- Alerta EDIT -->
+<div id="alertaEdit" class="alert alert-warning collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Editado Correctamente</strong>
+</div>
+
+<!-- Alerta DELETE -->
+<div id="alertaDelete" class="alert alert-danger collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Eliminado Correctamente</strong>
+</div>
 
 
 <!-- EVENTOS DE MODALS-->
@@ -11,6 +24,12 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
+      <!-- Alerta ADD -->
+      <div id="alertaAdd" class="alert alert-success collapse">
+        <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+        <strong>Agregado Correctamente</strong>
+      </div>
       <form #formAddNotario="ngForm" (ngSubmit)="addNotarios()">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
@@ -22,7 +41,7 @@
           <div class="modal-body col-md-7 ">
             <div class="form-group">
               <label for="codigo">Codigo</label>
-              <input type="text" #codigo="ngModel" [(ngModel)]="notariosModel.codigo" autocomplete="off"
+              <input type="number" #codigo="ngModel" [(ngModel)]="notariosModel.codigo" autocomplete="off"
                 class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
             </div>
             <div class="form-group">
@@ -60,11 +79,9 @@
               <input type="text" #fax="ngModel" [(ngModel)]="notariosModel.fax" autocomplete="off" class="form-control"
                 name="fax" id="fax" placeholder="Ingresar fax">
             </div>
-            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-              (click)="ModalConfirmacion2">Aceptar</button>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+            <button type="submit" id="guardado" class="btn btn-danger" data-toggle="modal">Aceptar</button>
           </div>
         </div>
         <!-- <div class="modal-footer"> </div> -->
@@ -92,7 +109,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <button type="submit" class="btn btn-danger" (ngSubmit)="deleteNotario()">Si</button>
+          <button type="submit" id="eliminado" class="btn btn-danger" (click)="deleteNotario()"
+            data-dismiss="modal">Si</button>
         </div>
       </form>
     </div>
@@ -150,7 +168,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+          <button type="submit" id="editado" class="btn btn-danger" data-toggle="modal" (click)="editNotario()"
+            data-dismiss="modal">Aceptar</button>
         </div>
       </form>
     </div>
@@ -170,16 +189,16 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="form-group">
-          <label for="codigo">Codigo</label>
-          <input type="text" #codigo="ngModel" [(ngModel)]="notario.codigo" autocomplete="off"
-            class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
-        </div>
         <div class="modal-body col-md-5 ">
           <div class="form-group">
+            <label for="codigo">Codigo</label>
+            <input type="text" #codigo="ngModel" [(ngModel)]="notario.codigo" autocomplete="off" class="form-control"
+              name="codigo" id="codigo" placeholder="Ingresar el codigo" readonly>
+          </div>
+          <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" #nombre="ngModel" [(ngModel)]="notario.nombre" autocomplete="off"
-              class="form-control" name="nombre" id="nombre" readonly >
+            <input type="text" #nombre="ngModel" [(ngModel)]="notario.nombre" autocomplete="off" class="form-control"
+              name="nombre" id="nombre" readonly>
           </div>
           <div class="form-group">
             <label for="colegiado">Colegiado No.</label>
@@ -193,7 +212,7 @@
           </div>
           <div class="form-group">
             <label for="direccionDos">Segunda Direccion</label>
-            <input type="text" #direccionDos="ngModel"  [(ngModel)]="notario.direccionDos" autocomplete="off"
+            <input type="text" #direccionDos="ngModel" [(ngModel)]="notario.direccionDos" autocomplete="off"
               class="form-control" name="direccionDos" id="direccionDos" readonly>
           </div>
           <div class="form-group">
@@ -225,7 +244,8 @@
 <!-- TABLE -->
 <h1>Notarios</h1>
 <form class="form-inline my-2 my-lg-0" id="buscador">
-  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaNotario" name="something" placeholder="Buscar" aria-label="Search">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaNotario" name="something" placeholder="Buscar"
+    aria-label="Search">
 </form>
 <div id="content">
   <table class="table">
@@ -234,12 +254,13 @@
         <th scope="col">Codigo</th>
         <th scope="col">Colegiado</th>
         <th scope="col"> </th>
-        <th scope="col"> </th>        
+        <th scope="col"> </th>
         <th scope="col"> </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let notarios of visualizarNotario | searchNotario: busquedaNotario | paginate: { itemsPerPage: 4, currentPage: p }'>
+      <tr
+        *ngFor='let notarios of visualizarNotario | searchNotario: busquedaNotario | paginate: { itemsPerPage: 4, currentPage: p }'>
         <td>{{notarios.codigo}}</td>
         <td>{{notarios.colegiado}}</td>
 
@@ -255,7 +276,7 @@
 </div>
 <div class="pagination-container">
   <nav>
-      <ul class="pagination justify-content-center"></ul>
+    <ul class="pagination justify-content-center"></ul>
   </nav>
 </div>
 <pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
@@ -265,4 +286,3 @@
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalAgregar"
     (click)="ModalAgregar">Agregar</button>
 </div>
-

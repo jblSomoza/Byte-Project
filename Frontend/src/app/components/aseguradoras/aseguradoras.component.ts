@@ -1,6 +1,8 @@
 import { Component, OnInit ,ViewChild } from '@angular/core';
 import { AseguradorasDTO } from 'src/app/models/AseguradorasDTO.model';
 import { AseguradorasService } from 'src/app/services/aseguradoras.service';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-aseguradoras',
@@ -33,6 +35,44 @@ export class AseguradorasComponent implements OnInit {
 
   ngOnInit() {
     this.listarAseguradoras();
+    /* ALERTA AGREGAR */
+    $(document).ready(function () {
+      $('#guardado').click(function () {
+          $('#alertaAdd').show('fade');
+          setTimeout(function () {
+              $('#alertaAdd').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaAdd').hide('fade');
+      });
+    });
+
+    /* ALERTA EDITAR */
+    $(document).ready(function () {
+      $('#editado').click(function () {
+          $('#alertaEdit').show('fade');
+          setTimeout(function () {
+              $('#alertaEdit').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaEdit').hide('fade');
+      });
+    });
+  
+        /* ALERTA ELIMINAR */
+    $(document).ready(function () {
+      $('#eliminado').click(function () {
+          $('#alertaDelete').show('fade');
+          setTimeout(function () {
+              $('#alertaDelete').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaDelete').hide('fade');
+      });
+    });
   }
   addAseguradora() {
     this._aseguradorasService.addAseguradora(this.aseguradoras).subscribe(

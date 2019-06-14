@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { InstanciasDTO } from 'src/app/models/InstanciasDTO.model';
 import { InstanciaService } from 'src/app/services/instancia.service';
-import { $ } from 'protractor';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-instancia',
   templateUrl: './instancia.component.html',
@@ -31,6 +30,45 @@ export class InstanciaComponent implements OnInit {
 
   ngOnInit() {
     this.listInstancia();
+ /* ALERTA AGREGAR */
+ $(document).ready(function () {
+  $('#guardado').click(function () {
+      $('#alertaAdd').show('fade');
+      setTimeout(function () {
+          $('#alertaAdd').hide('fade');
+      }, 2000);
+  });
+  $('#linkClose').click(function () {
+      $('#alertaAdd').hide('fade');
+  });
+});
+
+/* ALERTA EDITAR */
+$(document).ready(function () {
+  $('#editado').click(function () {
+      $('#alertaEdit').show('fade');
+      setTimeout(function () {
+          $('#alertaEdit').hide('fade');
+      }, 2000);
+  });
+  $('#linkClose').click(function () {
+      $('#alertaEdit').hide('fade');
+  });
+});
+
+    /* ALERTA ELIMINAR */
+$(document).ready(function () {
+  $('#eliminado').click(function () {
+      $('#alertaDelete').show('fade');
+      setTimeout(function () {
+          $('#alertaDelete').hide('fade');
+      }, 2000);
+  });
+  $('#linkClose').click(function () {
+      $('#alertaDelete').hide('fade');
+  });
+});
+
   }
 
   addInstancia(){

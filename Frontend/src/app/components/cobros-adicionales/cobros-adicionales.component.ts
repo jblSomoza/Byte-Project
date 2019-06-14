@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CobrosAdicionalesDTO } from 'src/app/models/CobrosAdicionalesDTO.model';
 import { CobrosAdicionalesService } from 'src/app/services/cobros-adicionales.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-cobros-adicionales',
@@ -35,6 +36,45 @@ export class CobrosAdicionalesComponent implements OnInit {
   ngOnInit() {
   
     this.listCobroAdicional()
+
+     /* ALERTA AGREGAR */
+     $(document).ready(function () {
+      $('#guardado').click(function () {
+          $('#alertaAdd').show('fade');
+          setTimeout(function () {
+              $('#alertaAdd').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaAdd').hide('fade');
+      });
+    });
+
+    /* ALERTA EDITAR */
+    $(document).ready(function () {
+      $('#editado').click(function () {
+          $('#alertaEdit').show('fade');
+          setTimeout(function () {
+              $('#alertaEdit').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaEdit').hide('fade');
+      });
+    });
+  
+        /* ALERTA ELIMINAR */
+    $(document).ready(function () {
+      $('#eliminado').click(function () {
+          $('#alertaDelete').show('fade');
+          setTimeout(function () {
+              $('#alertaDelete').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaDelete').hide('fade');
+      });
+    });
   }
 
   listCobroAdicional() {   /* El del servicion */

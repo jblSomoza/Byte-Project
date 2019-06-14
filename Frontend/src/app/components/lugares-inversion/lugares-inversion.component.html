@@ -2,6 +2,21 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+<!-- ALERTAS -->
+
+
+
+<!-- Alerta EDIT -->
+<div id="alertaEdit" class="alert alert-warning collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Editado Correctamente</strong>
+</div>
+
+<!-- Alerta DELETE -->
+<div id="alertaDelete" class="alert alert-danger collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Eliminado Correctamente</strong>
+</div>
 
 
 <!-- EVENTOS DE MODALS-->
@@ -10,6 +25,11 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <!-- Alerta ADD -->
+      <div id="alertaAdd" class="alert alert-success collapse">
+        <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+        <strong>Agregado Correctamente</strong>
+      </div>
       <form #formAddLugaresInversion="ngForm" (ngSubmit)="addLugaresInversion()">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
@@ -21,8 +41,8 @@
           <div class="modal-body col-md-7 ">
             <div class="form-group">
               <label for="codigo">Codigo</label>
-              <input type="text" #codigo="ngModel" [(ngModel)]="lugares.codigo" autocomplete="off" class="form-control"
-                name="codigo" id="codigo" placeholder="Ingresar el codigo">
+              <input type="number" #codigo="ngModel" [(ngModel)]="lugares.codigo" autocomplete="off"
+                class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
             </div>
             <div class="form-group">
               <label for="descripcion">Descripcion:</label>
@@ -32,13 +52,12 @@
             <div class="form-group">
               <label for="equivalencia">Equivalencias</label>
               <input type="text" #equivalencia="ngModel" [(ngModel)]="lugares.equivalencia" autocomplete="off"
-                class="form-control" name="equivalencia" id="equivalencia" placeholder="Ingresar Equivalencia">
+                class="form-control" name="equivalencia" id="equivalencia" placeholder="Ingresar Equivalencia"
+                maxlength="2" required>
             </div>
-            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-              (click)="ModalConfirmacion2">Aceptar</button>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-danger" data-toggle="modal" id="guardado">Aceptar</button>
           </div>
         </div>
       </form>
@@ -66,7 +85,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <button type="submit" class="btn btn-danger" (ngSubmit)="deleteLugaresInversion()">Si</button>
+          <button type="submit" id="eliminado" class="btn btn-danger" (click)="deleteLugaresInversion()"
+            data-dismiss="modal">Si</button>
         </div>
       </form>
     </div>
@@ -89,17 +109,18 @@
         <div class="modal-body col-md-5 ">
           <div class="form-group ">
             <label for="Descripcion">Descripcion:</label>
-            <input type="text" #descripcion="ngModel" [(ngModel)]="lugares.descripcion" autocomplete="off"
+            <input type="text" #descripcion="ngModel" [(ngModel)]="lugares.descripcion" autocomplete="on"
               class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
           </div>
           <div class="form-group ">
             <label for="Equivalencias">Equivalencias:</label>
-            <input type="text" #equivalente="ngModel" [(ngModel)]="lugares.equivalencia" autocomplete="off"
+            <input type="text" maxlength="2" #equivalente="ngModel" [(ngModel)]="lugares.equivalencia" autocomplete="on"
               class="form-control" name="equivalencia" id="equivalente" placeholder="Ingresar Equivalencia">
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+          <button type="submit" id="editado" class="btn btn-danger" data-toggle="modal" (click)="editLugaresInversion()"
+            data-dismiss="modal">Aceptar</button>
         </div>
       </form>
     </div>
@@ -129,12 +150,12 @@
             <div class="form-group">
               <label for="descripcion">Descripcion:</label>
               <input type="text" #descripcion="ngModel" [(ngModel)]="lugar.descripcion" autocomplete="off"
-                class="form-control" name="descripcion" id="descripcion"  readonly>
+                class="form-control" name="descripcion" id="descripcion" readonly>
             </div>
             <div class="form-group">
               <label for="equivalencia">Equivalencias</label>
               <input type="text" #equivalencia="ngModel" [(ngModel)]="lugar.equivalencia" autocomplete="off"
-                class="form-control" name="equivalencia" id="equivalencia"  readonly>
+                class="form-control" name="equivalencia" id="equivalencia" readonly>
             </div>
           </div>
           <div class="modal-footer">
@@ -174,7 +195,7 @@
 
       <!-- Datos Estaticos -->
       <tr
-        *ngFor='let alm of visualizarLugaresInversion | paginate: { itemsPerPage: 4, currentPage: p } | searchLugaresInversion:busquedaLugaresInversion'>
+        *ngFor='let alm of visualizarLugaresInversion | searchLugaresInversion:busquedaLugaresInversion | paginate: { itemsPerPage: 4, currentPage: p } '>
         <td>{{alm.codigo}}</td>
         <td>{{alm.descripcion}}</td>
         <td>{{alm.equivalencia}}</td>
@@ -186,7 +207,7 @@
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
             (click)="readLugaresInversion(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
         <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
-            (click)="readLugaresInversion(alm.codigo)"> <i class="far fa-eye"></i></button></td>                        
+            (click)="readLugaresInversion(alm.codigo)"> <i class="far fa-eye"></i></button></td>
       </tr>
 
     </tbody>

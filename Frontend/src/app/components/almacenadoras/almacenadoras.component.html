@@ -3,16 +3,34 @@
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
-<!-- buscar -->
+<!-- ALERTAS -->
 
 
+<!-- Alerta EDIT -->
+<div id="alertaEdit" class="alert alert-warning collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Editado Correctamente</strong>
+</div>
+
+<!-- Alerta DELETE -->
+<div id="alertaDelete" class="alert alert-danger collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Eliminado Correctamente</strong>
+</div>
 
 <!-- EVENTOS DE MODALS-->
+
 <!-- Modal AGREGAR-->
 <div class="modal fade" id="ModalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <!-- Alerta ADD -->
+      <div id="alertaAdd" class="alert alert-success collapse">
+        <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+        <strong>Agregado Correctamente</strong>
+      </div>
+
       <form #formAddAlmacenadora="ngForm" (ngSubmit)="addAlmacenadora()">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
@@ -24,7 +42,7 @@
           <div class="modal-body col-md-7 ">
             <div class="form-group">
               <label for="codigo">Codigo</label>
-              <input type="text" #codigo="ngModel" [(ngModel)]="almacenadoras.codigo" autocomplete="off"
+              <input type="number" #codigo="ngModel" [(ngModel)]="almacenadoras.codigo" autocomplete="off"
                 class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
             </div>
             <div class="form-group">
@@ -32,15 +50,14 @@
               <input type="text" #descripcion="ngModel" [(ngModel)]="almacenadoras.descripcion" autocomplete="off"
                 class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
             </div>
-            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-              (click)="ModalConfirmacion2">Aceptar</button>
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+            <button type="submit" id="guardado" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+            <!-- <---Este boton ejecuta la funcion de agregar porque en el form se pone el "NgSubmit" y esto indica que se ejecutara por un Boton Submit   -->
           </div>
         </div>
       </form>
-      <!-- <div class="modal-footer"> </div> -->
     </div>
   </div>
 </div>
@@ -64,7 +81,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <button type="submit" class="btn btn-danger"  (ngSubmit)="deleteAlmacenadora()" >Si</button>
+          <button type="submit" id="eliminado" class="btn btn-danger" (click)="deleteAlmacenadora()"
+            data-dismiss="modal">Si</button>
         </div>
       </form>
     </div>
@@ -91,7 +109,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+          <button type="submit" id="editado" class="btn btn-danger" data-toggle="modal" (click)="editAlmacenadora()"
+            data-dismiss="modal">Aceptar</button>
         </div>
       </form>
     </div>
@@ -137,7 +156,8 @@
 <!-- TABLE -->
 <H1>Almacenadora</H1>
 <form class="form-inline my-2 my-lg-0" id="buscador">
-    <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaAlmacenadora" name="something" placeholder="Buscar" aria-label="Search">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaAlmacenadora" name="something"
+    placeholder="Buscar" aria-label="Search">
 </form>
 
 <div id="content">
@@ -152,34 +172,36 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let alm of visualizarAlmacenadora | paginate: { itemsPerPage: 4, currentPage: p } | searchAlmacenadora:busquedaAlmacenadora'>
+      <tr
+        *ngFor='let alm of visualizarAlmacenadora | searchAlmacenadora:busquedaAlmacenadora | paginate: { itemsPerPage: 4, currentPage: p } '>
         <td>{{alm.codigo}}</td>
         <td>{{alm.descripcion}}</td>
 
 
-        <!-- Botones -->
+        <!-- Botones Para Abrir Modals-->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-         (click)="readAlmacenadora(alm.codigo)"><i class="fas fa-edit"></i></button></td>
+            (click)="readAlmacenadora(alm.codigo)"><i class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
             (click)="readAlmacenadora(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
         <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
-            (click)="readAlmacenadora(alm.codigo)"> <i class="fas fa-eye"></i></button></td>            
+            (click)="readAlmacenadora(alm.codigo)"> <i class="fas fa-eye"></i></button></td>
       </tr>
 
     </tbody>
   </table>
 </div>
+
+<!--Paginacion -->
 <div class="pagination-container">
-    <nav>
-        <ul class="pagination justify-content-center"></ul>
-    </nav>
+  <nav>
+    <ul class="pagination justify-content-center"></ul>
+  </nav>
 </div>
 <pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
 
 
-<!-- Boton Agregar -->
+<!-- Boton Abrir Modal Agregar -->
 <div class="BtnAgregar">
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalAgregar"
     (click)="ModalAgregar">Agregar</button>
 </div>
-

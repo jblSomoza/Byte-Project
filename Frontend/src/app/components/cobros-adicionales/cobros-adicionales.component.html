@@ -2,6 +2,20 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+<!-- ALERTAS -->
+
+
+<!-- Alerta EDIT -->
+<div id="alertaEdit" class="alert alert-warning collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Editado Correctamente</strong>
+</div>
+
+<!-- Alerta DELETE -->
+<div id="alertaDelete" class="alert alert-danger collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Eliminado Correctamente</strong>
+</div>
 
 <!-- EVENTOS DE MODALS-->
 <!-- Modal AGREGAR-->
@@ -9,7 +23,14 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form #formAddCobroAdicional="ngForm" (ngSubmit)="addCobroAdicional()">  <!-- Se usa el @ViewChild y la funcion del TypeScript -->
+
+      <!-- Alerta ADD -->
+      <div id="alertaAdd" class="alert alert-success collapse">
+        <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+        <strong>Agregado Correctamente</strong>
+      </div>
+      <form #formAddCobroAdicional="ngForm" (ngSubmit)="addCobroAdicional()">
+        <!-- Se usa el @ViewChild y la funcion del TypeScript -->
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -20,7 +41,7 @@
           <div class="modal-body col-md-7 ">
             <div class="form-group">
               <label for="codigo">Codigo</label>
-              <input type="text" #codigo="ngModel" [(ngModel)]="cobroAdicionalModel.codigo" autocomplete="off"
+              <input type="number" #codigo="ngModel" [(ngModel)]="cobroAdicionalModel.codigo" autocomplete="off"
                 class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
             </div>
             <div class="form-group">
@@ -32,62 +53,73 @@
 
             <div class="form-group">
               <label for="acumulaPeriodos">acumulaPeriodos:</label>
-              <input type="text" #acumulaPeriodos="ngModel" [(ngModel)]="cobroAdicionalModel.acumulaPeriodos" autocomplete="off"
-                class="form-control" name="acumulaPeriodos" id="acumulaPeriodos" placeholder="Ingresar acumulaPeriodos">
+              <input type="text" #acumulaPeriodos="ngModel" [(ngModel)]="cobroAdicionalModel.acumulaPeriodos"
+                autocomplete="off" class="form-control" name="acumulaPeriodos" id="acumulaPeriodos"
+                placeholder="Ingresar acumulaPeriodos">
             </div>
 
 
 
             <div class="form-group">
               <label for="calculoFlatAlVencimiento">calculoFlatAlVencimiento:</label>
-              <input type="text" #calculoFlatAlVencimiento="ngModel" [(ngModel)]="cobroAdicionalModel.calculoFlatAlVencimiento" autocomplete="off"
-                class="form-control" name="calculoFlatAlVencimiento" id="calculoFlatAlVencimiento" placeholder="Ingresar calculoFlatAlVencimiento">
+              <input type="text" #calculoFlatAlVencimiento="ngModel"
+                [(ngModel)]="cobroAdicionalModel.calculoFlatAlVencimiento" autocomplete="off" class="form-control"
+                name="calculoFlatAlVencimiento" id="calculoFlatAlVencimiento"
+                placeholder="Ingresar calculoFlatAlVencimiento">
             </div>
 
 
             <div class="form-group">
               <label for="formatoImpresion">formatoImpresion:</label>
-              <input type="text" #formatoImpresion="ngModel" [(ngModel)]="cobroAdicionalModel.formatoImpresion" autocomplete="off"
-                class="form-control" name="formatoImpresion" id="formatoImpresion" placeholder="Ingresar formatoImpresion">
+              <input type="text" #formatoImpresion="ngModel" [(ngModel)]="cobroAdicionalModel.formatoImpresion"
+                autocomplete="off" class="form-control" name="formatoImpresion" id="formatoImpresion"
+                placeholder="Ingresar formatoImpresion">
             </div>
 
 
             <div class="form-group">
               <label for="inclusionComprobada">inclusionComprobada:</label>
-              <input type="text" #inclusionComprobada="ngModel" [(ngModel)]="cobroAdicionalModel.inclusionComprobada" autocomplete="off"
-                class="form-control" name="inclusionComprobada" id="inclusionComprobada" placeholder="Ingresar inclusionComprobada">
+              <input type="text" #inclusionComprobada="ngModel" [(ngModel)]="cobroAdicionalModel.inclusionComprobada"
+                autocomplete="off" class="form-control" name="inclusionComprobada" id="inclusionComprobada"
+                placeholder="Ingresar inclusionComprobada">
             </div>
 
             <div class="form-group">
               <label for="incluyeCalculoInteres">incluyeCalculoInteres:</label>
-              <input type="text" #incluyeCalculoInteres="ngModel" [(ngModel)]="cobroAdicionalModel.incluyeCalculoInteres" autocomplete="off"
-                class="form-control" name="incluyeCalculoInteres" id="incluyeCalculoInteres" placeholder="Ingresar incluyeCalculoInteres">
+              <input type="text" #incluyeCalculoInteres="ngModel"
+                [(ngModel)]="cobroAdicionalModel.incluyeCalculoInteres" autocomplete="off" class="form-control"
+                name="incluyeCalculoInteres" id="incluyeCalculoInteres" placeholder="Ingresar incluyeCalculoInteres">
             </div>
 
             <div class="form-group">
               <label for="incluyeCalculoMora">incluyeCalculoMora:</label>
-              <input type="text" #incluyeCalculoMora="ngModel" [(ngModel)]="cobroAdicionalModel.incluyeCalculoMora" autocomplete="off"
-                class="form-control" name="incluyeCalculoMora" id="incluyeCalculoMora" placeholder="Ingresar incluyeCalculoMora">
+              <input type="text" #incluyeCalculoMora="ngModel" [(ngModel)]="cobroAdicionalModel.incluyeCalculoMora"
+                autocomplete="off" class="form-control" name="incluyeCalculoMora" id="incluyeCalculoMora"
+                placeholder="Ingresar incluyeCalculoMora">
             </div>
             <div class="form-group">
               <label for="incluyeEnCapital">incluyeEnCapital:</label>
-              <input type="text" #incluyeEnCapital="ngModel" [(ngModel)]="cobroAdicionalModel.incluyeEnCapital" autocomplete="off"
-                class="form-control" name="incluyeEnCapital" id="incluyeEnCapital" placeholder="Ingresar incluyeEnCapital">
+              <input type="text" #incluyeEnCapital="ngModel" [(ngModel)]="cobroAdicionalModel.incluyeEnCapital"
+                autocomplete="off" class="form-control" name="incluyeEnCapital" id="incluyeEnCapital"
+                placeholder="Ingresar incluyeEnCapital">
             </div>
             <div class="form-group">
               <label for="opcionAcompra">opcionAcompra:</label>
-              <input type="text" #opcionAcompra="ngModel" [(ngModel)]="cobroAdicionalModel.opcionAcompra" autocomplete="off"
-                class="form-control" name="opcionAcompra" id="opcionAcompra" placeholder="Ingresar opcionAcompra">
+              <input type="text" #opcionAcompra="ngModel" [(ngModel)]="cobroAdicionalModel.opcionAcompra"
+                autocomplete="off" class="form-control" name="opcionAcompra" id="opcionAcompra"
+                placeholder="Ingresar opcionAcompra">
             </div>
             <div class="form-group">
               <label for="pagosAterceros">pagosAterceros:</label>
-              <input type="text" #pagosAterceros="ngModel" [(ngModel)]="cobroAdicionalModel.pagosAterceros" autocomplete="off"
-                class="form-control" name="pagosAterceros" id="pagosAterceros" placeholder="Ingresar pagosAterceros">
+              <input type="text" #pagosAterceros="ngModel" [(ngModel)]="cobroAdicionalModel.pagosAterceros"
+                autocomplete="off" class="form-control" name="pagosAterceros" id="pagosAterceros"
+                placeholder="Ingresar pagosAterceros">
             </div>
             <div class="form-group">
               <label for="polizaColectiva">polizaColectiva:</label>
-              <input type="text" #polizaColectiva="ngModel" [(ngModel)]="cobroAdicionalModel.polizaColectiva" autocomplete="off"
-                class="form-control" name="polizaColectiva" id="polizaColectiva" placeholder="Ingresar polizaColectiva">
+              <input type="text" #polizaColectiva="ngModel" [(ngModel)]="cobroAdicionalModel.polizaColectiva"
+                autocomplete="off" class="form-control" name="polizaColectiva" id="polizaColectiva"
+                placeholder="Ingresar polizaColectiva">
             </div>
             <div class="form-group">
               <label for="provisiona">provisiona:</label>
@@ -96,30 +128,34 @@
             </div>
             <div class="form-group">
               <label for="repPagoTercero">repPagoTercero:</label>
-              <input type="text" #repPagoTercero="ngModel" [(ngModel)]="cobroAdicionalModel.repPagoTercero" autocomplete="off"
-                class="form-control" name="repPagoTercero" id="repPagoTercero" placeholder="Ingresar repPagoTercero">
+              <input type="text" #repPagoTercero="ngModel" [(ngModel)]="cobroAdicionalModel.repPagoTercero"
+                autocomplete="off" class="form-control" name="repPagoTercero" id="repPagoTercero"
+                placeholder="Ingresar repPagoTercero">
             </div>
             <div class="form-group">
               <label for="seUsaEnFianza">seUsaEnFianza:</label>
-              <input type="text" #seUsaEnFianza="ngModel" [(ngModel)]="cobroAdicionalModel.seUsaEnFianza" autocomplete="off"
-                class="form-control" name="seUsaEnFianza" id="seUsaEnFianza" placeholder="Ingresar seUsaEnFianza">
+              <input type="text" #seUsaEnFianza="ngModel" [(ngModel)]="cobroAdicionalModel.seUsaEnFianza"
+                autocomplete="off" class="form-control" name="seUsaEnFianza" id="seUsaEnFianza"
+                placeholder="Ingresar seUsaEnFianza">
             </div>
             <div class="form-group">
               <label for="utilizaCodeudor">utilizaCodeudor:</label>
-              <input type="text" #utilizaCodeudor="ngModel" [(ngModel)]="cobroAdicionalModel.utilizaCodeudor" autocomplete="off"
-                class="form-control" name="utilizaCodeudor" id="utilizaCodeudor" placeholder="Ingresar utilizaCodeudor">
+              <input type="text" #utilizaCodeudor="ngModel" [(ngModel)]="cobroAdicionalModel.utilizaCodeudor"
+                autocomplete="off" class="form-control" name="utilizaCodeudor" id="utilizaCodeudor"
+                placeholder="Ingresar utilizaCodeudor">
             </div>
             <div class="form-group">
               <label for="utilizaFactorDivisorParaCalculoFlat">utilizaFactorDivisorParaCalculoFlat:</label>
-              <input type="text" #utilizaFactorDivisorParaCalculoFlat="ngModel" [(ngModel)]="cobroAdicionalModel.utilizaFactorDivisorParaCalculoFlat" autocomplete="off"
-                class="form-control" name="utilizaFactorDivisorParaCalculoFlat" id="utilizaFactorDivisorParaCalculoFlat" placeholder="Ingresar utilizaFactorDivisorParaCalculoFlat">
-            </div>          
-        
-            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-              (click)="ModalConfirmacion2">Aceptar</button>
+              <input type="text" #utilizaFactorDivisorParaCalculoFlat="ngModel"
+                [(ngModel)]="cobroAdicionalModel.utilizaFactorDivisorParaCalculoFlat" autocomplete="off"
+                class="form-control" name="utilizaFactorDivisorParaCalculoFlat" id="utilizaFactorDivisorParaCalculoFlat"
+                placeholder="Ingresar utilizaFactorDivisorParaCalculoFlat">
+            </div>
+
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+            <button type="submit" id="guardado" class="btn btn-danger" data-toggle="modal">Aceptar</button>
           </div>
         </div>
       </form>
@@ -146,7 +182,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <button type="submit" class="btn btn-danger"  (ngSubmit)="deleteCobroAdicional()">Si</button>
+          <button type="submit" id="eliminado" class="btn btn-danger" (click)="deleteCobroAdicional()"
+            data-dismiss="modal">Si</button>
         </div>
       </form>
     </div>
@@ -171,96 +208,113 @@
             <input type="text" #descripcion="ngModel" [(ngModel)]="cobroAdicionalModel.descripcion" autocomplete="off"
               class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
           </div>
-            <!-- ------------------------------------ -->
+          <!-- ------------------------------------ -->
 
-            <div class="form-group">
-              <label for="acumulaPeriodos">acumulaPeriodos:</label>
-              <input type="text" #acumulaPeriodos="ngModel" [(ngModel)]="cobroAdicionalModel.acumulaPeriodos" autocomplete="off"
-                class="form-control" name="acumulaPeriodos" id="acumulaPeriodos" placeholder="Ingresar acumulaPeriodos">
-            </div>
-
-
-
-            <div class="form-group">
-              <label for="calculoFlatAlVencimiento">calculoFlatAlVencimiento:</label>
-              <input type="text" #calculoFlatAlVencimiento="ngModel" [(ngModel)]="cobroAdicionalModel.calculoFlatAlVencimiento" autocomplete="off"
-                class="form-control" name="calculoFlatAlVencimiento" id="calculoFlatAlVencimiento" placeholder="Ingresar calculoFlatAlVencimiento">
-            </div>
+          <div class="form-group">
+            <label for="acumulaPeriodos">acumulaPeriodos:</label>
+            <input type="text" #acumulaPeriodos="ngModel" [(ngModel)]="cobroAdicionalModel.acumulaPeriodos"
+              autocomplete="off" class="form-control" name="acumulaPeriodos" id="acumulaPeriodos"
+              placeholder="Ingresar acumulaPeriodos">
+          </div>
 
 
-            <div class="form-group">
-              <label for="formatoImpresion">formatoImpresion:</label>
-              <input type="text" #formatoImpresion="ngModel" [(ngModel)]="cobroAdicionalModel.formatoImpresion" autocomplete="off"
-                class="form-control" name="formatoImpresion" id="formatoImpresion" placeholder="Ingresar formatoImpresion">
-            </div>
+
+          <div class="form-group">
+            <label for="calculoFlatAlVencimiento">calculoFlatAlVencimiento:</label>
+            <input type="text" #calculoFlatAlVencimiento="ngModel"
+              [(ngModel)]="cobroAdicionalModel.calculoFlatAlVencimiento" autocomplete="off" class="form-control"
+              name="calculoFlatAlVencimiento" id="calculoFlatAlVencimiento"
+              placeholder="Ingresar calculoFlatAlVencimiento">
+          </div>
 
 
-            <div class="form-group">
-              <label for="inclusionComprobada">inclusionComprobada:</label>
-              <input type="text" #inclusionComprobada="ngModel" [(ngModel)]="cobroAdicionalModel.inclusionComprobada" autocomplete="off"
-                class="form-control" name="inclusionComprobada" id="inclusionComprobada" placeholder="Ingresar inclusionComprobada">
-            </div>
+          <div class="form-group">
+            <label for="formatoImpresion">formatoImpresion:</label>
+            <input type="text" #formatoImpresion="ngModel" [(ngModel)]="cobroAdicionalModel.formatoImpresion"
+              autocomplete="off" class="form-control" name="formatoImpresion" id="formatoImpresion"
+              placeholder="Ingresar formatoImpresion">
+          </div>
 
-            <div class="form-group">
-              <label for="incluyeCalculoInteres">incluyeCalculoInteres:</label>
-              <input type="text" #incluyeCalculoInteres="ngModel" [(ngModel)]="cobroAdicionalModel.incluyeCalculoInteres" autocomplete="off"
-                class="form-control" name="incluyeCalculoInteres" id="incluyeCalculoInteres" placeholder="Ingresar incluyeCalculoInteres">
-            </div>
 
-            <div class="form-group">
-              <label for="incluyeCalculoMora">incluyeCalculoMora:</label>
-              <input type="text" #incluyeCalculoMora="ngModel" [(ngModel)]="cobroAdicionalModel.incluyeCalculoMora" autocomplete="off"
-                class="form-control" name="incluyeCalculoMora" id="incluyeCalculoMora" placeholder="Ingresar incluyeCalculoMora">
-            </div>
-            <div class="form-group">
-              <label for="incluyeEnCapital">incluyeEnCapital:</label>
-              <input type="text" #incluyeEnCapital="ngModel" [(ngModel)]="cobroAdicionalModel.incluyeEnCapital" autocomplete="off"
-                class="form-control" name="incluyeEnCapital" id="incluyeEnCapital" placeholder="Ingresar incluyeEnCapital">
-            </div>
-            <div class="form-group">
-              <label for="opcionAcompra">opcionAcompra:</label>
-              <input type="text" #opcionAcompra="ngModel" [(ngModel)]="cobroAdicionalModel.opcionAcompra" autocomplete="off"
-                class="form-control" name="opcionAcompra" id="opcionAcompra" placeholder="Ingresar opcionAcompra">
-            </div>
-            <div class="form-group">
-              <label for="pagosAterceros">pagosAterceros:</label>
-              <input type="text" #pagosAterceros="ngModel" [(ngModel)]="cobroAdicionalModel.pagosAterceros" autocomplete="off"
-                class="form-control" name="pagosAterceros" id="pagosAterceros" placeholder="Ingresar pagosAterceros">
-            </div>
-            <div class="form-group">
-              <label for="polizaColectiva">polizaColectiva:</label>
-              <input type="text" #polizaColectiva="ngModel" [(ngModel)]="cobroAdicionalModel.polizaColectiva" autocomplete="off"
-                class="form-control" name="polizaColectiva" id="polizaColectiva" placeholder="Ingresar polizaColectiva">
-            </div>
-            <div class="form-group">
-              <label for="provisiona">provisiona:</label>
-              <input type="text" #provisiona="ngModel" [(ngModel)]="cobroAdicionalModel.provisiona" autocomplete="off"
-                class="form-control" name="provisiona" id="provisiona" placeholder="Ingresar provisiona">
-            </div>
-            <div class="form-group">
-              <label for="repPagoTercero">repPagoTercero:</label>
-              <input type="text" #repPagoTercero="ngModel" [(ngModel)]="cobroAdicionalModel.repPagoTercero" autocomplete="off"
-                class="form-control" name="repPagoTercero" id="repPagoTercero" placeholder="Ingresar repPagoTercero">
-            </div>
-            <div class="form-group">
-              <label for="seUsaEnFianza">seUsaEnFianza:</label>
-              <input type="text" #seUsaEnFianza="ngModel" [(ngModel)]="cobroAdicionalModel.seUsaEnFianza" autocomplete="off"
-                class="form-control" name="seUsaEnFianza" id="seUsaEnFianza" placeholder="Ingresar seUsaEnFianza">
-            </div>
-            <div class="form-group">
-              <label for="utilizaCodeudor">utilizaCodeudor:</label>
-              <input type="text" #utilizaCodeudor="ngModel" [(ngModel)]="cobroAdicionalModel.utilizaCodeudor" autocomplete="off"
-                class="form-control" name="utilizaCodeudor" id="utilizaCodeudor" placeholder="Ingresar utilizaCodeudor">
-            </div>
-            <div class="form-group">
-              <label for="utilizaFactorDivisorParaCalculoFlat">utilizaFactorDivisorParaCalculoFlat:</label>
-              <input type="text" #utilizaFactorDivisorParaCalculoFlat="ngModel" [(ngModel)]="cobroAdicionalModel.utilizaFactorDivisorParaCalculoFlat" autocomplete="off"
-                class="form-control" name="utilizaFactorDivisorParaCalculoFlat" id="utilizaFactorDivisorParaCalculoFlat" placeholder="Ingresar utilizaFactorDivisorParaCalculoFlat">
-            </div>
-            
+          <div class="form-group">
+            <label for="inclusionComprobada">inclusionComprobada:</label>
+            <input type="text" #inclusionComprobada="ngModel" [(ngModel)]="cobroAdicionalModel.inclusionComprobada"
+              autocomplete="off" class="form-control" name="inclusionComprobada" id="inclusionComprobada"
+              placeholder="Ingresar inclusionComprobada">
+          </div>
+
+          <div class="form-group">
+            <label for="incluyeCalculoInteres">incluyeCalculoInteres:</label>
+            <input type="text" #incluyeCalculoInteres="ngModel" [(ngModel)]="cobroAdicionalModel.incluyeCalculoInteres"
+              autocomplete="off" class="form-control" name="incluyeCalculoInteres" id="incluyeCalculoInteres"
+              placeholder="Ingresar incluyeCalculoInteres">
+          </div>
+
+          <div class="form-group">
+            <label for="incluyeCalculoMora">incluyeCalculoMora:</label>
+            <input type="text" #incluyeCalculoMora="ngModel" [(ngModel)]="cobroAdicionalModel.incluyeCalculoMora"
+              autocomplete="off" class="form-control" name="incluyeCalculoMora" id="incluyeCalculoMora"
+              placeholder="Ingresar incluyeCalculoMora">
+          </div>
+          <div class="form-group">
+            <label for="incluyeEnCapital">incluyeEnCapital:</label>
+            <input type="text" #incluyeEnCapital="ngModel" [(ngModel)]="cobroAdicionalModel.incluyeEnCapital"
+              autocomplete="off" class="form-control" name="incluyeEnCapital" id="incluyeEnCapital"
+              placeholder="Ingresar incluyeEnCapital">
+          </div>
+          <div class="form-group">
+            <label for="opcionAcompra">opcionAcompra:</label>
+            <input type="text" #opcionAcompra="ngModel" [(ngModel)]="cobroAdicionalModel.opcionAcompra"
+              autocomplete="off" class="form-control" name="opcionAcompra" id="opcionAcompra"
+              placeholder="Ingresar opcionAcompra">
+          </div>
+          <div class="form-group">
+            <label for="pagosAterceros">pagosAterceros:</label>
+            <input type="text" #pagosAterceros="ngModel" [(ngModel)]="cobroAdicionalModel.pagosAterceros"
+              autocomplete="off" class="form-control" name="pagosAterceros" id="pagosAterceros"
+              placeholder="Ingresar pagosAterceros">
+          </div>
+          <div class="form-group">
+            <label for="polizaColectiva">polizaColectiva:</label>
+            <input type="text" #polizaColectiva="ngModel" [(ngModel)]="cobroAdicionalModel.polizaColectiva"
+              autocomplete="off" class="form-control" name="polizaColectiva" id="polizaColectiva"
+              placeholder="Ingresar polizaColectiva">
+          </div>
+          <div class="form-group">
+            <label for="provisiona">provisiona:</label>
+            <input type="text" #provisiona="ngModel" [(ngModel)]="cobroAdicionalModel.provisiona" autocomplete="off"
+              class="form-control" name="provisiona" id="provisiona" placeholder="Ingresar provisiona">
+          </div>
+          <div class="form-group">
+            <label for="repPagoTercero">repPagoTercero:</label>
+            <input type="text" #repPagoTercero="ngModel" [(ngModel)]="cobroAdicionalModel.repPagoTercero"
+              autocomplete="off" class="form-control" name="repPagoTercero" id="repPagoTercero"
+              placeholder="Ingresar repPagoTercero">
+          </div>
+          <div class="form-group">
+            <label for="seUsaEnFianza">seUsaEnFianza:</label>
+            <input type="text" #seUsaEnFianza="ngModel" [(ngModel)]="cobroAdicionalModel.seUsaEnFianza"
+              autocomplete="off" class="form-control" name="seUsaEnFianza" id="seUsaEnFianza"
+              placeholder="Ingresar seUsaEnFianza">
+          </div>
+          <div class="form-group">
+            <label for="utilizaCodeudor">utilizaCodeudor:</label>
+            <input type="text" #utilizaCodeudor="ngModel" [(ngModel)]="cobroAdicionalModel.utilizaCodeudor"
+              autocomplete="off" class="form-control" name="utilizaCodeudor" id="utilizaCodeudor"
+              placeholder="Ingresar utilizaCodeudor">
+          </div>
+          <div class="form-group">
+            <label for="utilizaFactorDivisorParaCalculoFlat">utilizaFactorDivisorParaCalculoFlat:</label>
+            <input type="text" #utilizaFactorDivisorParaCalculoFlat="ngModel"
+              [(ngModel)]="cobroAdicionalModel.utilizaFactorDivisorParaCalculoFlat" autocomplete="off"
+              class="form-control" name="utilizaFactorDivisorParaCalculoFlat" id="utilizaFactorDivisorParaCalculoFlat"
+              placeholder="Ingresar utilizaFactorDivisorParaCalculoFlat">
+          </div>
+
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+          <button type="submit" id="editado" class="btn btn-danger" data-toggle="modal" (click)="editCobroAdicional()"
+            data-dismiss="modal">Aceptar</button>
         </div>
       </form>
     </div>
@@ -274,7 +328,8 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form #formAddCobroAdicional="ngForm">  <!-- Se usa el @ViewChild y la funcion del TypeScript -->
+      <form #formAddCobroAdicional="ngForm">
+        <!-- Se usa el @ViewChild y la funcion del TypeScript -->
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -297,89 +352,105 @@
 
             <div class="form-group">
               <label for="acumulaPeriodos">acumulaPeriodos:</label>
-              <input type="text" #acumulaPeriodos="ngModel" [(ngModel)]="cobroAdicionalX.acumulaPeriodos" autocomplete="off"
-                class="form-control" name="acumulaPeriodos" id="acumulaPeriodos" placeholder="Ingresar acumulaPeriodos" readonly>
+              <input type="text" #acumulaPeriodos="ngModel" [(ngModel)]="cobroAdicionalX.acumulaPeriodos"
+                autocomplete="off" class="form-control" name="acumulaPeriodos" id="acumulaPeriodos"
+                placeholder="Ingresar acumulaPeriodos" readonly>
             </div>
 
 
 
             <div class="form-group">
               <label for="calculoFlatAlVencimiento">calculoFlatAlVencimiento:</label>
-              <input type="text" #calculoFlatAlVencimiento="ngModel" [(ngModel)]="cobroAdicionalX.calculoFlatAlVencimiento" autocomplete="off"
-                class="form-control" name="calculoFlatAlVencimiento" id="calculoFlatAlVencimiento" placeholder="Ingresar calculoFlatAlVencimiento" readonly>
+              <input type="text" #calculoFlatAlVencimiento="ngModel"
+                [(ngModel)]="cobroAdicionalX.calculoFlatAlVencimiento" autocomplete="off" class="form-control"
+                name="calculoFlatAlVencimiento" id="calculoFlatAlVencimiento"
+                placeholder="Ingresar calculoFlatAlVencimiento" readonly>
             </div>
 
 
             <div class="form-group">
               <label for="formatoImpresion">formatoImpresion:</label>
-              <input type="text" #formatoImpresion="ngModel" [(ngModel)]="cobroAdicionalX.formatoImpresion" autocomplete="off"
-                class="form-control" name="formatoImpresion" id="formatoImpresion" placeholder="Ingresar formatoImpresion"readonly>
+              <input type="text" #formatoImpresion="ngModel" [(ngModel)]="cobroAdicionalX.formatoImpresion"
+                autocomplete="off" class="form-control" name="formatoImpresion" id="formatoImpresion"
+                placeholder="Ingresar formatoImpresion" readonly>
             </div>
 
 
             <div class="form-group">
               <label for="inclusionComprobada">inclusionComprobada:</label>
-              <input type="text" #inclusionComprobada="ngModel" [(ngModel)]="cobroAdicionalX.inclusionComprobada" autocomplete="off"
-                class="form-control" name="inclusionComprobada" id="inclusionComprobada" placeholder="Ingresar inclusionComprobada"readonly>
+              <input type="text" #inclusionComprobada="ngModel" [(ngModel)]="cobroAdicionalX.inclusionComprobada"
+                autocomplete="off" class="form-control" name="inclusionComprobada" id="inclusionComprobada"
+                placeholder="Ingresar inclusionComprobada" readonly>
             </div>
 
             <div class="form-group">
               <label for="incluyeCalculoInteres">incluyeCalculoInteres:</label>
-              <input type="text" #incluyeCalculoInteres="ngModel" [(ngModel)]="cobroAdicionalX.incluyeCalculoInteres" autocomplete="off"
-                class="form-control" name="incluyeCalculoInteres" id="incluyeCalculoInteres" placeholder="Ingresar incluyeCalculoInteres"readonly>
+              <input type="text" #incluyeCalculoInteres="ngModel" [(ngModel)]="cobroAdicionalX.incluyeCalculoInteres"
+                autocomplete="off" class="form-control" name="incluyeCalculoInteres" id="incluyeCalculoInteres"
+                placeholder="Ingresar incluyeCalculoInteres" readonly>
             </div>
 
             <div class="form-group">
               <label for="incluyeCalculoMora">incluyeCalculoMora:</label>
-              <input type="text" #incluyeCalculoMora="ngModel" [(ngModel)]="cobroAdicionalX.incluyeCalculoMora" autocomplete="off"
-                class="form-control" name="incluyeCalculoMora" id="incluyeCalculoMora" placeholder="Ingresar incluyeCalculoMora"readonly>
+              <input type="text" #incluyeCalculoMora="ngModel" [(ngModel)]="cobroAdicionalX.incluyeCalculoMora"
+                autocomplete="off" class="form-control" name="incluyeCalculoMora" id="incluyeCalculoMora"
+                placeholder="Ingresar incluyeCalculoMora" readonly>
             </div>
             <div class="form-group">
               <label for="incluyeEnCapital">incluyeEnCapital:</label>
-              <input type="text" #incluyeEnCapital="ngModel" [(ngModel)]="cobroAdicionalX.incluyeEnCapital" autocomplete="off"
-                class="form-control" name="incluyeEnCapital" id="incluyeEnCapital" placeholder="Ingresar incluyeEnCapital"readonly>
+              <input type="text" #incluyeEnCapital="ngModel" [(ngModel)]="cobroAdicionalX.incluyeEnCapital"
+                autocomplete="off" class="form-control" name="incluyeEnCapital" id="incluyeEnCapital"
+                placeholder="Ingresar incluyeEnCapital" readonly>
             </div>
             <div class="form-group">
               <label for="opcionAcompra">opcionAcompra:</label>
               <input type="text" #opcionAcompra="ngModel" [(ngModel)]="cobroAdicionalX.opcionAcompra" autocomplete="off"
-                class="form-control" name="opcionAcompra" id="opcionAcompra" placeholder="Ingresar opcionAcompra"readonly>
+                class="form-control" name="opcionAcompra" id="opcionAcompra" placeholder="Ingresar opcionAcompra"
+                readonly>
             </div>
             <div class="form-group">
               <label for="pagosAterceros">pagosAterceros:</label>
-              <input type="text" #pagosAterceros="ngModel" [(ngModel)]="cobroAdicionalX.pagosAterceros" autocomplete="off"
-                class="form-control" name="pagosAterceros" id="pagosAterceros" placeholder="Ingresar pagosAterceros"readonly>
+              <input type="text" #pagosAterceros="ngModel" [(ngModel)]="cobroAdicionalX.pagosAterceros"
+                autocomplete="off" class="form-control" name="pagosAterceros" id="pagosAterceros"
+                placeholder="Ingresar pagosAterceros" readonly>
             </div>
             <div class="form-group">
               <label for="polizaColectiva">polizaColectiva:</label>
-              <input type="text" #polizaColectiva="ngModel" [(ngModel)]="cobroAdicionalX.polizaColectiva" autocomplete="off"
-                class="form-control" name="polizaColectiva" id="polizaColectiva" placeholder="Ingresar polizaColectiva"readonly>
+              <input type="text" #polizaColectiva="ngModel" [(ngModel)]="cobroAdicionalX.polizaColectiva"
+                autocomplete="off" class="form-control" name="polizaColectiva" id="polizaColectiva"
+                placeholder="Ingresar polizaColectiva" readonly>
             </div>
             <div class="form-group">
               <label for="provisiona">provisiona:</label>
               <input type="text" #provisiona="ngModel" [(ngModel)]="cobroAdicionalX.provisiona" autocomplete="off"
-                class="form-control" name="provisiona" id="provisiona" placeholder="Ingresar provisiona"readonly>
+                class="form-control" name="provisiona" id="provisiona" placeholder="Ingresar provisiona" readonly>
             </div>
             <div class="form-group">
               <label for="repPagoTercero">repPagoTercero:</label>
-              <input type="text" #repPagoTercero="ngModel" [(ngModel)]="cobroAdicionalX.repPagoTercero" autocomplete="off"
-                class="form-control" name="repPagoTercero" id="repPagoTercero" placeholder="Ingresar repPagoTercero"readonly>
+              <input type="text" #repPagoTercero="ngModel" [(ngModel)]="cobroAdicionalX.repPagoTercero"
+                autocomplete="off" class="form-control" name="repPagoTercero" id="repPagoTercero"
+                placeholder="Ingresar repPagoTercero" readonly>
             </div>
             <div class="form-group">
               <label for="seUsaEnFianza">seUsaEnFianza:</label>
               <input type="text" #seUsaEnFianza="ngModel" [(ngModel)]="cobroAdicionalX.seUsaEnFianza" autocomplete="off"
-                class="form-control" name="seUsaEnFianza" id="seUsaEnFianza" placeholder="Ingresar seUsaEnFianza"readonly>
+                class="form-control" name="seUsaEnFianza" id="seUsaEnFianza" placeholder="Ingresar seUsaEnFianza"
+                readonly>
             </div>
             <div class="form-group">
               <label for="utilizaCodeudor">utilizaCodeudor:</label>
-              <input type="text" #utilizaCodeudor="ngModel" [(ngModel)]="cobroAdicionalX.utilizaCodeudor" autocomplete="off"
-                class="form-control" name="utilizaCodeudor" id="utilizaCodeudor" placeholder="Ingresar utilizaCodeudor"readonly>
+              <input type="text" #utilizaCodeudor="ngModel" [(ngModel)]="cobroAdicionalX.utilizaCodeudor"
+                autocomplete="off" class="form-control" name="utilizaCodeudor" id="utilizaCodeudor"
+                placeholder="Ingresar utilizaCodeudor" readonly>
             </div>
             <div class="form-group">
               <label for="utilizaFactorDivisorParaCalculoFlat">utilizaFactorDivisorParaCalculoFlat:</label>
-              <input type="text" #utilizaFactorDivisorParaCalculoFlat="ngModel" [(ngModel)]="cobroAdicionalX.utilizaFactorDivisorParaCalculoFlat" autocomplete="off"
-                class="form-control" name="utilizaFactorDivisorParaCalculoFlat" id="utilizaFactorDivisorParaCalculoFlat" placeholder="Ingresar utilizaFactorDivisorParaCalculoFlat"readonly>
-            </div>          
-        
+              <input type="text" #utilizaFactorDivisorParaCalculoFlat="ngModel"
+                [(ngModel)]="cobroAdicionalX.utilizaFactorDivisorParaCalculoFlat" autocomplete="off"
+                class="form-control" name="utilizaFactorDivisorParaCalculoFlat" id="utilizaFactorDivisorParaCalculoFlat"
+                placeholder="Ingresar utilizaFactorDivisorParaCalculoFlat" readonly>
+            </div>
+
             <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
               (click)="ModalConfirmacion2">Aceptar</button>
           </div>
@@ -398,7 +469,8 @@
 <!-- TABLE -->
 <H1>Cobros Adicionales</H1>
 <form class="form-inline my-2 my-lg-0" id="buscador">
-  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaCobroAdicional" name="something" placeholder="Buscar" aria-label="Search">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaCobroAdicional" name="something"
+    placeholder="Buscar" aria-label="Search">
 </form>
 <div id="content">
   <table class="table">
@@ -413,10 +485,11 @@
         <th scope="col"> </th>
 
       </tr>
-    </thead>  
+    </thead>
     <tbody>
-            <!-- Datos Dinamicos -->
-      <tr *ngFor='let coad of visualizarCobroAdicional | searchCobroAdicional:busquedaCobroAdicional | paginate: { itemsPerPage: 4, currentPage: p }'>
+      <!-- Datos Dinamicos -->
+      <tr
+        *ngFor='let coad of visualizarCobroAdicional | searchCobroAdicional:busquedaCobroAdicional | paginate: { itemsPerPage: 4, currentPage: p }'>
         <td>{{coad.codigo}}</td>
         <td>{{coad.descripcion}}</td>
 
@@ -428,13 +501,13 @@
             (click)="readCobroAdicional(coad.codigo)"> <i class="far fa-trash-alt"></i></button></td>
         <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
             (click)="readCobroAdicional(coad.codigo)"> <i class="far fa-eye"></i></button></td>
-      </tr> 
+      </tr>
     </tbody>
   </table>
 </div>
 <div class="pagination-container">
   <nav>
-      <ul class="pagination justify-content-center"></ul>
+    <ul class="pagination justify-content-center"></ul>
   </nav>
 </div>
 <pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>

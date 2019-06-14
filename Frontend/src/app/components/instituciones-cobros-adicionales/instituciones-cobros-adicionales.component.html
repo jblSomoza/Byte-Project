@@ -1,39 +1,62 @@
 <app-sidenav></app-sidenav>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<!-- ALERTAS -->
+
+
+<!-- Alerta EDIT -->
+<div id="alertaEdit" class="alert alert-warning collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Editado Correctamente</strong>
+</div>
+
+<!-- Alerta DELETE -->
+<div id="alertaDelete" class="alert alert-danger collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Eliminado Correctamente</strong>
+</div>
+
+
 <!-- EVENTOS DE MODALS-->
 <!-- Modal AGREGAR-->
 <div class="modal fade" id="ModalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <form #formAddInstitucionesCobros="ngForm" (ngSubmit)="addInstitucionesCobrosAdicionales()">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">AGREGAR</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+
+      <!-- Alerta ADD -->
+      <div id="alertaAdd" class="alert alert-success collapse">
+        <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+        <strong>Agregado Correctamente</strong>
       </div>
-      <div class="modal-body">
-        <div class="modal-body col-md-7 ">
+      <form #formAddInstitucionesCobros="ngForm" (ngSubmit)="addInstitucionesCobrosAdicionales()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">AGREGAR</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body col-md-7 ">
             <div class="form-group">
-                <label for="codigo">Codigo</label>
-                <input type="text" #codigo="ngModel" [(ngModel)]="institucionesCobrosAdicionales.codigo" autocomplete="off"
-                  class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
-              </div>
-              <div class="form-group">
-                <label for="descripcion">Descripcion:</label>
-                <input type="text" #descripcion="ngModel" [(ngModel)]="institucionesCobrosAdicionales.descripcion" autocomplete="off"
-                  class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
-              </div>
-          <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-            (click)="ModalConfirmacion2">Aceptar</button>
+              <label for="codigo">Codigo</label>
+              <input type="number" #codigo="ngModel" [(ngModel)]="institucionesCobrosAdicionales.codigo"
+                autocomplete="off" class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripcion:</label>
+              <input type="text" #descripcion="ngModel" [(ngModel)]="institucionesCobrosAdicionales.descripcion"
+                autocomplete="off" class="form-control" name="descripcion" id="descripcion"
+                placeholder="Ingresar descripcion">
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" id="guardado" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-        </form>
+      </form>
     </div>
   </div>
 </div>
@@ -45,22 +68,23 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <form #formDeleteInstitucionesCobros="ngForm" (ngSubmit)="deleteInstitucionesCobrosAdicionales(id)">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmacion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Esta seguro de eliminar este dato?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="submit" class="btn btn-danger"  (ngSubmit)="deleteInstitucionesCobrosAdicionales()" >Si</button>
-      </div>
-        </form>
-    </div>  
+      <form #formDeleteInstitucionesCobros="ngForm" (ngSubmit)="deleteInstitucionesCobrosAdicionales(id)">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmacion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Esta seguro de eliminar este dato?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="submit" id="eliminado" class="btn btn-danger" (click)="deleteInstitucionesCobrosAdicionales()"
+            data-dismiss="modal">Si</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 
@@ -70,26 +94,27 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <form #formEditInstitucionesCobros="ngForm" (ngSubmit)="editInstitucionesCobrosAdicionales(id)">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body col-md-5 ">
+      <form #formEditInstitucionesCobros="ngForm" (ngSubmit)="editInstitucionesCobrosAdicionales(id)">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body col-md-5 ">
           <div class="form-group ">
-              <label for="Descripcion">Descripcion:</label>
-              <input type="text" #descripcion="ngModel" [(ngModel)]="institucionesCobrosAdicionales.descripcion" autocomplete="off"
-                class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
-            </div>
-        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion1"
-          (click)="ModalConfirmacion1">Aceptar</button>
+            <label for="Descripcion">Descripcion:</label>
+            <input type="text" #descripcion="ngModel" [(ngModel)]="institucionesCobrosAdicionales.descripcion"
+              autocomplete="off" class="form-control" name="descripcion" id="descripcion"
+              placeholder="Ingresar descripcion">
+          </div>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
-      </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" id="editado" class="btn btn-danger" data-toggle="modal"
+            (click)="editInstitucionesCobrosAdicionales()" data-dismiss="modal">Aceptar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -111,18 +136,18 @@
       </div>
       <div class="modal-body">
         <div class="modal-body col-md-7 ">
-           <form #formVisualizarInstitucionesCobrosAdicionales="ngForm" >
-                <div class="form-group">
-                    <label for="codigo" class="col-form-label">Código:</label>
-                    <input name="codigo" #titulo="ngModel" [(ngModel)]="institucionesCobrosAdicional.codigo" type="text"
-                        class="form-control" id="codigo" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="descripcion" class="col-form-label">Descripción:</label>
-                    <textarea name="descripcion" #descripcion="ngModel" [(ngModel)]="institucionesCobrosAdicional.descripcion" type="text"
-                        class="form-control" id="descripcion" readonly></textarea>
-                </div>
-            </form>
+          <form #formVisualizarInstitucionesCobrosAdicionales="ngForm">
+            <div class="form-group">
+              <label for="codigo" class="col-form-label">Código:</label>
+              <input name="codigo" #titulo="ngModel" [(ngModel)]="institucionesCobrosAdicional.codigo" type="text"
+                class="form-control" id="codigo" readonly>
+            </div>
+            <div class="form-group">
+              <label for="descripcion" class="col-form-label">Descripción:</label>
+              <textarea name="descripcion" #descripcion="ngModel" [(ngModel)]="institucionesCobrosAdicional.descripcion"
+                type="text" class="form-control" id="descripcion" readonly></textarea>
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
@@ -137,7 +162,8 @@
 <!-- TABLE -->
 <h1>Instituciones Cobros Adicionales</h1>
 <form class="form-inline my-2 my-lg-0" id="buscador">
-    <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaInstitucionesCobrosAdicional" name="something" placeholder="Buscar" aria-label="Search">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaInstitucionesCobrosAdicional" name="something"
+    placeholder="Buscar" aria-label="Search">
 </form>
 <div id="content">
   <table class="table">
@@ -151,25 +177,26 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor='let alm of visualizarInstitucionesCobrosAdicional | paginate: { itemsPerPage: 4, currentPage: p } | searchInstitucionesCobros:busquedaInstitucionesCobrosAdicional'>
-            <td>{{alm.codigo}}</td>
-            <td>{{alm.descripcion}}</td> 
-    
-            <!-- Botones -->
-            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-             (click)="readInstitucionCobroAdicional(alm.codigo)"><i class="fas fa-edit"></i></button></td>
-            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
-                (click)="readInstitucionCobroAdicional(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
-            <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVer"
-                (click)="readInstitucionCobroAdicional(alm.codigo)"> <i class="far fa-eye"></i></button></td>
-          </tr>
+      <tr
+        *ngFor='let alm of visualizarInstitucionesCobrosAdicional | searchInstitucionesCobros:busquedaInstitucionesCobrosAdicional  | paginate: { itemsPerPage: 4, currentPage: p }'>
+        <td>{{alm.codigo}}</td>
+        <td>{{alm.descripcion}}</td>
+
+        <!-- Botones -->
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
+            (click)="readInstitucionCobroAdicional(alm.codigo)"><i class="fas fa-edit"></i></button></td>
+        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
+            (click)="readInstitucionCobroAdicional(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
+        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVer"
+            (click)="readInstitucionCobroAdicional(alm.codigo)"> <i class="far fa-eye"></i></button></td>
+      </tr>
     </tbody>
   </table>
 </div>
 <div class="pagination-container">
-    <nav>
-        <ul class="pagination justify-content-center"></ul>
-    </nav>
+  <nav>
+    <ul class="pagination justify-content-center"></ul>
+  </nav>
 </div>
 <pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
 

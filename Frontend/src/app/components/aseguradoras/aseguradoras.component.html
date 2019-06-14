@@ -1,7 +1,23 @@
+<app-sidenav></app-sidenav>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
+<!-- ALERTAS -->
+
+
+
+<!-- Alerta EDIT -->
+<div id="alertaEdit" class="alert alert-warning collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Editado Correctamente</strong>
+</div>
+
+<!-- Alerta DELETE -->
+<div id="alertaDelete" class="alert alert-danger collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Eliminado Correctamente</strong>
+</div>
 
 
 
@@ -10,7 +26,12 @@
 <div class="modal fade" id="ModalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content ">
+      <!-- Alerta ADD -->
+      <div id="alertaAdd" class="alert alert-success collapse">
+        <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+        <strong>Agregado Correctamente</strong>
+      </div>
       <form #formAddAseguradora="ngForm" (ngSubmit)="addAseguradora()">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
@@ -22,7 +43,7 @@
           <div class="modal-body col-md-7 ">
             <div class="form-group">
               <label for="codigo">Codigo</label>
-              <input type="text" #codigo="ngModel" [(ngModel)]="aseguradoras.codigo" autocomplete="off"
+              <input type="number" #codigo="ngModel" [(ngModel)]="aseguradoras.codigo" autocomplete="off"
                 class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
             </div>
             <div class="form-group">
@@ -30,11 +51,9 @@
               <input type="text" #descripcion="ngModel" [(ngModel)]="aseguradoras.descripcion" autocomplete="off"
                 class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
             </div>
-            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-              (click)="ModalConfirmacion2">Aceptar</button>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+            <button type="submit" id="guardado" class="btn btn-danger" data-toggle="modal">Aceptar</button>
           </div>
         </div>
       </form>
@@ -61,7 +80,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <button type="submit" class="btn btn-danger" (ngSubmit)="deleteAseguradora()">Si</button>
+          <button type="submit" id="eliminado" class="btn btn-danger" (click)="deleteAseguradora()"
+            data-dismiss="modal">Si</button>
         </div>
       </form>
     </div>
@@ -89,7 +109,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+          <button type="submit" id="editado" class="btn btn-danger" data-toggle="modal" (click)="editAseguradora()"
+            data-dismiss="modal">Aceptar</button>
         </div>
       </form>
     </div>
@@ -130,7 +151,6 @@
   </div>
 </div>
 
-<app-sidenav></app-sidenav>
 <!-- TABLE -->
 <H1>Aseguradoras</H1>
 <!-- buscar -->
@@ -153,7 +173,7 @@
     </thead>
     <tbody>
       <tr
-        *ngFor='let alm of visualizarAseguradora | paginate: { itemsPerPage: 4, currentPage: p } | searchAseguradora:busquedaAseguradora'>
+        *ngFor='let alm of visualizarAseguradora | searchAseguradora:busquedaAseguradora | paginate: { itemsPerPage: 4, currentPage: p } '>
         <td>{{alm.codigo}}</td>
         <td>{{alm.descripcion}}</td>
         <!-- Botones -->
@@ -162,7 +182,7 @@
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
             (click)="readAseguradora(alm.codigo)"> <i class="far fa-trash-alt"></i></button></td>
         <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
-          (click)="readAseguradora(alm.codigo)"> <i class="far fa-eye"></i></button></td>        
+            (click)="readAseguradora(alm.codigo)"> <i class="far fa-eye"></i></button></td>
       </tr>
 
     </tbody>

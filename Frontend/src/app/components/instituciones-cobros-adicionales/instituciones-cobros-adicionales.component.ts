@@ -1,8 +1,9 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
-import * as $ from 'jquery';
 import { InstitucionesCobrosAdicionales } from 'src/app/models/institucionesCobrosAdicionales.model';
 import { GLOBAL } from 'src/app/services/global.service';
 import { InstitucionesCobrosAdicionalesService } from 'src/app/services/instituciones-cobros-adicionale.service';
+import * as $ from 'jquery';
+
 @Component({
   selector: 'app-instituciones-cobros-adicionales',
   templateUrl: './instituciones-cobros-adicionales.component.html',
@@ -32,6 +33,45 @@ export class InstitucionesCobrosAdicionalesComponent implements OnInit {
   }
   ngOnInit() {
     this.listarInstitucionesCobrosAdicionales();
+
+     /* ALERTA AGREGAR */
+     $(document).ready(function () {
+      $('#guardado').click(function () {
+          $('#alertaAdd').show('fade');
+          setTimeout(function () {
+              $('#alertaAdd').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaAdd').hide('fade');
+      });
+    });
+
+    /* ALERTA EDITAR */
+    $(document).ready(function () {
+      $('#editado').click(function () {
+          $('#alertaEdit').show('fade');
+          setTimeout(function () {
+              $('#alertaEdit').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaEdit').hide('fade');
+      });
+    });
+  
+        /* ALERTA ELIMINAR */
+    $(document).ready(function () {
+      $('#eliminado').click(function () {
+          $('#alertaDelete').show('fade');
+          setTimeout(function () {
+              $('#alertaDelete').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaDelete').hide('fade');
+      });
+    });
   }
   addInstitucionesCobrosAdicionales() {
     this._institucionesCobrosAdicionalesService.addInstitucionesCobrosAdicionales(this.institucionesCobrosAdicionales).subscribe(

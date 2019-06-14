@@ -1,8 +1,21 @@
 <app-sidenav></app-sidenav>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<!-- buscar -->
 
+<!-- ALERTAS -->
+
+
+<!-- Alerta EDIT -->
+<div id="alertaEdit" class="alert alert-warning collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Editado Correctamente</strong>
+</div>
+
+<!-- Alerta DELETE -->
+<div id="alertaDelete" class="alert alert-danger collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Eliminado Correctamente</strong>
+</div>
 
 <!-- EVENTOS DE MODALS-->
 
@@ -11,6 +24,12 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <!-- Alerta ADD -->
+      <div id="alertaAdd" class="alert alert-success collapse">
+        <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+        <strong>Agregado Correctamente</strong>
+      </div>
+
       <form #formAddEstAvaluo="ngForm" (ngSubmit)="addEstAvaluo()">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
@@ -22,7 +41,7 @@
           <div class="modal-body col-md-7 ">
             <div class="form-group">
               <label for="codigo">Codigo</label>
-              <input type="text" #codigo="ngModel" [(ngModel)]="estAvaluoModel.codigo" autocomplete="off"
+              <input type="number" #codigo="ngModel" [(ngModel)]="estAvaluoModel.codigo" autocomplete="off"
                 class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
             </div>
             <div class="form-group">
@@ -30,14 +49,11 @@
               <input type="text" #descripcion="ngModel" [(ngModel)]="estAvaluoModel.descripcion" autocomplete="off"
                 class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
             </div>
-            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-              (click)="ModalConfirmacion2">Aceptar</button>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+            <button type="submit" id="guardado" class="btn btn-danger" data-toggle="modal">Aceptar</button>
           </div>
         </div>
-        <!-- <div class="modal-footer"> </div> -->
       </form>
     </div>
   </div>
@@ -62,7 +78,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <button type="submit" class="btn btn-danger" (ngSubmit)="deleteEstAvaluo()">Si</button>
+          <button type="submit" id="eliminado" class="btn btn-danger" (click)="deleteEstAvaluo()"
+            data-dismiss="modal">Si</button>
         </div>
       </form>
     </div>
@@ -87,10 +104,11 @@
             <label for="descripcion">Descripcion:</label>
             <input type="text" #descripcion="ngModel" [(ngModel)]="estAvaluoModel.descripcion" autocomplete="off"
               class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
-          </div>          
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+          <button type="submit" id="editado" class="btn btn-danger" data-toggle="modal" (click)="editEstAvaluo()"
+            data-dismiss="modal">Aceptar</button>
         </div>
       </form>
     </div>
@@ -104,7 +122,7 @@
     <div class="modal-content">
       <form #formAddEstAvaluo="ngForm">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Visualizar  Registro</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Visualizar Registro</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -119,7 +137,7 @@
             <div class="form-group">
               <label for="descripcion">Descripcion:</label>
               <input type="text" #descripcion="ngModel" [(ngModel)]="estAvaluo.descripcion" autocomplete="off"
-                class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion" readonly >
+                class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion" readonly>
             </div>
             <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
               (click)="ModalConfirmacion2">Aceptar</button>
@@ -137,7 +155,8 @@
 <!-- TABLE -->
 <H1>Status Avaluos</H1>
 <form class="form-inline my-2 my-lg-0" id="buscador">
-  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaEstAvaluo" name="something" placeholder="Buscar" aria-label="Search">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaEstAvaluo" name="something"
+    placeholder="Buscar" aria-label="Search">
 </form>
 <div id="content">
   <table class="table">
@@ -153,18 +172,19 @@
     </thead>
     <tbody>
 
-      <tr *ngFor='let est of visualizarEstAvaluo | searchEstAvaluo:busquedaEstAvaluo | paginate: { itemsPerPage: 4, currentPage: p }'>
+      <tr
+        *ngFor='let est of visualizarEstAvaluo | searchEstAvaluo:busquedaEstAvaluo | paginate: { itemsPerPage: 4, currentPage: p }'>
         <td>{{est.codigo}}</td>
         <td>{{est.descripcion}}</td>
 
-        <!-- Botones -->
+        <!-- Botones Abrir Modals -->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
             (click)="readEstAvaluo(est.codigo)"><i class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
             (click)="readEstAvaluo(est.codigo)"> <i class="far fa-trash-alt"></i></button></td>
         <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
             (click)="readEstAvaluo(est.codigo)"> <i class="far fa-eye"></i></button></td>
-            
+
       </tr>
 
     </tbody>
@@ -172,7 +192,7 @@
 </div>
 <div class="pagination-container">
   <nav>
-      <ul class="pagination justify-content-center"></ul>
+    <ul class="pagination justify-content-center"></ul>
   </nav>
 </div>
 <pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
@@ -182,5 +202,3 @@
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalAgregar"
     (click)="ModalAgregar">Agregar</button>
 </div>
-
-

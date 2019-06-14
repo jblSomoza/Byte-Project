@@ -3,7 +3,21 @@
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
-<!-- buscar -->
+<!-- ALERTAS -->
+
+
+
+<!-- Alerta EDIT -->
+<div id="alertaEdit" class="alert alert-warning collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Editado Correctamente</strong>
+</div>
+
+<!-- Alerta DELETE -->
+<div id="alertaDelete" class="alert alert-danger collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Eliminado Correctamente</strong>
+</div>
 
 
 <!-- EVENTOS DE MODALS-->
@@ -12,6 +26,11 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <!-- Alerta ADD -->
+      <div id="alertaAdd" class="alert alert-success collapse">
+        <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+        <strong>Agregado Correctamente</strong>
+      </div>
       <form #formAddMotAjuste="ngForm" (ngSubmit)="addMotAjuste()">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
@@ -23,7 +42,7 @@
           <div class="modal-body col-md-7 ">
             <div class="form-group">
               <label for="codigo">Codigo</label>
-              <input type="text" #codigo="ngModel" [(ngModel)]="motAjusteModel.codigo" autocomplete="off"
+              <input type="number" #codigo="ngModel" [(ngModel)]="motAjusteModel.codigo" autocomplete="off"
                 class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
             </div>
             <div class="form-group">
@@ -55,14 +74,12 @@
                 autocomplete="off" class="form-control" name="afectaSaldoMora" id="afectaSaldoMora" placeholder="(S/N)">
             </div>
 
-            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-              (click)="ModalConfirmacion2">Aceptar</button>
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+            <button type="submit" id="guardado" class="btn btn-danger" data-toggle="modal">Aceptar</button>
           </div>
         </div>
-        <!-- <div class="modal-footer"> </div> -->
       </form>
     </div>
   </div>
@@ -87,7 +104,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <button type="submit" class="btn btn-danger" (ngSubmit)="deleteMotAjuste()">Si</button>
+          <button type="submit" id="eliminado" class="btn btn-danger" (click)="deleteMotAjuste()"
+            data-dismiss="modal">Si</button>
         </div>
       </form>
     </div>
@@ -108,7 +126,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="modal-body col-md-7 ">            
+          <div class="modal-body col-md-7 ">
             <div class="form-group">
               <label for="descripcion">Descripcion</label>
               <input type="text" #descripcion="ngModel" [(ngModel)]="motAjusteModel.descripcion" autocomplete="off"
@@ -140,7 +158,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-outline-danger">Aceptar</button>
+          <button type="submit" id="editado" class="btn btn-outline-danger" (click)="editMotAjuste()"
+            data-dismiss="modal">Aceptar</button>
         </div>
       </form>
     </div>
@@ -169,13 +188,16 @@
             <div class="form-group">
               <label for="descripcion">Descripcion</label>
               <input type="text" #descripcion="ngModel" [(ngModel)]="motAjuste.descripcion" autocomplete="off"
-                class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar Primera Descripcion" readonly>
+                class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar Primera Descripcion"
+                readonly>
               <label for="descripcion2">Descripcion Dos</label>
               <input type="text" #descripcion2="ngModel" [(ngModel)]="motAjuste.descripcion2" autocomplete="off"
-                class="form-control" name="descripcion2" id="descripcion2" placeholder="Ingresar Segunda Descripcion" readonly>
+                class="form-control" name="descripcion2" id="descripcion2" placeholder="Ingresar Segunda Descripcion"
+                readonly>
               <label for="descripcion3">Descripcion Tres</label>
               <input type="text" #descripcion3="ngModel" [(ngModel)]="motAjuste.descripcion3" autocomplete="off"
-                class="form-control" name="descripcion3" id="descripcion3" placeholder="Ingresar Tercera Descripcion" readonly>
+                class="form-control" name="descripcion3" id="descripcion3" placeholder="Ingresar Tercera Descripcion"
+                readonly>
             </div>
             <div class="form-group">
               <label for="afectaSaldoCapital">Afecta a Saldo Capital</label>
@@ -191,8 +213,8 @@
             </div>
             <div class="form-group">
               <label for="afectaSaldoMora">Afecta a Saldo Mora</label>
-              <input type="text" #afectaSaldoMora="ngModel" [(ngModel)]="motAjuste.afectaSaldoMora"
-                autocomplete="off" class="form-control" name="afectaSaldoMora" id="afectaSaldoMora" placeholder="(S/N)" readonly>
+              <input type="text" #afectaSaldoMora="ngModel" [(ngModel)]="motAjuste.afectaSaldoMora" autocomplete="off"
+                class="form-control" name="afectaSaldoMora" id="afectaSaldoMora" placeholder="(S/N)" readonly>
             </div>
 
             <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
@@ -211,7 +233,8 @@
 <!-- TABLE -->
 <h1>Motivos De Ajuste</h1>
 <form class="form-inline my-2 my-lg-0" id="buscador">
-  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busqueda" name="something" placeholder="Buscar" aria-label="Search">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busqueda" name="something" placeholder="Buscar"
+    aria-label="Search">
 </form>
 <div id="content">
   <table class="table">
@@ -239,14 +262,14 @@
             (click)="readMotAjuste(mot.codigo)"> <i class="far fa-trash-alt"></i></button></td>
         <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalVisualizar"
             (click)="readMotAjuste(mot.codigo)"> <i class="far fa-eye"></i></button></td>
-      </tr>      
+      </tr>
 
     </tbody>
   </table>
 </div>
 <div class="pagination-container">
   <nav>
-      <ul class="pagination justify-content-center"></ul>
+    <ul class="pagination justify-content-center"></ul>
   </nav>
 </div>
 <pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
@@ -256,4 +279,3 @@
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalAgregar"
     (click)="ModalAgregar">Agregar</button>
 </div>
-

@@ -3,7 +3,21 @@
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
-<!-- buscar -->
+<!-- ALERTAS -->
+
+
+<!-- Alerta EDIT -->
+<div id="alertaEdit" class="alert alert-warning collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Editado Correctamente</strong>
+</div>
+
+<!-- Alerta DELETE -->
+<div id="alertaDelete" class="alert alert-danger collapse">
+  <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+  <strong>Eliminado Correctamente</strong>
+</div>
+
 
 
 
@@ -13,6 +27,12 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
+      <!-- Alerta ADD -->
+      <div id="alertaAdd" class="alert alert-success collapse">
+        <a id="linkClose" style="cursor:pointer" class="close">&times;</a>
+        <strong>Agregado Correctamente</strong>
+      </div>
       <form #formAddInstancia="ngForm" (ngSubmit)="addInstancia()">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
@@ -24,7 +44,7 @@
           <div class="modal-body col-md-7 ">
             <div class="form-group">
               <label for="codigo">Codigo</label>
-              <input type="text" #codigo="ngModel" [(ngModel)]="instanciasModel.codigo" autocomplete="off"
+              <input type="text" maxlength="2" #codigo="ngModel" [(ngModel)]="instanciasModel.codigo" autocomplete="off"
                 class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
             </div>
             <div class="form-group">
@@ -32,11 +52,10 @@
               <input type="text" #descripcion="ngModel" [(ngModel)]="instanciasModel.descripcion" autocomplete="off"
                 class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar descripcion">
             </div>
-            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-              (click)="ModalConfirmacion2">Aceptar</button>
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+            <button type="submit" id="guardado" class="btn btn-danger" data-toggle="modal">Aceptar</button>
           </div>
         </div>
       </form>
@@ -64,7 +83,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <button type="submit" class="btn btn-danger"  (ngSubmit)="deleteInstancia()" >Si</button>
+          <button type="submit" id="eliminado" class="btn btn-danger" (click)="deleteInstancia()"
+            data-dismiss="modal">Si</button>
         </div>
       </form>
     </div>
@@ -91,7 +111,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+          <button type="submit" id="editado" class="btn btn-danger" data-toggle="modal" (click)="editInstancia()"
+            data-dismiss="modal">Aceptar</button>
         </div>
       </form>
     </div>
@@ -104,7 +125,8 @@
 <!-- TABLE -->
 <H1>Instancia</H1>
 <form class="form-inline my-2 my-lg-0" id="buscador">
-    <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaInstancia" name="something" placeholder="Buscar" aria-label="Search">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="busquedaInstancia" name="something"
+    placeholder="Buscar" aria-label="Search">
 </form>
 
 <div id="content">
@@ -118,14 +140,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let ins of visualizarInstancia | paginate: { itemsPerPage: 4, currentPage: p } | searchInstancia: busquedaInstancia'>
+      <tr
+        *ngFor='let ins of visualizarInstancia | searchInstancia: busquedaInstancia  | paginate: { itemsPerPage: 4, currentPage: p }'>
         <td>{{ins.codigoInstancia}}</td>
         <td>{{ins.descripcion}}</td>
 
 
         <!-- Botones -->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEditar"
-         (click)="readInstancia(ins.codigoInstancia)"><i class="fas fa-edit"></i></button></td>
+            (click)="readInstancia(ins.codigoInstancia)"><i class="fas fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion"
             (click)="readInstancia(ins.codigoInstancia)"> <i class="far fa-trash-alt"></i></button></td>
       </tr>
@@ -134,9 +157,9 @@
   </table>
 </div>
 <div class="pagination-container">
-    <nav>
-        <ul class="pagination justify-content-center"></ul>
-    </nav>
+  <nav>
+    <ul class="pagination justify-content-center"></ul>
+  </nav>
 </div>
 <pagination-controls style="text-align: center" (pageChange)="p = $event"></pagination-controls>
 
@@ -146,4 +169,3 @@
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalAgregar"
     (click)="ModalAgregar">Agregar</button>
 </div>
-

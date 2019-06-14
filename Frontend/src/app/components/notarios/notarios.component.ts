@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbogadosNotariosDTO } from "src/app/models/AbogadosNotariosDTO.mode";
 import { NotariosService } from "src/app/services/notarios.service";
-import { $ } from 'protractor';
+// import { $ } from 'protractor';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-notarios',
@@ -32,6 +33,44 @@ export class NotariosComponent implements OnInit {
 
   ngOnInit() {
     this.listNotarios();
+    /* ALERTA AGREGAR */
+    $(document).ready(function () {
+      $('#guardado').click(function () {
+          $('#alertaAdd').show('fade');
+          setTimeout(function () {
+              $('#alertaAdd').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaAdd').hide('fade');
+      });
+    });
+
+    /* ALERTA EDITAR */
+    $(document).ready(function () {
+      $('#editado').click(function () {
+          $('#alertaEdit').show('fade');
+          setTimeout(function () {
+              $('#alertaEdit').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaEdit').hide('fade');
+      });
+    });
+  
+        /* ALERTA ELIMINAR */
+    $(document).ready(function () {
+      $('#eliminado').click(function () {
+          $('#alertaDelete').show('fade');
+          setTimeout(function () {
+              $('#alertaDelete').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaDelete').hide('fade');
+      });
+    });
   }
 
   addNotarios(){

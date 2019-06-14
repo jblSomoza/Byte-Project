@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StatusGarantiaRealDTO } from 'src/app/models/StatusGarantiaRealDTO.model';
 import { StatusGarantiaRealesService } from 'src/app/services/status-garantia-reales.service';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-estatus-garantias-reales',
   templateUrl: './estatus-garantias-reales.component.html',
@@ -35,6 +35,45 @@ export class EstatusGarantiasRealesComponent implements OnInit {
   ngOnInit() {
   
     this.listStatusGarantiaReal()
+
+    /* ALERTA AGREGAR */
+    $(document).ready(function () {
+      $('#guardado').click(function () {
+          $('#alertaAdd').show('fade');
+          setTimeout(function () {
+              $('#alertaAdd').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaAdd').hide('fade');
+      });
+    });
+
+    /* ALERTA EDITAR */
+    $(document).ready(function () {
+      $('#editado').click(function () {
+          $('#alertaEdit').show('fade');
+          setTimeout(function () {
+              $('#alertaEdit').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaEdit').hide('fade');
+      });
+    });
+  
+        /* ALERTA ELIMINAR */
+    $(document).ready(function () {
+      $('#eliminado').click(function () {
+          $('#alertaDelete').show('fade');
+          setTimeout(function () {
+              $('#alertaDelete').hide('fade');
+          }, 2000);
+      });
+      $('#linkClose').click(function () {
+          $('#alertaDelete').hide('fade');
+      });
+    });
   }
 
   listStatusGarantiaReal() {   /* El del servicion */
