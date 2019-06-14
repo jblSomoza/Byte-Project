@@ -3,6 +3,8 @@ import { DiasNoHabilesNoCobroMoraDTO } from "src/app/models/DiasNoHabilesNoCobro
 import { DiasInhabilesService } from "src/app/services/dias-inhabiles.service";
 import * as $ from 'jquery';
 
+declare var $:any;
+
 @Component({
   selector: 'app-dias-inhabiles',
   templateUrl: './dias-inhabiles.component.html',
@@ -10,6 +12,11 @@ import * as $ from 'jquery';
   providers: [DiasInhabilesService]
 })
 export class DiasInhabilesComponent implements OnInit {  
+
+  public fecha;
+  public fechaList;
+  public fechaVer;
+  public fechaUpdate;
 
   @ViewChild('formAddDiaInhabil') formValuesAddDiaInhabil;
   @ViewChild('formEditDiaInhabil') formValuesEditDiaInhabil;
@@ -37,15 +44,32 @@ export class DiasInhabilesComponent implements OnInit {
   }
 
   addDiaInhabil(){    
+    this.fecha = this.diasInhabilesModel.fechaFeriado;
+
+    var fechaA = new Date(this.fecha);
+
+    this.fecha = fechaA.toISOString();
+
+    this.diasInhabilesModel.fechaFeriado = this.fecha
+    
     this._diaInhabilService.addDiasInhabiles(this.diasInhabilesModel).subscribe(
       response =>{
-        console.log(response);
-        console.log(this.diasInhabilesModel);
         if(response){
+          this.status = 'Ok';
+          console.log(this.diasInhabilesModel.fechaFeriado);
           console.log(response);
           this.listDiasInhabiles();
-          this.status = 'Ok';
-          this.formValuesAddDiaInhabil.resetForm();          
+          this.formValuesAddDiaInhabil.resetForm() 
+        }
+
+        if(response.description == "Día No Habil ya existe"){
+          this.status = 'error1'
+        }
+        if(response.description == "DESCRIPCION NO VALIDO"){
+          this.status = 'error2'
+        }
+        if(response.description == "Tipo Feriado No Valido"){
+          this.status = 'error3'
         }
       },
       error =>{
@@ -59,14 +83,22 @@ export class DiasInhabilesComponent implements OnInit {
   }
 
   editDiaInhabil(){    
+    this.diasInhabilesModel.fechaFeriado = this.fechaUpdate;
+    this.diasInhabilesModel.tipoFeriado = this.diaInhabil.tipoFeriado;
+
     this._diaInhabilService.editDiasInhabiles(this.diasInhabilesModel).subscribe(
       response =>{
-        console.log(this.diasInhabilesModel.fechaFeriado);
         if(response){
           console.log(response);
           this.listDiasInhabiles();
           this.status = 'Ok';
           this.formValuesEditDiaInhabil.resetForm();
+        }
+        if(response.description == "DESCRIPCION NO VALIDO"){
+          this.status = 'error2'
+        }
+        if(response.description == "Tipo Feriado No Valido"){
+          this.status = 'error3'
         }
       },
       error =>{
@@ -80,7 +112,7 @@ export class DiasInhabilesComponent implements OnInit {
   }
 
   deleteDiaInhabil(){   
-    this._diaInhabilService.deleteDiasInhabiles(this.diasInhabilesModel.fechaFeriado, this.diasInhabilesModel.tipoFeriado).subscribe(
+    this._diaInhabilService.deleteDiasInhabiles(this.diaInhabil.fechaFeriado, this.diaInhabil.tipoFeriado).subscribe(
       response =>{
         if(response){
           console.log(response);
@@ -102,24 +134,36 @@ export class DiasInhabilesComponent implements OnInit {
   listDiasInhabiles(){
     this._diaInhabilService.listDiasInhabiles().subscribe(
       response =>{
-        console.log(response);
-        this.visualizarDiaInhabil = response;
+        if(response){
+          var CD = response.length
+
+          for(var i = 0; i < CD; i++){
+            this.fechaList = response[i].fechaFeriado;
+
+            var fechaA = new Date(this.fechaList);
+
+            this.fechaList = fechaA.toISOString();
+
+            response[i].fechaFeriado = this.fechaList;
+          }
+          this.visualizarDiaInhabil = response;
+        }
       },
       error =>{
-        var errorMessage = <any>error;
-        console.log(errorMessage);
-        if(errorMessage != null){
-          this.status = 'Error'
-        }
+        console.log(<any>error);
       }
     )
   }
 
-  readDiaInhabil(fechaFeriado: string, tipoFeriado: string){
+  readDiaInhabil(fechaFeriado, tipoFeriado){
     this._diaInhabilService.readDiasInhabiles(fechaFeriado, tipoFeriado).subscribe(
       response =>{
-        console.log(response);
-        this.diaInhabil = response;
+        if(response){
+          console.log(response);
+          this.fechaUpdate = response.fechaFeriado
+          response.fechaFeriado = fechaFeriado
+          this.diaInhabil = response;          
+        }
       },
       error =>{
         var errorMessage = <any>error;
@@ -130,18 +174,5 @@ export class DiasInhabilesComponent implements OnInit {
       }
     )
   }
-
-  setDescripcion(descripcion: string){
-    this.diasInhabilesModel.descripcion = descripcion;
-  }
-
-  setFechaFeriado(fechaFeriado: string){
-    this.diasInhabilesModel.fechaFeriado = fechaFeriado;
-  }
-
-  setTipoFeriado(tipoFeriado: string){
-    this.diasInhabilesModel.tipoFeriado = tipoFeriado;
-  }
-
 
 }
