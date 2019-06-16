@@ -1,19 +1,23 @@
-
+10:20 a.m. 16/06/2019
 
 ****************NO MODIFICAR ESTE ARCHIVO SIN AVISAR AL GRUPO O AL COORDINADOR********************
 
-Vista Recien Hechas
--Motivos Reserva(En Proceso Equite)--->Dependen de Institucion Combross y cobros Adicionales
-
-
 ---Faltan---
--Diaas Inhabiles***> Jhony 
--Institucion Cobros Adicioneales***(Equite)
--Cobros Adicionales  (Pendiente Jhony/Jonnathan)***
+Visualizar de la vista que estaba Haciendo Pablo Equite,
+Esta debe trae los datos de otra tabla al visualizar
+
+_________________________________________________________________________
+|||IMPORTANTE||||
+-------------------------
+Revisen la ultima versión de la aplicación y si da algun error anotar el nombre de la vista y el error. 
+Pasarme el txt de los errores que encontraron.
+__________________________________________________________________________
 
 
 
 ---TERMINADAS------
+-Cobros Adicionales  
+-Diaas Inhabiles
 -Almacenadora
 -Aseguradora
 -Lugares De Inversion 
@@ -29,7 +33,8 @@ Vista Recien Hechas
 -instancias 
 -Poder
 -FormasDesembolsos
--MedioContactos Raul 
+-MedioContactos 
+-Motivos Reserva
 
 Link Vista Firebase
 https://byte-project-8e80d.firebaseapp.com/almacenadoras
