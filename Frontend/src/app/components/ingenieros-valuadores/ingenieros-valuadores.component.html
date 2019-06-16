@@ -131,14 +131,14 @@
 
 
 
-<!-- Modal AGREGAR-->
+<!-- Modal Visualizar-->
 <div class="modal fade" id="ModalVisualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <form #formAddSupervisor="ngForm">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Visualizar Registro</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -161,8 +161,6 @@
                 class="form-control" name="numeroRegistro" id="descripcion" placeholder="Ingresar El Numero de Registro"
                 readonly>
             </div>
-            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-              (click)="ModalConfirmacion2">Aceptar</button>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
@@ -187,8 +185,8 @@
       <!-- Columnas -->
       <tr>
         <th scope="col">Codigo</th>
-        <th scope="col">Institucion</th>
-        <th scope="col">Descripcion</th>
+        <th scope="col">Registro</th>
+        <th scope="col">Nombre</th>
         <th scope="col"> </th>
         <th scope="col"> </th>
         <th scope="col"> </th>

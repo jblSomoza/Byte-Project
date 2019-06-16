@@ -77,7 +77,7 @@ export class DestinosComponent implements OnInit {
 
   editDestino() {
     this.destinoModel.codigo = this.destinoX.codigo;
-    this._destinoService.editDestinos(this.destinoX).subscribe(
+    this._destinoService.editDestinos(this.destinoModel).subscribe(
       response => {
         if (response) {
           console.log(response);

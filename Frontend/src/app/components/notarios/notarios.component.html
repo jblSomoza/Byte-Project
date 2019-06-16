@@ -189,6 +189,11 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <div class="form-group">
+          <label for="codigo">Codigo</label>
+          <input type="text" #codigo="ngModel" [(ngModel)]="notario.codigo" autocomplete="off"
+            class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo" readonly>
+        </div>
         <div class="modal-body col-md-5 ">
           <div class="form-group">
             <label for="codigo">Codigo</label>
@@ -232,7 +237,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger" data-toggle="modal">Aceptar</button>
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
         </div>
       </form>
     </div>

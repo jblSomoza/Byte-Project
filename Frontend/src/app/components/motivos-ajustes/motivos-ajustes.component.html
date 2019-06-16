@@ -40,11 +40,13 @@
         </div>
         <div class="modal-body">
           <div class="modal-body col-md-7 ">
+
             <div class="form-group">
               <label for="codigo">Codigo</label>
               <input type="number" #codigo="ngModel" [(ngModel)]="motAjusteModel.codigo" autocomplete="off"
                 class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
             </div>
+
             <div class="form-group">
               <label for="descripcion">Descripcion</label>
               <input type="text" #descripcion="ngModel" [(ngModel)]="motAjusteModel.descripcion" autocomplete="off"
@@ -56,22 +58,38 @@
               <input type="text" #descripcion3="ngModel" [(ngModel)]="motAjusteModel.descripcion3" autocomplete="off"
                 class="form-control" name="descripcion3" id="descripcion3" placeholder="Ingresar Tercera Descripcion">
             </div>
+
             <div class="form-group">
-              <label for="afectaSaldoCapital">Afecta a Saldo Capital</label>
-              <input type="text" #afectaSaldoCapital="ngModel" [(ngModel)]="motAjusteModel.afectaSaldoCapital"
-                autocomplete="off" class="form-control" name="afectaSaldoCapital" id="afectaSaldoCapital"
-                placeholder="(S/N)">
+              <label for="afectaSaldoCapital">Afecta a Saldo Capital (S = Si / N = No)</label>
+              <br>
+              <select class="custom-select" id="inputSelect1" #afectaSaldoCapital="ngModel"
+                [(ngModel)]="motAjusteModel.afectaSaldoCapital" [ngModelOptions]="{standalone: true}">
+                <option value="S">Si</option>
+                <option value="N">No</option>
+              </select>
+              <br>
             </div>
+
             <div class="form-group">
-              <label for="afectaSaldoInteres">Afecta a Saldo Interes</label>
-              <input type="text" #afectaSaldoInteres="ngModel" [(ngModel)]="motAjusteModel.afectaSaldoInteres"
-                autocomplete="off" class="form-control" name="afectaSaldoInteres" id="afectaSaldoInteres"
-                placeholder="(S/N)">
+              <label for="afectaSaldoInteres">Afecta a Saldo Interes (S = Si / N = No)</label>
+              <br>
+              <select class="custom-select" id="inputSelect2" #afectaSaldoInteres="ngModel"
+                [(ngModel)]="motAjusteModel.afectaSaldoInteres" [ngModelOptions]="{standalone: true}">
+                <option value="S">Si</option>
+                <option value="N">No</option>
+              </select>
+              <br>
             </div>
+
             <div class="form-group">
-              <label for="afectaSaldoMora">Afecta a Saldo Mora</label>
-              <input type="text" #afectaSaldoMora="ngModel" [(ngModel)]="motAjusteModel.afectaSaldoMora"
-                autocomplete="off" class="form-control" name="afectaSaldoMora" id="afectaSaldoMora" placeholder="(S/N)">
+              <label for="afectaSaldoMora">Afecta a Saldo Mora (S = Si / N = No)</label>
+              <br>
+              <select class="custom-select" id="inputSelect3" #afectaSaldoMora="ngModel"
+                [(ngModel)]="motAjusteModel.afectaSaldoMora" [ngModelOptions]="{standalone: true}">
+                <option value="S">Si</option>
+                <option value="N">No</option>
+              </select>
+              <br>
             </div>
 
 
@@ -111,7 +129,7 @@
     </div>
   </div>
 </div>
-
+ 
 
 <!-- Modal editar -->
 <div class="modal fade" id="ModalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -173,7 +191,7 @@
     <div class="modal-content">
       <form #formAddMotAjuste="ngForm" (ngSubmit)="addMotAjuste()">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar Registro</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Visualizar Registro</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -183,21 +201,18 @@
             <div class="form-group">
               <label for="codigo">Codigo</label>
               <input type="text" #codigo="ngModel" [(ngModel)]="motAjuste.codigo" autocomplete="off"
-                class="form-control" name="codigo" id="codigo" placeholder="Ingresar el codigo">
+                class="form-control" name="codigo" id="codigo" readonly>
             </div>
             <div class="form-group">
               <label for="descripcion">Descripcion</label>
               <input type="text" #descripcion="ngModel" [(ngModel)]="motAjuste.descripcion" autocomplete="off"
-                class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar Primera Descripcion"
-                readonly>
+                class="form-control" name="descripcion" id="descripcion" readonly>
               <label for="descripcion2">Descripcion Dos</label>
               <input type="text" #descripcion2="ngModel" [(ngModel)]="motAjuste.descripcion2" autocomplete="off"
-                class="form-control" name="descripcion2" id="descripcion2" placeholder="Ingresar Segunda Descripcion"
-                readonly>
+                class="form-control" name="descripcion2" id="descripcion2" readonly>
               <label for="descripcion3">Descripcion Tres</label>
               <input type="text" #descripcion3="ngModel" [(ngModel)]="motAjuste.descripcion3" autocomplete="off"
-                class="form-control" name="descripcion3" id="descripcion3" placeholder="Ingresar Tercera Descripcion"
-                readonly>
+                class="form-control" name="descripcion3" id="descripcion3" readonly>
             </div>
             <div class="form-group">
               <label for="afectaSaldoCapital">Afecta a Saldo Capital</label>
@@ -216,9 +231,7 @@
               <input type="text" #afectaSaldoMora="ngModel" [(ngModel)]="motAjuste.afectaSaldoMora" autocomplete="off"
                 class="form-control" name="afectaSaldoMora" id="afectaSaldoMora" placeholder="(S/N)" readonly>
             </div>
-
-            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#ModalConfirmacion2"
-              (click)="ModalConfirmacion2">Aceptar</button>
+  
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
